@@ -1,0 +1,17 @@
+/*
+!/assets
+!/components
+!/layouts
+!/middleware
+!/pages
+!/plugins
+!/static
+!/store
+!/.editorconfig
+!/.eslintrc.js
+!/.gitignore
+!/jsconfig.json
+!/nuxt.config.js
+!/package.json
+!/readme.md
+!/stylelint.config.js
