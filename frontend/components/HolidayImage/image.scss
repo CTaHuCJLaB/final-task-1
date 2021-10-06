@@ -2,12 +2,12 @@
     ::v-deep .image__core {
         background-color: $colorOrange;
 
-        @media (max-width: $max-mobile-width) {
+        @media (max-width: $maxMobileWidth) {
             width: 100vw;
             height: 125px / 320px * 100vw;
         }
 
-        @media (min-width: $min-desktop-width) {
+        @media (min-width: $minDesktopWidth) {
             width: 460px / 800px * 100vh;
             min-width: 460px / 800px * 480px;
             height: 100vh;

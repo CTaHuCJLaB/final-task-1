@@ -2,17 +2,17 @@
     display: grid;
     min-height: 100vh;
 
-    @media (max-width: $max-mobile-width) {
+    @media (max-width: $maxMobileWidth) {
         display: flex;
         flex-direction: column;
     }
 
-    @media (min-width: $min-desktop-width) {
+    @media (min-width: $minDesktopWidth) {
         grid-template: 2 / 2;
     }
 
     &__main {
-        @media (min-width: $min-desktop-width) {
+        @media (min-width: $minDesktopWidth) {
             flex-grow: 1;
             padding-top: 34px;
             padding-right: 100px;
