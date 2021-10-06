@@ -60,7 +60,7 @@ body {
     position: relative;
     display: grid;
     grid-template-rows: min-content 1fr min-content;
-    min-width: $min-mobile-width;
+    min-width: $minMobileWidth;
     min-height: 100%;
     padding: 0;
     letter-spacing: normal;

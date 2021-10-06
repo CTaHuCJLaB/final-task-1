@@ -2,7 +2,7 @@
     margin: 0;
 
     &--holiday {
-        @media (min-width: $min-desktop-width) {
+        @media (min-width: $minDesktopWidth) {
             width: 460px / 800px * 100vh;
             min-width: 460px / 800px * 480px;
         }
