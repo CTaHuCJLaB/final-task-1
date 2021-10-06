@@ -28,6 +28,7 @@ export default {
         },
     },
     head: {
+        title: 'Сайт, посвящённый творчеству Бориса Кустодиева',
         htmlAttrs: {
             lang: 'ru',
         },
