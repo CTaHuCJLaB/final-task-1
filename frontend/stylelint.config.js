@@ -300,7 +300,7 @@ module.exports = {
             message: 'перед псевдоэлементом должно быть два двоеточия',
         }],
         'selector-pseudo-element-no-unknown': [true, {
-            ignorePseudoElements: ['', '::v-deep'],
+            ignorePseudoElements: ['', 'v-deep'],
             message: 'Такого псевдоэлемента не существует',
         }],
         'selector-type-case': ['lower', {
