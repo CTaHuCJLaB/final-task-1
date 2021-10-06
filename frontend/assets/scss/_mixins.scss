@@ -27,7 +27,7 @@
 }
 
 @mixin fontface(
-  $family, $localname, $filename,
+  $family, $local-name, $file-name,
   $format, $weight, $style
 ) {
     @font-face {
@@ -36,12 +36,12 @@
         font-style: $style;
         font-display: swap;
         src:
-            local('#{$localname}'),
-            url('/fonts/#{$filename}.woff2') format('woff2'),
-            local('#{$localname}'),
-            url('/fonts/#{$filename}.woff') format('woff'),
-            local('#{$localname}'),
-            url('/fonts/#{$filename}.#{$format}') format('#{$format}');
+            local('#{$local-name}'),
+            url('/fonts/#{$file-name}.woff2') format('woff2'),
+            local('#{$local-name}'),
+            url('/fonts/#{$file-name}.woff') format('woff'),
+            local('#{$local-name}'),
+            url('/fonts/#{$file-name}.#{$format}') format('#{$format}');
     }
 }
 

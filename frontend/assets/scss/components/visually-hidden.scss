@@ -11,7 +11,20 @@
     clip-path: inset(100%);
 }
 
-.visually-hidden,
-.is-visually-hidden {
-    @extend %visually-hidden;
+@mixin define-v-hidden-table($base-class) {
+    .#{$base-class}, .#{$base-class}:active,
+    .#{$base-class}:checked,
+    .#{$base-class}:not(:checked),
+    .#{$base-class}:not(:focus):not(:active),
+    .input[type='checkbox'].#{$base-class},
+    .input[type='radio'].#{$base-class} {
+        @extend %visually-hidden;
+    }
 }
+
+@include define-v-hidden-table(
+    visually-hidden
+);
+@include define-v-hidden-table(
+    is-visually-hidden
+);
