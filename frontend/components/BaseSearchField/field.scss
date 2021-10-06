@@ -1,0 +1,27 @@
+.field--search {
+    width: 140px;
+
+    @include make-lined;
+
+    ::v-deep .field__core {
+        color: $colorSuperLight;
+        border: 0;
+        background-color: transparent;
+
+        /* IE */
+        &::-ms-clear,
+        &::-ms-reveal {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
+        /* Chrome, Edge, Safary */
+        &::-webkit-search-decoration,
+        &::-webkit-search-cancel-button,
+        &::-webkit-search-results-button,
+        &::-webkit-search-results-decoration {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+.logo {
+    @extend %phrase-wrapper;
+}
+
+.image--affinage {
+    ::v-deep .image__core {
+        @media (max-width: $max-mobile-width) {
+            display: none;
+        }
+
+        @media (min-width: $min-desktop-width) {
+            width: 60px;
+            height: 60px;
+            color: $colorOrange;
+            background-color: $colorSuperLight;
+        }
+    }
+}

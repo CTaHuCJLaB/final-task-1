@@ -52,6 +52,7 @@ export default {
         scss: [
             '~/assets/scss/_variables.scss',
             '~/assets/scss/_mixins.scss',
+            '~/assets/scss/_extends.scss',
         ],
     },
 
@@ -59,9 +60,19 @@ export default {
         '@/assets/scss/main.scss',
     ],
 
+    plugins: [
+        '@/plugins/noClickOutline.js',
+    ],
+
     components: true,
 
-    buildModules: isProduction ? [] : ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
+    buildModules: isProduction
+        ? []
+        : [
+            '@nuxtjs/eslint-module',
+            '@nuxtjs/stylelint-module',
+            '@nuxtjs/composition-api/module',
+        ],
 
     modules: [
         '@nuxtjs/markdownit',

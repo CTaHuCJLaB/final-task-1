@@ -1,0 +1,11 @@
+.button {
+    @extend %phrase-wrapper;
+
+    &__core {
+        display: grid;
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+        cursor: pointer;
+    }
+}

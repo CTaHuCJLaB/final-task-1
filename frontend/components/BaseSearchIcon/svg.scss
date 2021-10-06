@@ -1,0 +1,8 @@
+.svg--search-icon {
+    & path {
+        stroke: $colorSuperLight;
+        stroke-linecap: round;
+        stroke-width: 1.5;
+        fill: none;
+    }
+}

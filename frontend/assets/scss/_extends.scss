@@ -1,0 +1,12 @@
+%hidden-on-mobile {
+    @media (max-width: $max-mobile-width) {
+        display: none;
+    }
+}
+
+%phrase-wrapper {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    @include make-tamping-grid();
+}

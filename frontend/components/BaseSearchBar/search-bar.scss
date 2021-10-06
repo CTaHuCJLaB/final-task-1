@@ -1,0 +1,12 @@
+.search-bar {
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+    width: 170px;
+    min-height: 29px;
+
+    ::v-deep {
+        .button--search {
+            margin-top: 5px;
+        }
+    }
+}

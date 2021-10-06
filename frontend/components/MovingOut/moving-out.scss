@@ -1,0 +1,25 @@
+// move out - выдвигаться
+.moving-out {
+    display: flex;
+    overflow-x: hidden;
+
+    ::v-deep {
+        .is-move-out-ready {
+            transform: translateX(-140px);
+        }
+
+        .is-move-out-animated {
+            animation: move-out 0.82s linear;
+        }
+    }
+}
+
+@keyframes move-out {
+    0% {
+        transform: translateX(-140px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

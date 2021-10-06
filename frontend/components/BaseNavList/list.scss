@@ -1,0 +1,20 @@
+.list {
+    &--nav {
+        line-height: 16.1px;
+
+        @media (min-width: $min-desktop-width) {
+            grid-template-columns: repeat(4, max-content);
+            width: 306px;
+            padding-top: 6px;
+            column-gap: 23px;
+            row-gap: 20px;
+        }
+    }
+
+    &--nav .list__item {
+        @media (max-width: $max-mobile-width) {
+            min-height: 36px;
+            padding: 10px 20px;
+        }
+    }
+}

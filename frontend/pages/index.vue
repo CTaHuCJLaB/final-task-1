@@ -1,13 +1,6 @@
-<template>
-    <div>
-        Page
-    </div>
+<template lang="pug">
+  .page
+    the-index-header
+    main.page-main
+      biography-section
 </template>
-
-<script>
-export default {
-};
-</script>
-
-<style lang="scss">
-</style>

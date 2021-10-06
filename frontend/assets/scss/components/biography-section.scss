@@ -1,0 +1,9 @@
+.biography-section {
+    @media (max-width: $max-mobile-width) {
+        min-height: 1167px;
+    }
+
+    @media (min-width: $min-desktop-width) {
+        min-height: 730px;
+    }
+}

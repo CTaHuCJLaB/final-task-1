@@ -1,0 +1,18 @@
+.after-line-animating {
+    display: flex;
+
+    // line up - разлиновываться
+    ::v-deep .is {
+
+        // подготавливает элемент к анимации "line-up"
+        &-line-up-ready::after {
+            width: 0;
+        }
+
+        // анимирует элемент анимацией "line-up"
+        &-line-up-animated::after {
+            width: calc(100% + 12px);
+            transition: width 0.18s linear;
+        }
+    }
+}

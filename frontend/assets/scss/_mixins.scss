@@ -26,12 +26,58 @@
     }
 }
 
-@mixin fontface($family, $localname, $filename, $weight, $style) {
+@mixin fontface(
+  $family, $localname, $filename,
+  $format, $weight, $style
+) {
     @font-face {
-        font-display: swap;
         font-family: $family;
-        src: local('#{$localname}'), url('../../static/fonts/#{$filename}.woff2') format('woff2');
         font-weight: $weight;
         font-style: $style;
+        font-display: swap;
+        src:
+            local('#{$localname}'),
+            url('/fonts/#{$filename}.woff2') format('woff2'),
+            local('#{$localname}'),
+            url('/fonts/#{$filename}.woff') format('woff'),
+            local('#{$localname}'),
+            url('/fonts/#{$filename}.#{$format}') format('#{$format}');
+    }
+}
+
+@mixin make-center() {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@mixin make-flex() {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+// make-tamping-grid - сделать элемент гридом,
+// содержимое которого будет вписано в него
+@mixin make-tamping-grid {
+    display: grid;
+    grid-template: 100% / 100%;
+}
+
+// make-lined - сделать линованным
+// (добавляет к элементу горизонтальную линию)
+@mixin make-lined(
+    $bottom: 0,
+    $left: 0,
+    $line-length: 100%,
+  ) {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: $bottom;
+        left: $left;
+        width: $line-length;
+        height: 1px;
+        background-color: $colorSuperLight;
     }
 }
