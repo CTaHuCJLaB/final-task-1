@@ -5,10 +5,10 @@
     @extend %phrase-wrapper;
 
     &__label {
-        @include make-tamping-grid();
+        @include tamping-grid();
     }
 
     &__screed {
-        @include make-tamping-grid();
+        @include tamping-grid();
     }
 }

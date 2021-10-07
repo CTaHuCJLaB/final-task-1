@@ -45,32 +45,32 @@
     }
 }
 
-@mixin make-center() {
+@mixin center() {
     margin-right: auto;
     margin-left: auto;
 }
 
-@mixin make-flex() {
+@mixin flex() {
     display: flex;
     flex-wrap: wrap;
 }
 
-@mixin make-hidden-on-mobile {
+@mixin hidden-on-mobile {
     @media (max-width: $maxMobileWidth) {
         display: none;
     }
 }
 
-// make-tamping-grid - сделать элемент гридом,
+// tamping-grid - сделать элемент гридом,
 // содержимое которого будет вписано в него
-@mixin make-tamping-grid {
+@mixin tamping-grid {
     display: grid;
     grid-template: 100% / 100%;
 }
 
-// make-lined - сделать линованным
+// lined - сделать линованным
 // (добавляет к элементу горизонтальную линию)
-@mixin make-lined(
+@mixin lined(
     $bottom: 0,
     $left: 0,
     $line-length: 100%,

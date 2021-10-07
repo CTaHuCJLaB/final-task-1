@@ -10,7 +10,7 @@
         justify-content: space-between;
         align-items: center;
 
-        @include make-flex();
+        @include flex();
 
         @media (max-width: $maxMobileWidth) {
             width: 100%;
@@ -48,6 +48,6 @@
 
 .is-closed {
     .list--nav {
-        @include make-hidden-on-mobile;
+        @include hidden-on-mobile;
     }
 }

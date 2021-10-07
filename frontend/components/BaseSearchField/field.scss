@@ -1,7 +1,7 @@
 .field--search {
     width: 140px;
 
-    @include make-lined;
+    @include lined;
 
     ::v-deep .field__core {
         color: $colorSuperLight;

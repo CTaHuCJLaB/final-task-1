@@ -11,7 +11,7 @@
     clip-path: inset(100%);
 }
 
-@mixin define-v-hidden-table($base-class) {
+@mixin visually-hidden-table($base-class) {
     .#{$base-class}, .#{$base-class}:active,
     .#{$base-class}:checked,
     .#{$base-class}:not(:checked),
@@ -22,9 +22,9 @@
     }
 }
 
-@include define-v-hidden-table(
+@include visually-hidden-table(
     visually-hidden
 );
-@include define-v-hidden-table(
+@include visually-hidden-table(
     is-visually-hidden
 );
