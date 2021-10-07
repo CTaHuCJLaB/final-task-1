@@ -41,11 +41,11 @@ const stateDefault = {
 export default {
     props: {
         states:
-      createObjectPropConfig(
-          () => stateDefault,
-      ),
+            createObjectPropConfig(
+                () => stateDefault,
+            ),
         actionObject:
-      createStringPropConfig(),
+            createStringPropConfig(),
     },
     setup(props) {
         const actionObject = toRef(

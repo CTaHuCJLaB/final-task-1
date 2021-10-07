@@ -16,9 +16,9 @@ import { createStringPropConfig }
 export default {
     props: {
         rootElement:
-      createStringPropConfig('div'),
+            createStringPropConfig('div'),
         hidingClass:
-      createStringPropConfig('h-hide'),
+            createStringPropConfig('h-hide'),
     },
     emits: [
         'slidingstart',

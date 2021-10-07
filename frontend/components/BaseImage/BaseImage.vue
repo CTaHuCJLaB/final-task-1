@@ -57,13 +57,13 @@ export default {
             '/img',
         ),
         imageParamSets:
-      createObjectPropConfig(),
+            createObjectPropConfig(),
         baseFileExtension:
-      createStringPropConfig('jpg'),
+            createStringPropConfig('jpg'),
         dotsPerPixelArray:
-      createArrayPropConfig(
-          () => [1, 1.5, 2, 3, 4],
-      ),
+            createArrayPropConfig(
+                () => [1, 1.5, 2, 3, 4],
+            ),
     },
     setup(props) {
         const {

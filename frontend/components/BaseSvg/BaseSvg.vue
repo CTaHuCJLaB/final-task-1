@@ -22,9 +22,9 @@ import {
 export default {
     props: {
         viewBox:
-      createStringPropConfig(
-          '0 0 16 16',
-      ),
+            createStringPropConfig(
+                '0 0 16 16',
+            ),
         ariaHidden: truePropConfig,
         focusable: falsePropConfig,
     },
