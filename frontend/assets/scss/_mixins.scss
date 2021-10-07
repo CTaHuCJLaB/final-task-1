@@ -55,6 +55,12 @@
     flex-wrap: wrap;
 }
 
+@mixin make-hidden-on-mobile {
+    @media (max-width: $maxMobileWidth) {
+        display: none;
+    }
+}
+
 // make-tamping-grid - сделать элемент гридом,
 // содержимое которого будет вписано в него
 @mixin make-tamping-grid {

@@ -48,6 +48,6 @@
 
 .is-closed {
     .list--nav {
-        @extend %hidden-on-mobile;
+        @include make-hidden-on-mobile;
     }
 }
