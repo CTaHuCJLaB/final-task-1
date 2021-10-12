@@ -9,7 +9,7 @@
         slot(name="menuToggle")
           base-menu-toggle
     slot(name="navList")
-      main-nav-list
+        main-nav-list
 </template>
 
 <script>

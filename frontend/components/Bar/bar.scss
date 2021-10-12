@@ -1,0 +1,13 @@
+.bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-content: flex-start;
+    gap: 20px;
+    padding-right: 100px;
+    padding-left: 80px;
+
+    @include mq($maxTabletWidth) {
+        display: none;
+    }
+}

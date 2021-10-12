@@ -1,3 +1,9 @@
+.sliding {
+    @include mq($maxTabletWidth) {
+        width: 100%;
+    }
+}
+
 .h-hide-on-mobile {
     @include hidden-on-mobile;
 }

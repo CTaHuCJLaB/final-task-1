@@ -2,14 +2,17 @@
 
 $colorBlack:        #000;
 $colorLightBlack:   #202020;
-$colorDarkGray:     #4b4b4b;
+$colorDarkGray1:    #4b4b4b;
+$colorDarkGray2:    #4c4c4c;
 $colorSuperLight:   #f5f5f5;
 $colorLight:        #e5e5e5;
 $colorOrange:       #c48601;
 
-$minMobileWidth:  320px;
-$maxMobileWidth:  1023px;
-$minDesktopWidth: 1024px;
+$minMobileWidth:  320;
+$maxMobileWidth:  767;
+$minTabletWidth:  768;
+$maxTabletWidth:  1023;
+$minDesktopWidth: 1024;
 
 // https://easings.net/ru
 

@@ -1,17 +1,16 @@
 .image--holiday {
     ::v-deep .image__core {
+        width: 460px / 800px * 100vh;
+        min-width: 460px / 800px * 613px;
+        height: 100vh;
+        min-height: 613px;
         background-color: $colorOrange;
 
-        @media (max-width: $maxMobileWidth) {
-            width: 100vw;
-            height: 125px / 320px * 100vw;
-        }
-
-        @media (min-width: $minDesktopWidth) {
-            width: 460px / 800px * 100vh;
-            min-width: 460px / 800px * 480px;
-            height: 100vh;
-            min-height: 480px;
+        @include mq($maxTabletWidth) {
+            width: 100%;
+            min-width: 100%;
+            height: 125px / 320px * 100%;
+            min-height: 125px / 320px * 100%;
         }
     }
 }

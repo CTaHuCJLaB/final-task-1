@@ -1,34 +1,20 @@
 @include fontface(
-  Helvetica,
-  Helvetica,
-  './fonts/9204',
-  'otf',
-  300,
-  normal,
+  Helvetica, Helvetica,
+  '9204', 300, normal,
 );
 @include fontface(
-  Helvetica,
-  Helvetica,
-  './fonts/Helvetica Regular',
-  'otf',
-  400,
-  normal,
+  Helvetica, Helvetica,
+  'Helvetica Regular',
+  400, normal,
 );
 @include fontface(
-  Helvetica,
-  Helvetica,
-  './fonts/9206',
-  'otf',
-  700,
-  normal,
+  Helvetica, Helvetica,
+  '9206', 700, normal,
 );
 @include fontface(
-  YesevaOne,
-  YesevaOne,
-  './fonts/YesevaOne-Regular',
-  'ttf',
-  400,
-  normal,
+  YesevaOne, YesevaOne,
+  'YesevaOne-Regular',
+  400, normal,
 );
 
 ::selection {
@@ -40,6 +26,7 @@ html {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 20px;
+    font-weight: 400;
     color: $colorSuperLight;
     background-color: $colorLightBlack;
     -webkit-font-smoothing: antialiased;
@@ -60,14 +47,15 @@ body {
     position: relative;
     display: grid;
     grid-template-rows: min-content 1fr min-content;
-    min-width: $minMobileWidth;
+    min-width: #{$minMobileWidth}px;
     min-height: 100%;
     padding: 0;
     letter-spacing: normal;
-    text-align: center;
-    word-break: break-all;
+    text-align: left;
+    word-break: break-word;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    color: $colorSuperLight;
     background-repeat: no-repeat;
     background-position: top center;
     margin-top: 0;
@@ -152,7 +140,7 @@ optgroup,
 select,
 textarea {
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif; // TODO заменить на актуальный шрифт
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 16px;
     border: 0;
     border-radius: 0;

@@ -1,23 +1,20 @@
 .page-header {
     display: grid;
+    grid-template-columns: auto 1fr;
+    width: 100%;
     min-height: 100vh;
 
-    @media (max-width: $maxMobileWidth) {
+    @include mq($maxTabletWidth) {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
+        justify-content: flex-end;
     }
 
-    @media (min-width: $minDesktopWidth) {
-        grid-template: 2 / 2;
+    @include mq($maxMobileWidth) {
+        min-height: 677px;
     }
 
-    &__main {
-        @media (min-width: $minDesktopWidth) {
-            flex-grow: 1;
-            padding-top: 34px;
-            padding-right: 100px;
-            padding-bottom: 40px;
-            padding-left: 100px;
-        }
+    @include mq($minMobileWidth + 1, $maxTabletWidth) {
+        min-height: 630px;
     }
 }

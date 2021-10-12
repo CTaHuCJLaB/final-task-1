@@ -1,7 +1,7 @@
 <template lang="pug">
   header.page-header
-    animated-nav-bar
     holiday-figure
-    .page-header__main
-      affinage-logo
+    page-header-main
+        template(#intro)
+            the-index-intro
 </template>

@@ -1,0 +1,19 @@
+.p {
+    width: 520px;
+    font-size: 16px;
+    line-height: 26px;
+
+    &--thin {
+        line-height: 29px;
+        font-weight: 300;
+    }
+
+    &--dark-gray-2 {
+        color: $colorDarkGray2;
+    }
+
+    &--narrow {
+        width: 440px;
+        color: $colorDarkGray1;
+    }
+}

@@ -1,5 +1,5 @@
 <template lang="pug">
-  p.logo
+  p.affinage-logo
     a(href="https://affinage.ru/")
       base-image(
         class="image--affinage"
@@ -33,5 +33,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import 'image.scss';
+    @import 'affinage-logo.scss';
 </style>

@@ -1,7 +1,7 @@
 .biography-section {
     min-height: 730px;
 
-    @include mq($maxMobileWidth) {
+    @include mq($maxTabletWidth) {
         min-height: 1167px;
     }
 }

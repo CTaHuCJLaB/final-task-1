@@ -26,22 +26,15 @@
     }
 }
 
-@mixin fontface(
-  $family, $local-name, $file-name,
-  $format, $weight, $style
-) {
+@mixin fontface($family, $localname, $filename, $weight, $style) {
     @font-face {
+        font-display: swap;
         font-family: $family;
+        src:
+            local('#{$localname}'),
+            url('../../static/fonts/#{$filename}.woff2') format('woff2');
         font-weight: $weight;
         font-style: $style;
-        font-display: swap;
-        src:
-            local('#{$local-name}'),
-            url('/fonts/#{$file-name}.woff2') format('woff2'),
-            local('#{$local-name}'),
-            url('/fonts/#{$file-name}.woff') format('woff'),
-            local('#{$local-name}'),
-            url('/fonts/#{$file-name}.#{$format}') format('#{$format}');
     }
 }
 
@@ -56,7 +49,7 @@
 }
 
 @mixin hidden-on-mobile {
-    @media (max-width: $maxMobileWidth) {
+    @include mq($maxTabletWidth) {
         display: none;
     }
 }
