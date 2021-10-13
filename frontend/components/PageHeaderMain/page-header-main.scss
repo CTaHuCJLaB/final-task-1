@@ -12,6 +12,14 @@
     }
 }
 
+.index-intro {
+    margin-top: 45px;
+
+    @include mq($maxTabletWidth) {
+        margin-top: 0;
+    }
+}
+
 .affinage-logo {
     justify-self: end;
     align-self: start;
