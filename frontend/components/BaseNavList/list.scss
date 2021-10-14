@@ -1,9 +1,9 @@
 .list--nav {
     row-gap: 20px;
-    column-gap: 23px;
-    width: 309px;
+    column-gap: 24px;
+    width: 307px;
     min-height: 29px;
-    padding-top: 6px;
+    padding-top: 5px;
     line-height: 16.1px;
 
     @include mq($maxTabletWidth) {
