@@ -16,7 +16,7 @@
 
 <script>
 import { ref, reactive, provide }
-    from '@nuxtjs/composition-api';
+from '@nuxtjs/composition-api';
 
 export default {
     setup() {

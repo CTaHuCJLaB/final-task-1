@@ -1,6 +1,9 @@
 <template lang="pug">
   p.affinage-logo
-    a(href="https://affinage.ru/")
+    a(
+        href="https://affinage.ru/"
+        target="_blank"
+    )
       base-image(
         class="image--affinage"
         v-bind="$data"
@@ -9,8 +12,7 @@
 </template>
 
 <script>
-import { trimEachWord }
-    from '@/modules/stringProcessing';
+import { trimEachWord } from '@/modules/stringProcessing';
 
 export default {
     data() {
@@ -25,7 +27,7 @@ export default {
             title: 'Логотип компании "Аффинаж"',
             alt: trimEachWord(
                 `Надпись "Аффинаж" белого цвета на латинице
-        внутри белого кольцевого оливкового венка.`,
+                внутри белого кольцевого оливкового венка.`,
             ),
         };
     },

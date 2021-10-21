@@ -1,6 +1,6 @@
 <template lang="pug">
   base-nav-list(
-    :navs="navs"
+    :navCaptions="navCaptions"
   )
 </template>
 
@@ -8,7 +8,7 @@
 export default {
     data() {
         return {
-            navs: [
+            navCaptions: [
                 'биография',
                 'творчество',
                 'картины',

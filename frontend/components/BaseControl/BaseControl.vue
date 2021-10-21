@@ -32,7 +32,7 @@ export default {
     },
     setup() {
         const outerStateDefault = {
-            description: 'Элемент управления',
+            description: '',
             caption: {
                 text: '',
                 classes: '',

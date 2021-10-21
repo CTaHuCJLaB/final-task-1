@@ -8,6 +8,7 @@ export default {
 
     env: {
         baseURL: API_URL,
+        appURL: 'http://localhost:3000',
     },
 
     render: {
@@ -37,9 +38,24 @@ export default {
             { name: 'viewport', content: 'width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1' },
             { name: 'format-detection', content: 'telephone=no' },
             { name: 'theme-color', content: '#131313' },
+            {
+                property: 'og:title',
+                content: 'Сайт, посвящённый творчеству Бориса Кустодиева',
+            },
+            {
+                property: 'og:description',
+                content: 'Художник, запечатлевший на своих ярких и жизнерадостных полотнах сцены русских будней и праздников.',
+            },
+            { property: 'og:image', content: '/img/holiday-mobile@4x.webp' },
         ],
         link: [
             { rel: 'shortcut icon', type: 'image/png', href: '/img/favicon.png' },
+        ],
+        script: [
+            {
+                src: 'https://yastatic.net/share2/share.js',
+                acync: true,
+            },
         ],
     },
 
@@ -68,7 +84,7 @@ export default {
     components: true,
 
     buildModules: isProduction
-        ? []
+        ? ['@nuxtjs/composition-api/module']
         : [
             '@nuxtjs/eslint-module',
             '@nuxtjs/stylelint-module',
@@ -96,28 +112,34 @@ export default {
         terser: {
             parallel: !isProduction, // настройка для хостинга, иначе сборка падает
         },
-        // optimization: {
-        //     runtimeChunk: 'single',
-        //     splitChunks: {
-        //         chunks: 'all',
-        //         maxInitialRequests: Infinity,
-        //         minSize: 0,
-        //         cacheGroups: {
-        //             vendor: {
-        //                 test: /[\\/]node_modules[\\/]/,
-        //                 name(module) {
-        //                     const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-        //                     return `npm.${packageName.replace('@', '')}`;
-        //                 },
+        // extend(config, { isServer }) {
+        //     if (isServer) {
+        //         config.module.rules = [
+        //             {
+        //                 include: /node_modules/,
+        //                 test: /\.mjs$/,
+        //                 type: 'javascript/auto',
         //             },
-        //         },
-        //     },
+        //         ];
+        //     }
         // },
+        // publicPath: '',
     },
 
     router: {
         linkActiveClass: 'is-active',
         linkExactActiveClass: 'is-active-exact',
         prefetchLinks: false,
+        scrollBehavior(to) {
+            if (to.hash) {
+                return window.scrollTo({
+                    top: document.querySelector(to.hash).offsetTop,
+                    behavior: 'smooth',
+                });
+            }
+            return window.scrollTo(
+                { top: 0, behavior: 'smooth' },
+            );
+        },
     },
 };

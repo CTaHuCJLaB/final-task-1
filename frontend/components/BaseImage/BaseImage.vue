@@ -6,7 +6,7 @@
       :srcset="srcSet"
       :sizes="canvasWidths[index]"
       v-for="(srcSet, index)\
-       in webpSrcSets\
+        in webpSrcSets\
       "
     )
     source(
@@ -35,26 +35,21 @@
 </template>
 
 <script>
-import { toRefs }
-    from '@nuxtjs/composition-api';
+import { toRefs } from '@nuxtjs/composition-api';
+import useMedias from './composables/useMedias';
+import useSrc from './composables/useSrc';
+import useSrcSets from './composables/useSrcSets';
+import useCanvasWidths from './composables/useCanvasWidths';
 import {
     createStringPropConfig, createObjectPropConfig,
     createArrayPropConfig,
 } from '@/modules/propConfigs';
-import useMedias
-    from './composables/useMedias';
-import useSrc
-    from './composables/useSrc';
-import useSrcSets
-    from './composables/useSrcSets';
-import useCanvasWidths
-    from './composables/useCanvasWidths';
 
 export default {
     inheritAttrs: false,
     props: {
         path: createStringPropConfig(
-            '/img',
+            './img',
         ),
         imageParamSets:
             createObjectPropConfig(),

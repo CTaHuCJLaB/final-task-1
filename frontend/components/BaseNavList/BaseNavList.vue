@@ -1,12 +1,13 @@
 <template lang="pug">
   ul.list.list--nav
     li(
-      v-for="(nav, i) in navs"
+      v-for="(navCaption, i) in navCaptions"
       class="list__item"
-      v-smooth-scroll
     )
-      a(:href="`#nav_${i}`")
-        | {{ nav }}
+        nuxt-link(
+            :to="{ path: '/', hash: `#block_${i}`}"
+        )
+            | {{ navCaption }}
 </template>
 
 <script>
@@ -15,7 +16,7 @@ import { createArrayPropConfig }
 
 export default {
     props: {
-        navs: createArrayPropConfig(),
+        navCaptions: createArrayPropConfig(),
     },
 };
 </script>

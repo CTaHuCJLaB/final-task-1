@@ -11,7 +11,7 @@
     }
 
     @include mq($maxMobileWidth) {
-        min-height: 677px;
+        min-height: 656px;
     }
 
     @include mq($minMobileWidth + 1, $maxTabletWidth) {

@@ -1,19 +1,20 @@
 .p {
     width: 520px;
+    padding-right: 1px;
     font-size: 16px;
     line-height: 26px;
 
-    &--thin {
-        line-height: 29px;
-        font-weight: 300;
+    @include mq($maxMobileWidth) {
+        width: 100%;
     }
 
-    &--dark-gray-2 {
-        color: $colorDarkGray2;
+    @include mq($minTabletWidth, $maxTabletWidth) {
+        width: 727px;
     }
 
     &--narrow {
         width: 440px;
+        letter-spacing: 0.3px;
         color: $colorDarkGray1;
     }
 }

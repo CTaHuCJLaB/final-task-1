@@ -9,14 +9,12 @@
 
     @include mq($maxTabletWidth) {
         justify-content: start;
-        padding-top: 42px;
         padding-right: 20px;
-        padding-bottom: 61px;
         padding-left: 20px;
     }
 
     @include mq($minMobileWidth) {
-        min-height: 493px;
+        min-height: 474px;
     }
 
     @include mq($minMobileWidth + 1, $maxTabletWidth) {
@@ -30,7 +28,7 @@
             'vertical-h1 paragraph';
         grid-template-columns: repeat(2, auto);
         gap: 20px;
-        width: 640px;
+        width: 645px;
         min-height: 315px;
 
         @include mq($maxTabletWidth) {
@@ -39,12 +37,13 @@
             gap: 17px;
             width: 100%;
             min-height: 176px;
+            padding-top: 42px;
+            padding-bottom: 61px;
         }
 
         @include mq($minTabletWidth, $maxTabletWidth) {
             align-self: center;
             width: 727px;
-            padding-left: 14px;
         }
     }
 }
@@ -97,13 +96,6 @@
 
 .p {
     grid-area: paragraph;
-    width: 520px;
-
-    @include mq($maxMobileWidth) {
-        width: 100%;
-    }
-
-    @include mq($minTabletWidth, $maxTabletWidth) {
-        width: 727px;
-    }
+    line-height: 29px;
+    font-weight: 300;
 }
