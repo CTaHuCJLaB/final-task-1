@@ -1,5 +1,4 @@
-import { replaceSpaces, trimEachWord }
-    from '@/modules/stringProcessing';
+import { replaceSpaces, trimEachWord } from '@/modules/stringProcessing';
 
 export const computeFullFileName = (
     path, fileName,

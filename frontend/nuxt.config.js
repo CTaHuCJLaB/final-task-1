@@ -54,7 +54,7 @@ export default {
         script: [
             {
                 src: 'https://yastatic.net/share2/share.js',
-                acync: true,
+                acync: '',
             },
         ],
     },
@@ -112,17 +112,6 @@ export default {
         terser: {
             parallel: !isProduction, // настройка для хостинга, иначе сборка падает
         },
-        // extend(config, { isServer }) {
-        //     if (isServer) {
-        //         config.module.rules = [
-        //             {
-        //                 include: /node_modules/,
-        //                 test: /\.mjs$/,
-        //                 type: 'javascript/auto',
-        //             },
-        //         ];
-        //     }
-        // },
         // publicPath: '',
     },
 

@@ -1,22 +1,20 @@
 <template lang="pug">
   ul.list.list--nav
-    li(
-      v-for="(navCaption, i) in navCaptions"
-      class="list__item"
+    li.list__item(
+      v-for="(navTitle, index) in navTitles"
     )
         nuxt-link(
-            :to="{ path: '/', hash: `#block_${i}`}"
+            :to="{ path: '/', hash: `#block_${index}`}"
         )
-            | {{ navCaption }}
+            | {{navTitle}}
 </template>
 
 <script>
-import { createArrayPropConfig }
-    from '@/modules/propConfigs';
+import { createArrayPropConfig } from '@/modules/propConfigs';
 
 export default {
     props: {
-        navCaptions: createArrayPropConfig(),
+        navTitles: createArrayPropConfig(),
     },
 };
 </script>

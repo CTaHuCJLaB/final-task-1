@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/not-webp-srcs",
+      "handler": "not-webp-srcs.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/not-webp-srcs/count",
+      "handler": "not-webp-srcs.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/not-webp-srcs/:id",
+      "handler": "not-webp-srcs.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/not-webp-srcs",
+      "handler": "not-webp-srcs.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/not-webp-srcs/:id",
+      "handler": "not-webp-srcs.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/not-webp-srcs/:id",
+      "handler": "not-webp-srcs.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

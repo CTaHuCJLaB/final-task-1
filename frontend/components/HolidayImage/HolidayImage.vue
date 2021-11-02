@@ -7,8 +7,7 @@
 </template>
 
 <script>
-import { trimEachWord }
-    from '@/modules/stringProcessing';
+import { trimEachWord } from '@/modules/stringProcessing';
 
 export default {
     data() {
@@ -25,16 +24,16 @@ export default {
             return {
                 0: {
                     fileName:
-            `${this.imageName}-mobile`,
+                        `${this.imageName}-mobile`,
                     x1Width: 320,
                     canvasWidth: '100vw',
                 },
                 1: {
                     fileName:
-            `${this.imageName}-desktop`,
+                        `${this.imageName}-desktop`,
                     x1Width: 460,
                     canvasWidth:
-            'calc(460 / 800 * 100vh)',
+                        'calc(460 / 800 * 100vh)',
                 },
             };
         },

@@ -23,8 +23,7 @@ import {
     reactive, inject, toRefs,
     isReactive,
 } from '@nuxtjs/composition-api';
-import { falsePropConfig }
-    from '@/modules/propConfigs';
+import { falsePropConfig } from '@/modules/propConfigs';
 
 export default {
     props: {

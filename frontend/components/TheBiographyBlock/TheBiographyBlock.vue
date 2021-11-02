@@ -11,7 +11,7 @@
                 share-block(
                     data-title="Биография художника Бориса Кустодиева"
                     data-description="Борис Кустодиев родился 7 марта 1878 года в Астрахани..."
-                    data-image="/img/holiday-mobile@4x.webp"
+                    data-image="./img/holiday-mobile@4x.webp"
                 )
                 read-more-button
 </template>

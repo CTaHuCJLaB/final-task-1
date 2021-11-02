@@ -14,10 +14,8 @@
 </template>
 
 <script>
-import { inject, toRefs }
-    from '@nuxtjs/composition-api';
-import createTypeProp
-    from '@/mixins/createTypeProp';
+import { inject, toRefs } from '@nuxtjs/composition-api';
+import createTypeProp from '@/mixins/createTypeProp';
 
 export default {
     mixins:
@@ -34,5 +32,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import 'field.scss';
+@import 'field.scss';
 </style>

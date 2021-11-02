@@ -1,0 +1,11 @@
+::v-deep .slider-pagination {
+    @include mq($maxTabletWidth) {
+        display: none;
+    }
+}
+
+::v-deep .fade-slider-screen {
+    @include mq($maxTabletWidth) {
+        display: none;
+    }
+}

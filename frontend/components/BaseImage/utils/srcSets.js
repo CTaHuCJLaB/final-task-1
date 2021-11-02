@@ -1,6 +1,5 @@
 import _ from 'lodash';
-import { computeFullFileName, createSrc }
-    from './base';
+import { computeFullFileName, createSrc } from './base';
 
 const srcMapIteratee = (
     path, fileName, dotsPerPixel,

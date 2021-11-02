@@ -1,11 +1,15 @@
-<template>
-    <div>
-        <Nuxt />
-    </div>
+<template lang="pug">
+    div
+        nuxt
+        main-nav-list
 </template>
 
 <script>
 export default {
+    async fetch() {
+        await this.$store
+            .dispatch('loadNavTitles');
+    },
 };
 </script>
 

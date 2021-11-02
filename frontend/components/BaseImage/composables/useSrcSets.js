@@ -1,8 +1,6 @@
 import _ from 'lodash';
-import { toRefs, computed }
-    from '@nuxtjs/composition-api';
-import { createSrcSet, createRestSrcSets }
-    from '../utils/srcSets';
+import { toRefs, computed } from '@nuxtjs/composition-api';
+import { createSrcSet, createRestSrcSets } from '../utils/srcSets';
 
 export default props => {
     const {

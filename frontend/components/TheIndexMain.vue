@@ -1,6 +1,7 @@
 <template lang="pug">
   main
-    biography-section
+    the-biography-block
+    the-paintings-block
 </template>
 
 <style lang="scss">

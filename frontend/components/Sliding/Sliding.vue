@@ -8,10 +8,8 @@
 
 <script>
 import $ from 'jquery';
-import { inject, toRefs }
-    from '@nuxtjs/composition-api';
-import { createStringPropConfig }
-    from '@/modules/propConfigs';
+import { inject, toRefs } from '@nuxtjs/composition-api';
+import { createStringPropConfig } from '@/modules/propConfigs';
 
 export default {
     props: {

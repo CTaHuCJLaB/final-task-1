@@ -1,20 +1,15 @@
 <template lang="pug">
   base-nav-list(
-    :navCaptions="navCaptions"
+    :navTitles="navTitles"
   )
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
-    data() {
-        return {
-            navCaptions: [
-                'биография',
-                'творчество',
-                'картины',
-                'музеи',
-            ],
-        };
-    },
+    computed: mapState({
+        navTitles: state => state.navTitles,
+    }),
 };
 </script>

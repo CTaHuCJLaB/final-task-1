@@ -1,8 +1,6 @@
 import _ from 'lodash';
-import { computed }
-    from '@nuxtjs/composition-api';
-import { computeFullFileName }
-    from '../utils/base';
+import { computed } from '@nuxtjs/composition-api';
+import { computeFullFileName } from '../utils/base';
 
 export default (
     path,
