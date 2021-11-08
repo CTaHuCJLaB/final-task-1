@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "share_services",
+  "info": {
+    "name": "shareServices"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "service": {
+      "type": "string",
+      "required": false,
+      "unique": true
+    }
+  }
+}

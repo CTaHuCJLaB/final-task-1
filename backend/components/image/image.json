@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_images_images",
+  "info": {
+    "name": "image",
+    "icon": "file-image",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "desktop": {
+      "type": "component",
+      "repeatable": false,
+      "component": "image.image-version"
+    },
+    "mobile": {
+      "type": "component",
+      "repeatable": false,
+      "component": "image.image-version"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "alt": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

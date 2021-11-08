@@ -18,5 +18,5 @@ module.exports = {
       .pluck('title').from('nav_titles')
       .options({ nestTables: true, rowMode: 'array' })
     return result;
-    }
+  }
 };

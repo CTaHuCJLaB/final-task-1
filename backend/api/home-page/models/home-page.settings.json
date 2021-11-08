@@ -11,5 +11,31 @@
     "draftAndPublish": true
   },
   "pluginOptions": {},
-  "attributes": {}
+  "attributes": {
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page-blocks.home-page-header"
+    },
+    "biographyBlock": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page-blocks.biography-block"
+    },
+    "paintingsBlock": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page-blocks.paintings-block"
+    },
+    "creativityBlock": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page-blocks.creativity-block"
+    },
+    "imageTitlePrefix": {
+      "type": "component",
+      "repeatable": false,
+      "component": "image.image-title-prefix"
+    }
+  }
 }

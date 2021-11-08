@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/life-events",
+      "handler": "life-events.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/life-events/count",
+      "handler": "life-events.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/life-events/:id",
+      "handler": "life-events.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/life-events",
+      "handler": "life-events.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/life-events/:id",
+      "handler": "life-events.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/life-events/:id",
+      "handler": "life-events.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

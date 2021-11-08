@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "default_layouts",
+  "info": {
+    "name": "defaultLayout",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "navTitles": {
+      "collection": "nav-titles"
+    },
+    "shareBlock": {
+      "type": "component",
+      "repeatable": false,
+      "component": "share-block.share-block"
+    }
+  }
+}

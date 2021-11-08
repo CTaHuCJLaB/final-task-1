@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_images_image_versions",
+  "info": {
+    "name": "imageVersion",
+    "icon": "arrows-alt-h",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "notWebp": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "webp": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    }
+  }
+}

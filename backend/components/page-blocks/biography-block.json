@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_page_blocks_biography_blocks",
+  "info": {
+    "name": "biographyBlock",
+    "icon": "list-ol",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "h2": {
+      "type": "string",
+      "required": true
+    },
+    "lifeEvents": {
+      "collection": "life-events",
+      "required": true
+    },
+    "shareBlock": {
+      "type": "component",
+      "repeatable": false,
+      "component": "share-block.share-block",
+      "required": true
+    },
+    "buttonCaption": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

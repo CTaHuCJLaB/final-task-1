@@ -1,0 +1,53 @@
+{
+  "collectionName": "components_page_blocks_creativity_blocks",
+  "info": {
+    "name": "creativityBlock",
+    "icon": "pen-fancy",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "h2": {
+      "type": "string",
+      "required": true
+    },
+    "introParagraph": {
+      "type": "text",
+      "required": true
+    },
+    "firstParagraph": {
+      "type": "text",
+      "required": true
+    },
+    "firstImage": {
+      "type": "component",
+      "repeatable": true,
+      "component": "image.image",
+      "required": true
+    },
+    "secondImage": {
+      "type": "component",
+      "repeatable": true,
+      "component": "image.image",
+      "required": true
+    },
+    "secondParagraph": {
+      "type": "text",
+      "required": true
+    },
+    "thirdParagraph": {
+      "type": "text",
+      "required": true
+    },
+    "shareBlock": {
+      "type": "component",
+      "repeatable": false,
+      "component": "share-block.share-block",
+      "required": true
+    },
+    "linkTitle": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

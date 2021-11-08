@@ -41,20 +41,14 @@ import useSrc from './composables/useSrc';
 import useSrcSets from './composables/useSrcSets';
 import useCanvasWidths from './composables/useCanvasWidths';
 import {
-    createStringPropConfig, createObjectPropConfig,
-    createArrayPropConfig,
+    createObjectPropConfig, createArrayPropConfig,
 } from '@/modules/propConfigs';
 
 export default {
     inheritAttrs: false,
     props: {
-        path: createStringPropConfig(
-            './img',
-        ),
         imageParamSets:
             createObjectPropConfig(),
-        baseFileExtension:
-            createStringPropConfig('jpg'),
         dotsPerPixelArray:
             createArrayPropConfig(
                 () => [1, 1.5, 2, 3, 4],

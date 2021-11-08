@@ -1,6 +1,5 @@
 import _ from 'lodash';
-import minBreakpoints
-    from '@/modules/minBreakpoints';
+import minBreakpoints from '@/modules/minBreakpoints';
 
 export default imageParamSets => (
     _(minBreakpoints)

@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_page_blocks_paintings_blocks",
+  "info": {
+    "name": "paintingsBlock",
+    "icon": "images",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "h2": {
+      "type": "string",
+      "required": true
+    },
+    "imageTitlePrefix": {
+      "type": "string"
+    },
+    "previews": {
+      "type": "component",
+      "repeatable": true,
+      "component": "image.image",
+      "required": true
+    },
+    "linkTitle": {
+      "type": "string",
+      "required": true
+    },
+    "slides": {
+      "type": "component",
+      "repeatable": true,
+      "component": "image.image",
+      "required": true
+    }
+  }
+}

@@ -46,7 +46,7 @@ export default {
                 property: 'og:description',
                 content: 'Художник, запечатлевший на своих ярких и жизнерадостных полотнах сцены русских будней и праздников.',
             },
-            { property: 'og:image', content: '/img/holiday-mobile@4x.webp' },
+            { property: 'og:image', content: '/img/holiday-mobile@4x.jpeg' },
         ],
         link: [
             { rel: 'shortcut icon', type: 'image/png', href: '/img/favicon.png' },
