@@ -1,6 +1,5 @@
 import _ from 'lodash';
-import { computed }
-    from '@nuxtjs/composition-api';
+import { computed } from '@nuxtjs/composition-api';
 
 export default imageParamSets => {
     const canvasWidths = computed(

@@ -1,62 +1,43 @@
 import _ from 'lodash';
-import { computeFullFileName, createSrc } from './base';
-
-const srcMapIteratee = (
-    path, fileName, dotsPerPixel,
-    fileExtension, x1Width,
-    index, array,
-) => {
-    const fullFileName = computeFullFileName(
-        path, fileName,
-        dotsPerPixel, fileExtension,
-    );
-    return createSrc(
-        fullFileName, x1Width,
-        dotsPerPixel, index, array.length,
-    );
-};
+import { createSrc } from './base';
 
 export const createSrcSet = (
-    path, imageParamSet,
-    dotsPerPixelArray, fileExtension,
+    dotsPerPixelArray,
+    relativeUrls, x1Width,
 ) => {
-    const {
-        fileName, x1Width,
-    } = imageParamSet;
     return _(dotsPerPixelArray).map(
         (dotsPerPixel, index, array) => (
-            srcMapIteratee(
-                path, fileName, dotsPerPixel,
-                fileExtension, x1Width,
-                index, array,
+            createSrc(
+                relativeUrls[index], x1Width,
+                dotsPerPixel, index, array.length,
             )
         ),
     ).join(' ');
 };
 
 const addSrcSet = (
-    srcSets, path, imageParamSet,
-    dotsPerPixelArray, fileExtension,
+    srcSets, dotsPerPixelArray,
+    relativeUrls, x1Width,
 ) => {
     const newSrcSet = createSrcSet(
-        path, imageParamSet,
-        dotsPerPixelArray, fileExtension,
+        dotsPerPixelArray,
+        relativeUrls, x1Width,
     );
     srcSets.push(newSrcSet);
 };
 
 export const createRestSrcSets = (
-    path, imageParamSets,
-    dotsPerPixelArray, fileExtension,
+    dotsPerPixelArray,
+    relativeUrls, x1Width,
 ) => {
     const srcSets = [];
-    _(imageParamSets)
+    _(relativeUrls)
         .filter((value, key) => key > 0)
         .forEach(
-            imageParamSet => {
+            relativeUrls => {
                 addSrcSet(
-                    srcSets, path, imageParamSet,
-                    dotsPerPixelArray, fileExtension,
+                    srcSets, dotsPerPixelArray,
+                    relativeUrls, x1Width,
                 );
             },
         );

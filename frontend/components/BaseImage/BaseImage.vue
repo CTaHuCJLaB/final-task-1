@@ -37,7 +37,6 @@
 <script>
 import { toRefs } from '@nuxtjs/composition-api';
 import useMedias from './composables/useMedias';
-import useSrc from './composables/useSrc';
 import useSrcSets from './composables/useSrcSets';
 import useCanvasWidths from './composables/useCanvasWidths';
 import {
@@ -55,15 +54,10 @@ export default {
             ),
     },
     setup(props) {
-        const {
-            path, imageParamSets,
-            baseFileExtension,
-        } = toRefs(props);
+        const { imageParamSets } = toRefs(props);
         const medias = useMedias(imageParamSets);
-        const src = useSrc(
-            path, imageParamSets,
-            baseFileExtension,
-        );
+        const src = imageParamSets
+            .relativeUrls.notWebp[0];
         const {
             zeroNotWebpSrcSet, notWebpSrcSets,
             webpSrcSets,

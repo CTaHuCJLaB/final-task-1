@@ -4,19 +4,20 @@ import { createSrcSet, createRestSrcSets } from '../utils/srcSets';
 
 export default props => {
     const {
-        path, imageParamSets,
-        baseFileExtension,
+        imageParamSets,
         dotsPerPixelArray,
     } = toRefs(props);
+    const {
+        relativeUrls, x1Width,
+    } = imageParamSets[0];
     const zeroNotWebpSrcSet = computed(
         () => (
             imageParamSets.value[0]
                 ? createSrcSet(
-                    path.value,
-                    imageParamSets.value[0],
                     _(dotsPerPixelArray.value)
                         .slice(1).value(),
-                    baseFileExtension.value,
+                    relativeUrls.notWebp,
+                    x1Width,
                 )
                 : undefined
         ),
@@ -25,10 +26,10 @@ export default props => {
         () => (
             _(
                 createRestSrcSets(
-                    path.value,
                     imageParamSets.value,
                     dotsPerPixelArray.value,
-                    baseFileExtension.value,
+                    relativeUrls.notWebp,
+                    x1Width,
                 ),
             )
                 .reverse()
@@ -40,10 +41,10 @@ export default props => {
             imageParamSets.value[0]
                 ? [
                     createSrcSet(
-                        path.value,
-                        imageParamSets.value[0],
-                        dotsPerPixelArray.value,
-                        'webp',
+                        _(dotsPerPixelArray.value)
+                            .slice(1).value(),
+                        relativeUrls.webp,
+                        x1Width,
                     ),
                 ]
                 : []
@@ -53,10 +54,10 @@ export default props => {
         () => _(zeroWebpSrcSet.value)
             .concat(
                 createRestSrcSets(
-                    path.value,
                     imageParamSets.value,
                     dotsPerPixelArray.value,
-                    'webp',
+                    relativeUrls.webp,
+                    x1Width,
                 ),
             )
             .reverse()

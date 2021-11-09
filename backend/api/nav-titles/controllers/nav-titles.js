@@ -5,18 +5,4 @@
  * to customize this controller
  */
 
-const knex = require('knex')({
-  client: 'sqlite3',
-  connection: {
-    filename: "./.tmp/data.db"
-  }
-});
-
-module.exports = {
-  find: async () => {
-    const result = await knex
-      .pluck('title').from('nav_titles')
-      .options({ nestTables: true, rowMode: 'array' })
-    return result;
-  }
-};
+module.exports = {};

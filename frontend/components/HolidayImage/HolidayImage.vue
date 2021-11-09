@@ -23,10 +23,18 @@ export default {
         imageParamSets() {
             return {
                 0: {
+                    relativeUrls: {
+                        notWebp: [],
+                        webp: [],
+                    },
                     x1Width: 320,
                     canvasWidth: '100vw',
                 },
                 1: {
+                    relativeUrls: {
+                        notWebp: [],
+                        webp: [],
+                    },
                     x1Width: 460,
                     canvasWidth:
                         'calc(460 / 800 * 100vh)',
