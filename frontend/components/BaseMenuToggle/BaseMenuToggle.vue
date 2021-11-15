@@ -6,8 +6,7 @@
 </template>
 
 <script>
-import { inject }
-    from '@nuxtjs/composition-api';
+import { inject } from '@nuxtjs/composition-api';
 
 const states = {
     on: {

@@ -19,7 +19,10 @@ export default {
         return {
             imageParamSets: {
                 1: {
-                    fileName: 'logo-affinage',
+                    relativeUrls: {
+                        notWebp: [],
+                        webp: [],
+                    },
                     x1Width: 60,
                     canvasWidth: '60px',
                 },

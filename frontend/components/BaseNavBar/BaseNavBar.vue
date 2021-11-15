@@ -13,10 +13,8 @@
 </template>
 
 <script>
-import { ref, reactive, provide }
-    from '@nuxtjs/composition-api';
-import { trimEachWord }
-    from '@/modules/stringProcessing';
+import { ref, reactive, provide } from '@nuxtjs/composition-api';
+import { trimEachWord } from '@/modules/stringProcessing';
 
 export default {
     provide: {

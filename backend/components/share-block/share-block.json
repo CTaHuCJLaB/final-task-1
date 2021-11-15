@@ -24,9 +24,6 @@
       "plugin": "upload",
       "required": true,
       "pluginOptions": {}
-    },
-    "shareServices": {
-      "collection": "share-services"
     }
   }
 }

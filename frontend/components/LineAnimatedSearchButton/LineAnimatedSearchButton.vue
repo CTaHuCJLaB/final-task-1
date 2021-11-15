@@ -10,8 +10,7 @@
 </template>
 
 <script>
-import defineClassAnimationTrigger
-    from '../../mixins/defineClassAnimationTrigger';
+import defineClassAnimationTrigger from '../../mixins/defineClassAnimationTrigger';
 
 export default {
     mixins: [

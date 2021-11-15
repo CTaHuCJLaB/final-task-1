@@ -7,8 +7,7 @@
 </template>
 
 <script>
-import forwardInjectionsDown
-    from '../../mixins/forwardInjectionsDown';
+import forwardInjectionsDown from '../../mixins/forwardInjectionsDown';
 
 export default {
     mixins: [

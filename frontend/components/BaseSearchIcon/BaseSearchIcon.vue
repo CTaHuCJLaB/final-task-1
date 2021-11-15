@@ -7,8 +7,7 @@
 </template>
 
 <script>
-import { trimEachWord }
-    from '@/modules/stringProcessing';
+import { trimEachWord } from '@/modules/stringProcessing';
 
 export default {
     data() {

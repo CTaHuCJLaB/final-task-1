@@ -56,17 +56,16 @@ export default {
     setup(props) {
         const { imageParamSets } = toRefs(props);
         const medias = useMedias(imageParamSets);
-        const src = imageParamSets
-            .relativeUrls.notWebp[0];
+        const src = process.env.baseURL +
+            imageParamSets.value[0]
+                .relativeUrls.notWebp[0];
         const {
             zeroNotWebpSrcSet, notWebpSrcSets,
             webpSrcSets,
         } = useSrcSets(props);
         const {
             canvasWidths, lastCanvasWidth,
-        } = useCanvasWidths(
-            imageParamSets,
-        );
+        } = useCanvasWidths(imageParamSets);
         return {
             medias,
             src,

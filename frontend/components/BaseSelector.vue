@@ -2,11 +2,9 @@
 </template>
 
 <script>
-import createTypeProp
-    from '@/mixins/createTypeProp';
+import createTypeProp from '@/mixins/createTypeProp';
 
 export default {
-    mixins:
-    [createTypeProp('checkbox')],
+    mixins: [createTypeProp('checkbox')],
 };
 </script>

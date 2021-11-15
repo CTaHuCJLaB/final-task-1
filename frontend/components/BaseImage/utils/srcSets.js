@@ -4,16 +4,14 @@ import { createSrc } from './base';
 export const createSrcSet = (
     dotsPerPixelArray,
     relativeUrls, x1Width,
-) => {
-    return _(dotsPerPixelArray).map(
-        (dotsPerPixel, index, array) => (
-            createSrc(
-                relativeUrls[index], x1Width,
-                dotsPerPixel, index, array.length,
-            )
-        ),
-    ).join(' ');
-};
+) => _(dotsPerPixelArray).map(
+    (dotsPerPixel, index, array) => (
+        createSrc(
+            relativeUrls[index], x1Width,
+            dotsPerPixel, index, array.length,
+        )
+    ),
+).join(' ');
 
 const addSrcSet = (
     srcSets, dotsPerPixelArray,
@@ -28,16 +26,18 @@ const addSrcSet = (
 
 export const createRestSrcSets = (
     dotsPerPixelArray,
-    relativeUrls, x1Width,
+    relativeUrlSets, x1Width,
 ) => {
     const srcSets = [];
-    _(relativeUrls)
-        .filter((value, key) => key > 0)
+    _(relativeUrlSets)
+        .slice(1)
         .forEach(
-            relativeUrls => {
+            (relativeUrlSet, index) => {
                 addSrcSet(
-                    srcSets, dotsPerPixelArray,
-                    relativeUrls, x1Width,
+                    srcSets,
+                    dotsPerPixelArray,
+                    relativeUrlSet,
+                    x1Width[index + 1],
                 );
             },
         );

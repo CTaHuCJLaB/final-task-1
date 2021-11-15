@@ -8,8 +8,7 @@
 </template>
 
 <script>
-import animateWithClasses
-    from '../../mixins/animateWithClasses';
+import animateWithClasses from '../../mixins/animateWithClasses';
 
 export default {
     mixins: [

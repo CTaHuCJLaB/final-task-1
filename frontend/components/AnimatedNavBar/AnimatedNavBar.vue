@@ -15,8 +15,7 @@
 </template>
 
 <script>
-import { ref, reactive, provide }
-from '@nuxtjs/composition-api';
+import { ref, reactive, provide } from '@nuxtjs/composition-api';
 
 export default {
     setup() {

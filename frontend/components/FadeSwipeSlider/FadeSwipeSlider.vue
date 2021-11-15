@@ -22,9 +22,9 @@ export default {
     },
     methods: {
         sliderPaginationMounted() {
-            console.log(this.isSliderPaginationDisplayed());
+            // console.log(this.isSliderPaginationDisplayed());
             $(window).resize(
-                evt => console.log(this.isSliderPaginationDisplayed()),
+                // evt => console.log(this.isSliderPaginationDisplayed()),
             );
         },
         isSliderPaginationDisplayed() {

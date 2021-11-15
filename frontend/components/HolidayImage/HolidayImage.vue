@@ -1,39 +1,47 @@
 <template lang="pug">
   base-image(
     class="image--holiday"
-    :alt="alt"
+    :alt="imageData.alt"
     :image-param-sets="imageParamSets"
   )
 </template>
 
 <script>
-import { trimEachWord } from '@/modules/stringProcessing';
+import getImageUrls from '@/modules/getImageUrls';
 
 export default {
-    data() {
-        return {
-            imageName: 'holiday',
-            alt: trimEachWord(
-                `Жители деревни танцуют под гармонь
-                на фоне изб, осенних деревьев и полей.`,
-            ),
-        };
-    },
     computed: {
+        imageData() {
+            return this.$store
+                .state.homePageData
+                .header.image;
+        },
         imageParamSets() {
             return {
                 0: {
                     relativeUrls: {
-                        notWebp: [],
-                        webp: [],
+                        notWebp: getImageUrls(
+                            this.imageData,
+                            'mobile', 'notWebp',
+                        ),
+                        webp: getImageUrls(
+                            this.imageData,
+                            'mobile', 'webp',
+                        ),
                     },
                     x1Width: 320,
                     canvasWidth: '100vw',
                 },
                 1: {
                     relativeUrls: {
-                        notWebp: [],
-                        webp: [],
+                        notWebp: getImageUrls(
+                            this.imageData,
+                            'desktop', 'notWebp',
+                        ),
+                        webp: getImageUrls(
+                            this.imageData,
+                            'desktop', 'webp',
+                        ),
                     },
                     x1Width: 460,
                     canvasWidth:

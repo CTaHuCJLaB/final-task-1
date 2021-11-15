@@ -8,7 +8,7 @@
 export default {
     async fetch() {
         await this.$store
-            .dispatch('loadNavTitles');
+            .dispatch('loadDefaultLayoutData');
     },
 };
 </script>

@@ -23,8 +23,7 @@ import {
     reactive, ref,
     provide,
 } from '@nuxtjs/composition-api';
-import defineClassAnimationTrigger
-    from '../../mixins/defineClassAnimationTrigger';
+import defineClassAnimationTrigger from '../../mixins/defineClassAnimationTrigger';
 
 export default {
     mixins: [

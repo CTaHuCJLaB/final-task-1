@@ -9,8 +9,7 @@
 </template>
 
 <script>
-import animateWithClasses
-    from '../../mixins/animateWithClasses';
+import animateWithClasses from '../../mixins/animateWithClasses';
 
 export default {
     mixins: [
@@ -23,5 +22,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import 'after-line-animating.scss';
+@import 'after-line-animating.scss';
 </style>

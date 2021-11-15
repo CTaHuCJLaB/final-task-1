@@ -18,8 +18,9 @@ import {
     createStringPropConfig,
     createObjectPropConfig,
 } from '@/modules/propConfigs';
-import { prependToEachWord, trimEachWord }
-    from '@/modules/stringProcessing';
+import {
+    prependToEachWord, trimEachWord,
+} from '@/modules/stringProcessing';
 
 const stateDefault = {
     on: {

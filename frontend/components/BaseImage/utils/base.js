@@ -4,14 +4,13 @@ export const createSrc = (
     relativeUrl, image1xWidth,
     dotsPerPixel, srcIndex,
     srcCount,
-) => (
-    trimEachWord(`
-        ${process.env.baseUrl + relativeUrl}
+) => trimEachWord(`
+        ${process.env.baseURL + relativeUrl}
         ${image1xWidth * dotsPerPixel}w
-    `).concat(
+    `)
+    .concat(
         `${srcIndex !== srcCount - 1
             ? ','
             : ''
         }`,
-    )
-);
+    );

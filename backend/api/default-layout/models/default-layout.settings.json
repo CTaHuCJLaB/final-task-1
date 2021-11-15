@@ -15,6 +15,9 @@
     "navTitles": {
       "collection": "nav-titles"
     },
+    "shareServices": {
+      "collection": "share-services"
+    },
     "shareBlock": {
       "type": "component",
       "repeatable": false,

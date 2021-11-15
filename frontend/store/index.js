@@ -1,20 +1,32 @@
 export const strict = process.env.NODE_ENV !== 'production';
 
 export const state = () => ({
-    navTitles: [],
+    defaultLayoutData: {},
+    homePageData: {},
 });
 
 export const mutations = {
-    setNavTitles(state, navTitles) {
-        state.navTitles = navTitles;
+    setDefaultLayoutData(state, defaultLayoutData) {
+        state.defaultLayoutData = defaultLayoutData;
+    },
+    setHomePageData(state, homePageData) {
+        state.homePageData = homePageData;
     },
 };
 
 export const actions = {
-    async loadNavTitles({ commit }) {
-        const navTitles = await this.$axios
-            .$get('/nav-titles')
+    async loadDefaultLayoutData({ commit }) {
+        const defaultLayoutData = await this.$axios
+            .$get(
+                `${this.$axios.defaults.baseURL}/default-layout`,
+            )
             .catch(() => { });
-        commit('setNavTitles', navTitles);
+        commit('setDefaultLayoutData', defaultLayoutData);
+    },
+    async loadHomePageData({ commit }) {
+        const homePageData = await this.$axios
+            .$get(`${this.$axios.defaults.baseURL}/home-page`)
+            .catch(() => { });
+        commit('setHomePageData', homePageData);
     },
 };
