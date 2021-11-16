@@ -6,33 +6,40 @@
     )
       base-image(
         class="image--affinage"
-        v-bind="$data"
-        base-file-extension="png"
+        :title="imageData.title"
+        :alt="imageData.alt"
+        :image-param-sets="imageParamSets"
       )
 </template>
 
 <script>
-import { trimEachWord } from '@/modules/stringProcessing';
+import getImageUrls from '@/modules/getImageUrls';
 
 export default {
-    data() {
-        return {
-            imageParamSets: {
+    computed: {
+        imageData() {
+            return this.$store
+                .state.homePageData
+                .header.logo;
+        },
+        imageParamSets() {
+            return {
                 1: {
                     relativeUrls: {
-                        notWebp: [],
-                        webp: [],
+                        notWebp: getImageUrls(
+                            this.imageData,
+                            'desktop', 'notWebp',
+                        ),
+                        webp: getImageUrls(
+                            this.imageData,
+                            'desktop', 'webp',
+                        ),
                     },
                     x1Width: 60,
                     canvasWidth: '60px',
                 },
-            },
-            title: 'Логотип компании "Аффинаж"',
-            alt: trimEachWord(
-                `Надпись "Аффинаж" белого цвета на латинице
-                внутри белого кольцевого оливкового венка.`,
-            ),
-        };
+            };
+        },
     },
 };
 </script>

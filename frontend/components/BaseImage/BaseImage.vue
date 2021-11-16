@@ -14,7 +14,7 @@
       :srcset="srcSet"
       :sizes="canvasWidths[index]"
       v-for="(srcSet, index)\
-        in notWebpSrcSets\
+        in restNotWebpSrcSets\
       "
     )
     img.image__core(
@@ -56,11 +56,13 @@ export default {
     setup(props) {
         const { imageParamSets } = toRefs(props);
         const medias = useMedias(imageParamSets);
-        const src = process.env.baseURL +
-            imageParamSets.value[0]
-                .relativeUrls.notWebp[0];
+        const src = imageParamSets.value[0]
+            ? process.env.baseURL +
+                imageParamSets.value[0]
+                    .relativeUrls.notWebp[0]
+            : '';
         const {
-            zeroNotWebpSrcSet, notWebpSrcSets,
+            zeroNotWebpSrcSet, restNotWebpSrcSets,
             webpSrcSets,
         } = useSrcSets(props);
         const {
@@ -70,7 +72,7 @@ export default {
             medias,
             src,
             zeroNotWebpSrcSet,
-            notWebpSrcSets,
+            restNotWebpSrcSets,
             webpSrcSets,
             canvasWidths,
             lastCanvasWidth,

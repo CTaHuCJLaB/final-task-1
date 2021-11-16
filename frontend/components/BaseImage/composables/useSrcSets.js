@@ -8,30 +8,45 @@ export default props => {
     const {
         imageParamSets, dotsPerPixelArray,
     } = toRefs(props);
-    const x1Widths = get1xWidths(imageParamSets.value);
-    const relativeNotWebpUrlSets = getUrlSets(
-        imageParamSets.value, 'notWebp',
+    let zero1xWidth;
+    let zeroNotWebpUrlSet;
+    let zeroWebpUrlSet;
+    if (imageParamSets.value[0]) {
+        zero1xWidth = imageParamSets.value[0].x1Width;
+        zeroNotWebpUrlSet = imageParamSets.value[0]
+            .relativeUrls.notWebp;
+        zeroWebpUrlSet = imageParamSets.value[0]
+            .relativeUrls.webp;
+    }
+    const restImageParamSets = _(imageParamSets.value)
+        .filter((imageParamSets, key) => key > 0)
+        .value();
+    const restNotWebpUrlSets = getUrlSets(
+        restImageParamSets, 'notWebp',
     );
-    const relativeWebpUrlSets = getUrlSets(
-        imageParamSets.value, 'webp',
+    const restWebpUrlSets = getUrlSets(
+        restImageParamSets, 'webp',
+    );
+    const rest1xWidths = get1xWidths(
+        restImageParamSets,
     );
     const zeroNotWebpSrcSet = computed(
         () => imageParamSets.value[0]
             ? createSrcSet(
                 _(dotsPerPixelArray.value)
                     .slice(1).value(),
-                _(relativeNotWebpUrlSets[0])
+                _(zeroNotWebpUrlSet)
                     .slice(1).value(),
-                x1Widths[0],
+                zero1xWidth,
             )
             : undefined,
     );
-    const notWebpSrcSets = computed(
+    const restNotWebpSrcSets = computed(
         () => _(
             createRestSrcSets(
                 dotsPerPixelArray.value,
-                relativeNotWebpUrlSets,
-                x1Widths,
+                restNotWebpUrlSets,
+                rest1xWidths,
             ),
         )
             .reverse()
@@ -42,8 +57,8 @@ export default props => {
             ? [
                 createSrcSet(
                     dotsPerPixelArray.value,
-                    relativeWebpUrlSets[0],
-                    x1Widths[0],
+                    zeroWebpUrlSet,
+                    zero1xWidth,
                 ),
             ]
             : [],
@@ -53,8 +68,8 @@ export default props => {
             .concat(
                 createRestSrcSets(
                     dotsPerPixelArray.value,
-                    relativeWebpUrlSets,
-                    x1Widths,
+                    restWebpUrlSets,
+                    rest1xWidths,
                 ),
             )
             .reverse()
@@ -62,7 +77,7 @@ export default props => {
     );
     return {
         webpSrcSets,
-        notWebpSrcSets,
+        restNotWebpSrcSets,
         zeroNotWebpSrcSet,
     };
 };

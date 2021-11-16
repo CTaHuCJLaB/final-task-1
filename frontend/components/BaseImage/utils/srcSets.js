@@ -30,14 +30,13 @@ export const createRestSrcSets = (
 ) => {
     const srcSets = [];
     _(relativeUrlSets)
-        .slice(1)
         .forEach(
             (relativeUrlSet, index) => {
                 addSrcSet(
                     srcSets,
                     dotsPerPixelArray,
                     relativeUrlSet,
-                    x1Width[index + 1],
+                    x1Width[index],
                 );
             },
         );
