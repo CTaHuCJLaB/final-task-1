@@ -13,25 +13,43 @@ export const getters = {
             .map(navTitle => navTitle.title)
             .value()
     ),
-    imageTitlePrefix: state => (
-        state.homePageData
-            .imageTitlePrefix.value
+    imageTitlePrefix: ({ homePageData }) => (
+        homePageData.imageTitlePrefix.value
     ),
-    holidayImageTitle: state => (
-        state.homePageData
-            .header.image.title
+    holidayImageTitle: ({ homePageData }) => (
+        homePageData.header.image.title
     ),
-    horizontalH1: state => (
-        state.homePageData
-            .header.horizontalH1
+    indexHeader: ({ homePageData }) => (
+        homePageData.header
     ),
-    verticalH1: state => (
-        state.homePageData
-            .header.verticalH1
+    horizontalH1: (state, { indexHeader }) => (
+        indexHeader.horizontalH1
     ),
-    indexIntroParagraph: state => (
-        state.homePageData
-            .header.paragraph
+    verticalH1: (state, { indexHeader }) => (
+        indexHeader.verticalH1
+    ),
+    indexIntroParagraph: (state, { indexHeader }) => (
+        indexHeader.paragraph
+    ),
+    biographyBlock: ({ homePageData }) => (
+        homePageData.biographyBlock
+    ),
+    biographyH2: (state, { biographyBlock }) => (
+        biographyBlock.h2
+    ),
+    lifeEvents: (state, { biographyBlock }) => (
+        _(biographyBlock.lifeEvents)
+            .map(
+                ({ year, description }) => ({
+                    year,
+                    description,
+                }),
+            )
+            .sortBy(({ year }) => year || 0)
+            .value()
+    ),
+    toggleCaptions: (state, { biographyBlock }) => (
+        biographyBlock.toggleCaptions
     ),
 };
 
@@ -41,6 +59,10 @@ export const mutations = {
     },
     homePageDataSetting(state, homePageData) {
         state.homePageData = homePageData;
+    },
+    lifeEventsSetting({ homePageData }, lifeEvents) {
+        homePageData.biographyBlock
+            .lifeEvents = lifeEvents;
     },
 };
 
@@ -58,5 +80,11 @@ export const actions = {
             .$get(`${this.$axios.defaults.baseURL}/home-page`)
             .catch(() => { });
         commit('homePageDataSetting', homePageData);
+    },
+    async lifeEventsLoading({ commit }) {
+        const lifeEvents = await this.$axios
+            .$get(`${this.$axios.defaults.baseURL}/life-events`)
+            .catch(() => { });
+        commit('lifeEventsSetting', lifeEvents);
     },
 };

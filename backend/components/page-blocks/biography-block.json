@@ -12,8 +12,7 @@
       "required": true
     },
     "lifeEvents": {
-      "collection": "life-events",
-      "required": true
+      "collection": "life-events"
     },
     "shareBlock": {
       "type": "component",
@@ -21,8 +20,8 @@
       "component": "share-block.share-block",
       "required": true
     },
-    "buttonCaption": {
-      "type": "string",
+    "toggleCaptions": {
+      "type": "json",
       "required": true
     }
   }

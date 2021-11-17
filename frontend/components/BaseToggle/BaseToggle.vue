@@ -29,6 +29,7 @@ const stateDefault = {
             component: 'OffIcon',
             size: '16x16',
         },
+        caption: '',
     },
     off: {
         action: 'Включить',
@@ -36,6 +37,7 @@ const stateDefault = {
             component: 'OnIcon',
             size: '16x16',
         },
+        caption: '',
     },
 };
 
@@ -60,9 +62,9 @@ export default {
             outerToggleState,
             'isOff',
         );
+        const { off, on } = props.states;
         const description = computed(
             () => {
-                const { off, on } = props.states;
                 const action = isOff.value
                     ? off.action
                     : on.action;
@@ -71,8 +73,17 @@ export default {
                 );
             },
         );
+        const caption = computed(
+            () => {
+                const caption = isOff.value
+                    ? { text: off.caption, classes: '' }
+                    : { text: on.caption, classes: '' };
+                return caption;
+            },
+        );
         const outerControlState = reactive({
             description,
+            caption,
         });
         provide(
             'outerControlState',

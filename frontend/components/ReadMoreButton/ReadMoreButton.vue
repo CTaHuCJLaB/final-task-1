@@ -1,24 +1,37 @@
 <template lang="pug">
-  base-button.button--read-more
-    template(#description)
+    base-toggle.button--read-more(
+        :states="states"
+    )
 </template>
 
 <script>
-import {
-    reactive, provide,
-} from '@nuxtjs/composition-api';
+import { createObjectPropConfig } from '@/modules/propConfigs';
 
 export default {
-    setup(props) {
-        const outerControlState = reactive({
-            caption: {
-                text: 'читать больше',
-            },
-        });
-        provide(
-            'outerControlState',
-            outerControlState,
-        );
+    props: {
+        toggleCaptions: createObjectPropConfig(),
+    },
+    computed: {
+        states() {
+            return {
+                on: {
+                    action: null,
+                    icon: {
+                        component: null,
+                        size: null,
+                    },
+                    caption: this.toggleCaptions.on,
+                },
+                off: {
+                    action: null,
+                    icon: {
+                        component: null,
+                        size: null,
+                    },
+                    caption: this.toggleCaptions.off,
+                },
+            };
+        },
     },
 };
 </script>
