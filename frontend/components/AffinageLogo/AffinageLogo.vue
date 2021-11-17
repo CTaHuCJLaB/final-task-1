@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import getImageUrls from '@/modules/getImageUrls';
+import { getImageUrls } from '@/modules/imageDataPreparing';
 
 export default {
     computed: {

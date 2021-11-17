@@ -1,24 +1,25 @@
 <template lang="pug">
   figure.figure.figure--holiday
     figcaption.visually-hidden
-      | {{imageTitlePrefix + imageTitle}}
+      | {{figcaption}}
     holiday-image
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import { createImageTitle } from '@/modules/imageDataPreparing';
+
 export default {
     computed: {
-        homePageData() {
-            return this.$store
-                .state.homePageData;
-        },
-        imageTitlePrefix() {
-            return this.homePageData
-                .imageTitlePrefix;
-        },
-        imageTitle() {
-            return this.homePageData
-                .header.image.title;
+        ...mapGetters([
+            'imageTitlePrefix',
+            'holidayImageTitle',
+        ]),
+        figcaption() {
+            return createImageTitle(
+                this.imageTitlePrefix,
+                this.holidayImageTitle,
+            );
         },
     },
 };

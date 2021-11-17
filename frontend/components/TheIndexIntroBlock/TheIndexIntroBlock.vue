@@ -2,15 +2,25 @@
     .index-intro
         .index-intro__content
             p.h1.h1--vertical(aria-hidden="true")
-                | 1878-1927
-            h1.h1.h1--horizontal борис кустодиев
-                span.visually-hidden 1878-1927
-            p.p
-                | Художник, запечатлевший на своих ярких и жизнерадостных полотнах
-                | сцены русских будней и праздников. Обладал редким безграничным
-                | талантом, которому, в первую очередь, было присуще особое чувство
-                | и восприятие родной природы.
+                | {{verticalH1}}
+            h1.h1.h1--horizontal {{horizontalH1}}
+                span.visually-hidden {{verticalH1}}
+            p.p {{indexIntroParagraph}}
 </template>
+
+<script>
+import { mapGetters } from 'vuex';
+
+export default {
+    computed: {
+        ...mapGetters([
+            'horizontalH1',
+            'verticalH1',
+            'indexIntroParagraph',
+        ]),
+    },
+};
+</script>
 
 <style lang="scss" scoped>
 @import 'index-intro.scss';
