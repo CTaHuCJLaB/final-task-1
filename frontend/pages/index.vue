@@ -7,7 +7,7 @@
 <script>
 export default {
     async asyncData({ store }) {
-        await store.dispatch('loadHomePageData');
+        await store.dispatch('homePageDataLoading');
     },
 };
 </script>

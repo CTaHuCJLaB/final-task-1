@@ -8,7 +8,7 @@
 export default {
     async fetch() {
         await this.$store
-            .dispatch('loadDefaultLayoutData');
+            .dispatch('defaultLayoutDataLoading');
     },
 };
 </script>

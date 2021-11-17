@@ -1,16 +1,23 @@
 <template lang="pug">
   figure.figure.figure--holiday
     figcaption.visually-hidden
-      | {{figcaption}}
+      | {{imageTitlePrefix + imageTitle}}
     holiday-image
 </template>
 
 <script>
 export default {
     computed: {
-        figcaption() {
+        homePageData() {
             return this.$store
-                .state.homePageData
+                .state.homePageData;
+        },
+        imageTitlePrefix() {
+            return this.homePageData
+                .imageTitlePrefix;
+        },
+        imageTitle() {
+            return this.homePageData
                 .header.image.title;
         },
     },

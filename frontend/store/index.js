@@ -6,27 +6,27 @@ export const state = () => ({
 });
 
 export const mutations = {
-    setDefaultLayoutData(state, defaultLayoutData) {
+    defaultLayoutDataSetting(state, defaultLayoutData) {
         state.defaultLayoutData = defaultLayoutData;
     },
-    setHomePageData(state, homePageData) {
+    homePageDataSetting(state, homePageData) {
         state.homePageData = homePageData;
     },
 };
 
 export const actions = {
-    async loadDefaultLayoutData({ commit }) {
+    async defaultLayoutDataLoading({ commit }) {
         const defaultLayoutData = await this.$axios
             .$get(
                 `${this.$axios.defaults.baseURL}/default-layout`,
             )
             .catch(() => { });
-        commit('setDefaultLayoutData', defaultLayoutData);
+        commit('defaultLayoutDataSetting', defaultLayoutData);
     },
-    async loadHomePageData({ commit }) {
+    async homePageDataLoading({ commit }) {
         const homePageData = await this.$axios
             .$get(`${this.$axios.defaults.baseURL}/home-page`)
             .catch(() => { });
-        commit('setHomePageData', homePageData);
+        commit('homePageDataSetting', homePageData);
     },
 };
