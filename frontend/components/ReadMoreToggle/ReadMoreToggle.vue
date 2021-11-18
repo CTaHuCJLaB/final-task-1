@@ -1,5 +1,6 @@
 <template lang="pug">
-    base-toggle.button--read-more(
+    base-toggle(
+        :class="`button--read-more`"
         :states="states"
         :action-object="actionObject"
     )
@@ -23,19 +24,11 @@ export default {
             return {
                 on: {
                     action: this.onAction,
-                    icon: {
-                        component: null,
-                        size: null,
-                    },
                     caption: this.readMoreToggleData
                         .onCaption,
                 },
                 off: {
                     action: this.offAction,
-                    icon: {
-                        component: null,
-                        size: null,
-                    },
                     caption: this.readMoreToggleData
                         .offCaption,
                 },

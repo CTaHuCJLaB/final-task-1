@@ -1,5 +1,5 @@
 <template lang="pug">
-  base-button(
+  base-button.button--toggle(
     :class="classes"
     @focus.once.native="\
       isToggleAnimated = true\
@@ -11,31 +11,27 @@
 
 <script>
 import {
-    inject, computed, toRef,
-    reactive, provide,
+    inject, computed, toRef, reactive, provide,
 } from '@nuxtjs/composition-api';
 import {
-    createStringPropConfig,
-    createObjectPropConfig,
+    createStringPropConfig, createObjectPropConfig,
 } from '@/modules/propConfigs';
-import {
-    prependToEachWord, trimEachWord,
-} from '@/modules/stringProcessing';
+import { trimEachWord } from '@/modules/stringProcessing';
 
 const stateDefault = {
     on: {
         action: 'Выключить',
         icon: {
-            component: 'OffIcon',
-            size: '16x16',
+            component: '',
+            size: '',
         },
         caption: '',
     },
     off: {
         action: 'Включить',
         icon: {
-            component: 'OnIcon',
-            size: '16x16',
+            component: '',
+            size: '',
         },
         caption: '',
     },
@@ -62,7 +58,17 @@ export default {
             outerToggleState,
             'isOff',
         );
-        const { off, on } = props.states;
+        const mergedStates = {
+            on: {
+                ...stateDefault.on,
+                ...props.states.on,
+            },
+            off: {
+                ...stateDefault.off,
+                ...props.states.off,
+            },
+        };
+        const { off, on } = mergedStates;
         const description = computed(
             () => {
                 const action = isOff.value
@@ -91,6 +97,7 @@ export default {
         );
         return {
             isOff,
+            mergedStates,
         };
     },
     data() {
@@ -100,21 +107,24 @@ export default {
     },
     computed: {
         classes() {
-            const { states } = this;
-            const toggleSize = this.isOff
-                ? states.off.icon.size
-                : states.on.icon.size;
-            return prependToEachWord(
-                `toggle ${toggleSize}`,
-                'button--',
-            );
+            const { mergedStates: { on, off } } = this;
+            let result = '';
+            if (off.icon.size && on.icon.size) {
+                const toggleSize = this.isOff
+                    ? off.icon.size
+                    : on.icon.size;
+                result += `button--${toggleSize}`;
+            }
+
+            return result;
         },
         shownIcon() {
-            const { states } = this;
+            const { mergedStates } = this;
+
             return this.isOff
-                ? states.off
+                ? mergedStates.off
                     .icon.component
-                : states.on
+                : mergedStates.on
                     .icon.component;
         },
     },
