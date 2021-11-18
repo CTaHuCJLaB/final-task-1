@@ -10,13 +10,12 @@
 </template>
 
 <script>
-import {
-    inject, computed, toRef, reactive, provide,
-} from '@nuxtjs/composition-api';
+import useSwitchFlag from './composables/useSwitchFlag';
+import useMergedStates from './composables/useMergedStates';
+import useOuterControlState from './composables/useOuterControlState';
 import {
     createStringPropConfig, createObjectPropConfig,
 } from '@/modules/propConfigs';
-import { trimEachWord } from '@/modules/stringProcessing';
 
 const stateDefault = {
     on: {
@@ -47,54 +46,10 @@ export default {
             createStringPropConfig(),
     },
     setup(props) {
-        const actionObject = toRef(
-            props, 'actionObject',
-        );
-        const outerToggleState = inject(
-            'outerToggleState',
-            { isOff: true },
-        );
-        const isOff = toRef(
-            outerToggleState,
-            'isOff',
-        );
-        const mergedStates = {
-            on: {
-                ...stateDefault.on,
-                ...props.states.on,
-            },
-            off: {
-                ...stateDefault.off,
-                ...props.states.off,
-            },
-        };
-        const { off, on } = mergedStates;
-        const description = computed(
-            () => {
-                const action = isOff.value
-                    ? off.action
-                    : on.action;
-                return trimEachWord(
-                    `${action} ${actionObject.value}`,
-                );
-            },
-        );
-        const caption = computed(
-            () => {
-                const caption = isOff.value
-                    ? { text: off.caption, classes: '' }
-                    : { text: on.caption, classes: '' };
-                return caption;
-            },
-        );
-        const outerControlState = reactive({
-            description,
-            caption,
-        });
-        provide(
-            'outerControlState',
-            outerControlState,
-        );
+        const isOff = useSwitchFlag();
+        const mergedStates = useMergedStates(stateDefault, props);
+        const { on: onState, off: offState } = mergedStates;
+        useOuterControlState(props, isOff, onState, offState);
         return {
             isOff,
             mergedStates,
