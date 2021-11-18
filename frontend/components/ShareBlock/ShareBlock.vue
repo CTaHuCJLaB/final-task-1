@@ -3,14 +3,23 @@
         ref="share"
         data-bare
         data-curtain
-        data-services="vkontakte,twitter,facebook"
-        :data-url="`${appURL}/#block_0`"
+        :data-services="shareServices"
+        :data-url="`${appURL}/#${blockAnchor}`"
     )
 </template>
 
 <script>
+import { createStringPropConfig } from '@/modules/propConfigs';
+
 export default {
+    props: {
+        blockAnchor: createStringPropConfig(),
+    },
     computed: {
+        shareServices() {
+            return this.$store
+                .getters.shareServices;
+        },
         appURL() {
             return process.env.appURL;
         },

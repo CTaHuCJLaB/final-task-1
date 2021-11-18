@@ -11,9 +11,10 @@
                     :life-events="processedLifeEvents"
                 )
                 share-block(
-                    data-title="Биография художника Бориса Кустодиева"
-                    data-description="Борис Кустодиев родился 7 марта 1878 года в Астрахани..."
-                    data-image="./img/holiday-mobile@4x.webp"
+                    block-anchor="block_0"
+                    :data-title="shareTitle"
+                    :data-description="shareDescription"
+                    :data-image="shareImage"
                 )
                 read-more-toggle(
                     :action-object="actionObject"
@@ -50,6 +51,7 @@ export default {
         ...mapGetters([
             'biographyH2',
             'lifeEvents',
+            'biographyShareBlock',
         ]),
         processedLifeEvents() {
             let processedLifeEvents = this.lifeEvents;
@@ -59,6 +61,18 @@ export default {
             }
 
             return processedLifeEvents;
+        },
+        shareTitle() {
+            return this.biographyShareBlock
+                .title;
+        },
+        shareDescription() {
+            return this.biographyShareBlock
+                .description;
+        },
+        shareImage() {
+            return process.env.baseURL +
+                this.biographyShareBlock.image.url;
         },
     },
     methods: {

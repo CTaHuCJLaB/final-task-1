@@ -8,8 +8,8 @@ export const state = () => ({
 });
 
 export const getters = {
-    navTitles: state => (
-        _(state.defaultLayoutData.navTitles)
+    navTitles: ({ defaultLayoutData }) => (
+        _(defaultLayoutData.navTitles)
             .map(navTitle => navTitle.title)
             .value()
     ),
@@ -50,6 +50,14 @@ export const getters = {
     ),
     readMoreToggleData: ({ homePageData }) => (
         homePageData.readMoreToggle
+    ),
+    shareServices: ({ defaultLayoutData }) => (
+        _(defaultLayoutData.shareServices)
+            .map(({ service }) => service)
+            .value()
+    ),
+    biographyShareBlock: (state, { biographyBlock }) => (
+        biographyBlock.shareBlock
     ),
 };
 
