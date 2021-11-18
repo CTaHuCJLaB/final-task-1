@@ -15,9 +15,9 @@ export default {
             {
                 outerSearchButtonState: {
                     description:
-            'Выполнить поиск по сайту',
+                        'Выполнить поиск по сайту',
                     newInjectionName:
-            'outerControlState',
+                        'outerControlState',
                 },
             },
         ),

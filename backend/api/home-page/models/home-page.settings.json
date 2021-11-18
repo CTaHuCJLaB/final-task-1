@@ -36,6 +36,12 @@
       "type": "component",
       "repeatable": false,
       "component": "image.image-title-prefix"
+    },
+    "readMoreToggle": {
+      "type": "component",
+      "repeatable": false,
+      "component": "toggle.read-more-toggle",
+      "required": true
     }
   }
 }

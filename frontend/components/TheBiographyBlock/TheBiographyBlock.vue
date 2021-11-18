@@ -15,10 +15,10 @@
                     data-description="Борис Кустодиев родился 7 марта 1878 года в Астрахани..."
                     data-image="./img/holiday-mobile@4x.webp"
                 )
-                read-more-button(
-                    :toggle-captions="toggleCaptions"
-                    @click.once.native="onButtonFirstClick"
-                    @click.native="onButtonClick"
+                read-more-toggle(
+                    :action-object="actionObject"
+                    @click.once.native="onFirstToggleClick"
+                    @click.native="onToggleClick"
                 )
 </template>
 
@@ -41,11 +41,15 @@ export default {
             isEventListMinimized,
         };
     },
+    data() {
+        return {
+            actionObject: 'хронологию',
+        };
+    },
     computed: {
         ...mapGetters([
             'biographyH2',
             'lifeEvents',
-            'toggleCaptions',
         ]),
         processedLifeEvents() {
             let processedLifeEvents = this.lifeEvents;
@@ -58,13 +62,13 @@ export default {
         },
     },
     methods: {
-        async onButtonFirstClick($event) {
+        async onFirstToggleClick($event) {
             $event.stopImmediatePropagation();
             await this.$store
                 .dispatch('lifeEventsLoading');
             this.isEventListMinimized = false;
         },
-        onButtonClick() {
+        onToggleClick() {
             this.isEventListMinimized = !this.isEventListMinimized;
         },
     },

@@ -19,10 +19,6 @@
       "repeatable": false,
       "component": "share-block.share-block",
       "required": true
-    },
-    "toggleCaptions": {
-      "type": "json",
-      "required": true
     }
   }
 }

@@ -44,10 +44,6 @@
       "repeatable": false,
       "component": "share-block.share-block",
       "required": true
-    },
-    "linkTitle": {
-      "type": "string",
-      "required": true
     }
   }
 }

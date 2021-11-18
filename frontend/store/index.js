@@ -48,8 +48,8 @@ export const getters = {
             .sortBy(({ year }) => year || 0)
             .value()
     ),
-    toggleCaptions: (state, { biographyBlock }) => (
-        biographyBlock.toggleCaptions
+    readMoreToggleData: ({ homePageData }) => (
+        homePageData.readMoreToggle
     ),
 };
 
