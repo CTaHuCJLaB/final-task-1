@@ -1,28 +1,48 @@
 <template lang="pug">
-    ul.slider-pagination
-        li.slider-pagination__item(
-            v-for="(slideURL, index) in currentSlideURLs"
-        )
-            base-button
+    .slider-pagination
+        ul.slider-pagination__film
+            li.slider-pagination__preview(
+                @click="onPreviewClick(index)"
+                :class="{\
+                    'fade-swipe-slider__preview--active':\
+                    index === activePreviewRelativeIndex\
+                }"
+                v-for="(preview, index) in slidePreviews"
+                :key="preview.title + index"
+            )
                 base-image(
-                    :imageParamSets="{\
-                        1: {\
-                            fileName: slideURL,\
-                            x1Width: 120,\
-                            canvasWidth: '120px',\
-                        }\
-                    }"
-                    title=`Превью слайда №${index + 1}`,
-                    alt='',
+                    :title="preview.title"
+                    :alt="preview.alt"
+                    :image-param-sets="createImageParamSets(preview)"
                 )
 </template>
 
 <script>
+import { createArrayPropConfig } from '@/modules/propConfigs';
+import { createImageParamSets } from '@/modules/imageDataPreparing';
+
 export default {
+    props: {
+        slidePreviews:
+            createArrayPropConfig(),
+    },
     data() {
         return {
-            currentSlideURLs: [],
+            activePreviewRelativeIndex: 2,
         };
+    },
+    methods: {
+        createImageParamSets(preview) {
+            return createImageParamSets(
+                preview,
+                {
+                    desktop: {
+                        x1Width: 120,
+                        canvasWidth: '120px',
+                    },
+                },
+            );
+        },
     },
 };
 </script>

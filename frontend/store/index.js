@@ -59,6 +59,15 @@ export const getters = {
     biographyShareBlock: (state, { biographyBlock }) => (
         biographyBlock.shareBlock
     ),
+    paintingsBlock: ({ homePageData }) => (
+        homePageData.paintingsBlock
+    ),
+    slidePreviews: (state, { paintingsBlock }) => (
+        paintingsBlock.previews
+    ),
+    slides: (state, { paintingsBlock }) => (
+        paintingsBlock.slides
+    ),
 };
 
 export const mutations = {

@@ -2,6 +2,8 @@
 !/assets
 !/components
 !/layouts
+!/mixins
+!/modules
 !/middleware
 !/pages
 !/plugins

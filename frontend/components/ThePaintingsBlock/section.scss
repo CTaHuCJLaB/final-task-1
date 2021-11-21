@@ -1,0 +1,11 @@
+.section--paintings {
+    min-height: 803px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    @include mq($maxTabletWidth) {
+        min-height: 389px;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}

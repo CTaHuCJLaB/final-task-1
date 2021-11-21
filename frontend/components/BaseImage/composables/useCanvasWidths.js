@@ -4,9 +4,7 @@ import { computed } from '@nuxtjs/composition-api';
 export default imageParamSets => {
     const canvasWidths = computed(
         () => _(imageParamSets.value)
-            .map(imageParamSet => (
-                imageParamSet.canvasWidth
-            ))
+            .map(({ canvasWidth }) => canvasWidth)
             .reverse()
             .value(),
     );

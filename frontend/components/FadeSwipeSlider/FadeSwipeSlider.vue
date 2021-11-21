@@ -1,35 +1,73 @@
 <template lang="pug">
     .fade-swipe-slider
-        slider-pagination(
-            ref="sliderPagination"
-            @hook:mounted="sliderPaginationMounted"
-        )
+        //- slider-pagination(:slidePreviews="slidePreviews")
+        .fade-swipe-slider__screen
+        .fade-swipe-slider__navbar
+            base-button.button--left(
+                ref="leftArrow"
+                @click.native="onLeftArrowClick"
+            )
+            .fade-swipe-slider__slide-info
+                p.fade-swipe-slider__slide-title
+                p.fade-swipe-slider__slide-counter
+            base-button.button--right(
+                @click.native="onRightArrowClick"
+            )
 </template>
 
 <script>
 import $ from 'jquery';
-import SliderPagination from './SliderPagination/SliderPagination.vue';
+import _ from 'lodash';
+import { mapGetters } from 'vuex';
+import SliderPagination from './SliderPagination/SliderPagination';
+// import SwipeSliderScreen from './SwipeSliderScreen/SwipeSliderScreen';
 
 export default {
     components: {
         SliderPagination,
+    //     SwipeSliderScreen,
     },
     data() {
         return {
-            currentFileNames: [
-            ],
+            shownPreviewsStartIndex: 3,
         };
     },
-    methods: {
-        sliderPaginationMounted() {
-            // console.log(this.isSliderPaginationDisplayed());
-            $(window).resize(
-                // evt => console.log(this.isSliderPaginationDisplayed()),
-            );
+    computed: {
+        ...mapGetters([
+            'slidePreviews',
+            'slides',
+        ]),
+        shownPreviews() {
+            return _(this.slidePreviews)
+                .slice(
+                    this.shownPreviewsStartIndex,
+                    this.shownPreviewsStartIndex + 5,
+                ).value();
         },
-        isSliderPaginationDisplayed() {
-            return getComputedStyle(this.$refs.sliderPagination.$el)
-                .display !== 'none';
+        isArrowsDisplayed() {
+            return $(this.$refs.leftArrow.$el)
+                .css('display') !== 'none';
+        },
+    },
+    methods: {
+        onLeftArrowClick() {
+            if (this.activePreviewRelativeIndex > 0) {
+                this.activePreviewRelativeIndex--;
+            } else if (this.shownPreviewsStartIndex > 0) {
+                this.shownPreviewsStartIndex--;
+            }
+        },
+        onRightArrowClick() {
+            if (this.activePreviewRelativeIndex < 4) {
+                this.activePreviewRelativeIndex++;
+            } else if (
+                this.shownPreviewsStartIndex < this.slidePreviews.length - 5
+            ) {
+                this.shownPreviewsStartIndex++;
+            }
+        },
+        onPreviewClick(previewIndex) {
+            this.activePreviewRelativeIndex = previewIndex;
         },
     },
 };
