@@ -1,11 +1,20 @@
 <template lang="pug">
     .slider-pagination
-        ul.slider-pagination__film
+        ul.slider-pagination__film(
+            :style="{\
+                'transform':\
+                    `translateX(${filmTranslateX}px)`\
+            }"
+        )
             li.slider-pagination__preview(
-                @click="onPreviewClick(index)"
+                @click="$emit(\
+                    'previewclick',\
+                    index - shownPreviewsStartIndex\
+                )"
                 :class="{\
-                    'fade-swipe-slider__preview--active':\
-                    index === activePreviewRelativeIndex\
+                    'slider-pagination__preview--active':\
+                    index === shownPreviewsStartIndex +\
+                        activePreviewRelativeIndex\
                 }"
                 v-for="(preview, index) in slidePreviews"
                 :key="preview.title + index"
@@ -18,18 +27,35 @@
 </template>
 
 <script>
-import { createArrayPropConfig } from '@/modules/propConfigs';
+import {
+    createArrayPropConfig, createNumberPropConfig,
+} from '@/modules/propConfigs';
 import { createImageParamSets } from '@/modules/imageDataPreparing';
 
 export default {
     props: {
         slidePreviews:
             createArrayPropConfig(),
+        shownPreviewsStartIndex:
+            createNumberPropConfig(0),
+        activePreviewRelativeIndex:
+            createNumberPropConfig(0),
     },
     data() {
         return {
-            activePreviewRelativeIndex: 2,
+            PREVIEW_COUNT: 5,
+            PREVIEW_WIDTH: 120,
+            COLUMN_GAP: 40,
         };
+    },
+    computed: {
+        filmTranslateX() {
+            return -(this.PREVIEW_WIDTH + this.COLUMN_GAP) *
+                this.shownPreviewsStartIndex;
+        },
+    },
+    created() {
+        this.$emit('previewCountPassed', this.PREVIEW_COUNT);
     },
     methods: {
         createImageParamSets(preview) {

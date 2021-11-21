@@ -1,6 +1,12 @@
 <template lang="pug">
     .fade-swipe-slider
-        //- slider-pagination(:slidePreviews="slidePreviews")
+        slider-pagination(
+            :slidePreviews="slidePreviews"
+            :shown-previews-start-index="shownPreviewsStartIndex"
+            :active-preview-relative-index="activePreviewRelativeIndex"
+            @previewCountPassed="onPreviewCountPassed"
+            @previewclick="onPreviewClick"
+        )
         .fade-swipe-slider__screen
         .fade-swipe-slider__navbar
             base-button.button--left(
@@ -29,7 +35,9 @@ export default {
     },
     data() {
         return {
-            shownPreviewsStartIndex: 3,
+            previewCount: undefined,
+            shownPreviewsStartIndex: 0,
+            activePreviewRelativeIndex: 4,
         };
     },
     computed: {
@@ -41,7 +49,7 @@ export default {
             return _(this.slidePreviews)
                 .slice(
                     this.shownPreviewsStartIndex,
-                    this.shownPreviewsStartIndex + 5,
+                    this.shownPreviewsStartIndex + this.previewCount,
                 ).value();
         },
         isArrowsDisplayed() {
@@ -50,6 +58,9 @@ export default {
         },
     },
     methods: {
+        onPreviewCountPassed(previewCount) {
+            this.previewCount = previewCount;
+        },
         onLeftArrowClick() {
             if (this.activePreviewRelativeIndex > 0) {
                 this.activePreviewRelativeIndex--;
@@ -58,16 +69,15 @@ export default {
             }
         },
         onRightArrowClick() {
-            if (this.activePreviewRelativeIndex < 4) {
+            if (this.activePreviewRelativeIndex < this.previewCount - 1) {
                 this.activePreviewRelativeIndex++;
-            } else if (
-                this.shownPreviewsStartIndex < this.slidePreviews.length - 5
-            ) {
+            } else if (this.shownPreviewsStartIndex <
+                this.slidePreviews.length - this.previewCount) {
                 this.shownPreviewsStartIndex++;
             }
         },
-        onPreviewClick(previewIndex) {
-            this.activePreviewRelativeIndex = previewIndex;
+        onPreviewClick(previewRelativeIndex) {
+            this.activePreviewRelativeIndex = previewRelativeIndex;
         },
     },
 };
