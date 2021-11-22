@@ -1,0 +1,35 @@
+.slider-screen {
+    display: grid;
+    width: 920px;
+    height: 530px;
+
+    @include mq($maxTabletWidth) {
+        overflow-x: hidden;
+    }
+
+    &__film {
+        position: relative;
+        display: flex;
+    }
+
+    &__slide {
+        position: absolute;
+        width: 920px;
+        height: 530px;
+        overflow-y: hidden;
+
+        @include mq($maxTabletWidth) {
+            position: default;
+            width: calc(200 / 320 * 100vw);
+            height: calc(156 / 320 * 100vw);
+        }
+    }
+
+    ::v-deep .image__core {
+        width: 100%;
+
+        @include mq($maxTabletWidth) {
+            height: 100%;
+        }
+    }
+}

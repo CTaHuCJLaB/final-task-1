@@ -1,21 +1,11 @@
 <template lang="pug">
     .slider-pagination
         ul.slider-pagination__film(
-            :style="{\
-                'transform':\
-                    `translateX(${filmTranslateX}px)`\
-            }"
+            :style="filmStyle"
         )
             li.slider-pagination__preview(
-                @click="$emit(\
-                    'previewclick',\
-                    index - shownPreviewsStartIndex\
-                )"
-                :class="{\
-                    'slider-pagination__preview--active':\
-                    index === shownPreviewsStartIndex +\
-                        activePreviewRelativeIndex\
-                }"
+                @click="onPreviewClick(index)"
+                :class="getPreviewClasses(index)"
                 v-for="(preview, index) in slidePreviews"
                 :key="preview.title + index"
             )
@@ -27,6 +17,7 @@
 </template>
 
 <script>
+import _ from 'lodash';
 import {
     createArrayPropConfig, createNumberPropConfig,
 } from '@/modules/propConfigs';
@@ -36,9 +27,7 @@ export default {
     props: {
         slidePreviews:
             createArrayPropConfig(),
-        shownPreviewsStartIndex:
-            createNumberPropConfig(0),
-        activePreviewRelativeIndex:
+        activeSlideIndex:
             createNumberPropConfig(0),
     },
     data() {
@@ -46,16 +35,47 @@ export default {
             PREVIEW_COUNT: 5,
             PREVIEW_WIDTH: 120,
             COLUMN_GAP: 40,
+            shownPreviewsStartIndex: 0,
+            activePreviewRelativeIndex: 4,
         };
     },
     computed: {
+        shownPreviews() {
+            return _(this.slidePreviews)
+                .slice(
+                    this.shownPreviewsStartIndex,
+                    this.shownPreviewsStartIndex + this.PREVIEW_COUNT,
+                ).value();
+        },
         filmTranslateX() {
             return -(this.PREVIEW_WIDTH + this.COLUMN_GAP) *
                 this.shownPreviewsStartIndex;
         },
+        filmStyle() {
+            return {
+                transform:
+                    `translateX(${this.filmTranslateX}px)`,
+            };
+        },
     },
-    created() {
-        this.$emit('previewCountPassed', this.PREVIEW_COUNT);
+    watch: {
+        activeSlideIndex(newValue, oldValue) {
+            if (newValue < oldValue) {
+                if (this.activePreviewRelativeIndex > 0) {
+                    this.activePreviewRelativeIndex -= oldValue - newValue;
+                } else if (this.shownPreviewsStartIndex > 0) {
+                    this.shownPreviewsStartIndex--;
+                }
+            }
+            if (newValue > oldValue) {
+                if (this.activePreviewRelativeIndex < this.PREVIEW_COUNT - 1) {
+                    this.activePreviewRelativeIndex += newValue - oldValue;
+                } else if (this.shownPreviewsStartIndex <
+                    this.slidePreviews.length - this.PREVIEW_COUNT) {
+                    this.shownPreviewsStartIndex++;
+                }
+            }
+        },
     },
     methods: {
         createImageParamSets(preview) {
@@ -68,6 +88,24 @@ export default {
                     },
                 },
             );
+        },
+        onPreviewClick(newActiveSlideIndex) {
+            // this.activePreviewRelativeIndex =
+            //     newActiveSlideIndex - this.shownPreviewsStartIndex;
+            this.$emit(
+                'previewclick',
+                newActiveSlideIndex,
+            );
+        },
+        isPreviewActive(previewIndex) {
+            return previewIndex === this.shownPreviewsStartIndex +
+                this.activePreviewRelativeIndex;
+        },
+        getPreviewClasses(previewIndex) {
+            return {
+                'slider-pagination__preview--active':
+                    this.isPreviewActive(previewIndex),
+            };
         },
     },
 };

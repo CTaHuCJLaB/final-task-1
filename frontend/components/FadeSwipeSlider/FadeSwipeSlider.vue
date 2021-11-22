@@ -2,12 +2,10 @@
     .fade-swipe-slider
         slider-pagination(
             :slidePreviews="slidePreviews"
-            :shown-previews-start-index="shownPreviewsStartIndex"
-            :active-preview-relative-index="activePreviewRelativeIndex"
-            @previewCountPassed="onPreviewCountPassed"
+            :active-slide-index="activeSlideIndex"
             @previewclick="onPreviewClick"
         )
-        .fade-swipe-slider__screen
+        slider-screen(:slides="slides")
         .fade-swipe-slider__navbar
             base-button.button--left(
                 ref="leftArrow"
@@ -23,21 +21,19 @@
 
 <script>
 import $ from 'jquery';
-import _ from 'lodash';
 import { mapGetters } from 'vuex';
 import SliderPagination from './SliderPagination/SliderPagination';
-// import SwipeSliderScreen from './SwipeSliderScreen/SwipeSliderScreen';
+import SliderScreen from './SliderScreen/SliderScreen';
 
 export default {
     components: {
         SliderPagination,
-    //     SwipeSliderScreen,
+        SliderScreen,
     },
     data() {
         return {
             previewCount: undefined,
-            shownPreviewsStartIndex: 0,
-            activePreviewRelativeIndex: 4,
+            activeSlideIndex: 4,
         };
     },
     computed: {
@@ -45,39 +41,24 @@ export default {
             'slidePreviews',
             'slides',
         ]),
-        shownPreviews() {
-            return _(this.slidePreviews)
-                .slice(
-                    this.shownPreviewsStartIndex,
-                    this.shownPreviewsStartIndex + this.previewCount,
-                ).value();
-        },
         isArrowsDisplayed() {
             return $(this.$refs.leftArrow.$el)
                 .css('display') !== 'none';
         },
     },
     methods: {
-        onPreviewCountPassed(previewCount) {
-            this.previewCount = previewCount;
-        },
         onLeftArrowClick() {
-            if (this.activePreviewRelativeIndex > 0) {
-                this.activePreviewRelativeIndex--;
-            } else if (this.shownPreviewsStartIndex > 0) {
-                this.shownPreviewsStartIndex--;
+            if (this.activeSlideIndex > 0) {
+                this.activeSlideIndex--;
             }
         },
         onRightArrowClick() {
-            if (this.activePreviewRelativeIndex < this.previewCount - 1) {
-                this.activePreviewRelativeIndex++;
-            } else if (this.shownPreviewsStartIndex <
-                this.slidePreviews.length - this.previewCount) {
-                this.shownPreviewsStartIndex++;
+            if (this.activeSlideIndex < this.slides.length - 1) {
+                this.activeSlideIndex++;
             }
         },
-        onPreviewClick(previewRelativeIndex) {
-            this.activePreviewRelativeIndex = previewRelativeIndex;
+        onPreviewClick(newActiveSlideIndex) {
+            this.activeSlideIndex = newActiveSlideIndex;
         },
     },
 };

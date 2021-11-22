@@ -28,7 +28,7 @@ export const createImageParamSets = (image, dimensions) =>
                 setRelativeUrls(map, image, device, index);
                 map[index].x1Width = dimensions[device]
                     .x1Width;
-                map[index].canvasWidths = dimensions[device]
+                map[index].canvasWidth = dimensions[device]
                     .canvasWidth;
 
                 return map;
