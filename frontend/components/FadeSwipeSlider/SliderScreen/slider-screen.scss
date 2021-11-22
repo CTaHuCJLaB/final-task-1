@@ -7,6 +7,10 @@
         overflow-x: hidden;
     }
 
+    &__cashe {
+        display: none;
+    }
+
     &__film {
         position: relative;
         display: flex;
@@ -26,10 +30,10 @@
     }
 
     ::v-deep .image__core {
-        width: 100%;
+        width: 920px;
 
         @include mq($maxTabletWidth) {
-            height: 100%;
+            height: calc(156 / 320 * 100vw);
         }
     }
 }

@@ -1,37 +1,39 @@
 <template lang="pug">
-  picture.image
-    source(
-      type="image/webp"
-      :media="medias[index]"
-      :srcset="srcSet"
-      :sizes="canvasWidths[index]"
-      v-for="(srcSet, index)\
-        in webpSrcSets\
-      "
-    )
-    source(
-      :media="medias[index]"
-      :srcset="srcSet"
-      :sizes="canvasWidths[index]"
-      v-for="(srcSet, index)\
-        in restNotWebpSrcSets\
-      "
-    )
-    img.image__core(
-      :class="{\
-        'h-erase-background-color':\
-          imageLoaded\
-      }"
-      ref="core"
-      v-bind="$attrs"
-      :src="src"
-      :srcset="zeroNotWebpSrcSet"
-      :sizes="lastCanvasWidth"
-      @load="\
-        imageLoaded=\
-          $refs.core.naturalWidth > 1\
-      "
-    )
+    picture.image
+        source(
+            type="image/webp"
+            :media="medias[index]"
+            :srcset="srcSet"
+            :sizes="canvasWidths[index]"
+            v-for="(srcSet, index)\
+                in webpSrcSets\
+            "
+        )
+        source(
+            :media="medias[index]"
+            :srcset="srcSet"
+            :sizes="canvasWidths[index]"
+            v-for="(srcSet, index)\
+                in restNotWebpSrcSets\
+            "
+        )
+        img.image__core(
+            :class="{\
+                'h-erase-background-color':\
+                imageLoaded\
+            }"
+            ref="core"
+            v-bind="$attrs"
+            :src="src"
+            :srcset="zeroNotWebpSrcSet"
+            :sizes="lastCanvasWidth"
+            @load="\
+                imageLoaded=\
+                    $refs.core\
+                        ? $refs.core.naturalWidth > 1\
+                        : false\
+            "
+        )
 </template>
 
 <script>

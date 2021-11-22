@@ -3,13 +3,13 @@
         opacity: 0;
 
         &-active {
-            transition: opacity 0.3s,;
+            transition: opacity 1.3s;
         }
     }
 
     &-leave {
         &-active {
-            transition: opacity 0.3s,;
+            transition: opacity 1.3s;
         }
 
         &-to {

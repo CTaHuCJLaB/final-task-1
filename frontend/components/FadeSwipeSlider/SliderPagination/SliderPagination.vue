@@ -90,12 +90,7 @@ export default {
             );
         },
         onPreviewClick(newActiveSlideIndex) {
-            // this.activePreviewRelativeIndex =
-            //     newActiveSlideIndex - this.shownPreviewsStartIndex;
-            this.$emit(
-                'previewclick',
-                newActiveSlideIndex,
-            );
+            this.$emit('previewclick', newActiveSlideIndex);
         },
         isPreviewActive(previewIndex) {
             return previewIndex === this.shownPreviewsStartIndex +
