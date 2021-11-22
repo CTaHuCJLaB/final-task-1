@@ -3,27 +3,48 @@
         ul.slider-screen__film(
             :style="filmStyle"
         )
-            li.slider-screen__slide(
-                :style="getSlideStyle(index)"
-                v-for="(slide, index) in slides"
-                :key="slide.title + index"
-            )
-                base-image(
-                    :title="slide.title"
-                    :alt="slide.alt"
-                    :image-param-sets="createImageParamSets(slide)"
+            fading-group(mode="in-out")
+                li.slider-screen__slide(
+                    :style="getSlideStyle(index)"
+                    v-for="(slide, index) in renderedSlides"
+                    :key="slide.title + index"
                 )
+                    base-image(
+                        :title="slide.title"
+                        :alt="slide.alt"
+                        :image-param-sets="createImageParamSets(slide)"
+                    )
 </template>
 
 <script>
-import { createArrayPropConfig } from '@/modules/propConfigs';
+import $ from 'jquery';
+import _ from 'lodash';
+import {
+    createArrayPropConfig, createNumberPropConfig,
+} from '@/modules/propConfigs';
 import { createImageParamSets } from '@/modules/imageDataPreparing';
 
 export default {
     props: {
         slides: createArrayPropConfig(),
+        activeSlideIndex:
+            createNumberPropConfig(0),
     },
     computed: {
+        renderedSlides() {
+            return this.isFadeScreenActive
+                ? _(this.slides).slice(
+                    this.activeSlideIndex,
+                    this.activeSlideIndex + 1,
+                ).value()
+                : this.slides;
+        },
+        isFadeScreenActive() {
+            return this.$el
+                ? $(this.$el)
+                    .css('overflow-x') !== 'hidden'
+                : undefined;
+        },
         filmStyle() {
             return {};
         },

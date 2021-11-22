@@ -5,7 +5,10 @@
             :active-slide-index="activeSlideIndex"
             @previewclick="onPreviewClick"
         )
-        slider-screen(:slides="slides")
+        slider-screen(
+            :slides="slides"
+            :active-slide-index="activeSlideIndex"
+        )
         .fade-swipe-slider__navbar
             base-button.button--left(
                 ref="leftArrow"
