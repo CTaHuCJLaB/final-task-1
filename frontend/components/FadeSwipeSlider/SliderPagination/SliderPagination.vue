@@ -32,7 +32,7 @@ export default {
     },
     data() {
         return {
-            PREVIEW_COUNT: 5,
+            SHOWN_PREVIEW_COUNT: 5,
             PREVIEW_WIDTH: 120,
             COLUMN_GAP: 40,
             shownPreviewsStartIndex: 0,
@@ -44,7 +44,7 @@ export default {
             return _(this.slidePreviews)
                 .slice(
                     this.shownPreviewsStartIndex,
-                    this.shownPreviewsStartIndex + this.PREVIEW_COUNT,
+                    this.shownPreviewsStartIndex + this.SHOWN_PREVIEW_COUNT,
                 ).value();
         },
         filmTranslateX() {
@@ -68,10 +68,11 @@ export default {
                 }
             }
             if (newValue > oldValue) {
-                if (this.activePreviewRelativeIndex < this.PREVIEW_COUNT - 1) {
+                if (this.activePreviewRelativeIndex <
+                    this.SHOWN_PREVIEW_COUNT - 1) {
                     this.activePreviewRelativeIndex += newValue - oldValue;
                 } else if (this.shownPreviewsStartIndex <
-                    this.slidePreviews.length - this.PREVIEW_COUNT) {
+                    this.slidePreviews.length - this.SHOWN_PREVIEW_COUNT) {
                     this.shownPreviewsStartIndex++;
                 }
             }

@@ -1,0 +1,22 @@
+.slide-info {
+    display: grid;
+    justify-items: center;
+    row-gap: 9px;
+    max-width: 520px;
+    font-weight: 300;
+    text-align: center;
+
+    &__title {
+        max-width: 520px;
+    }
+
+    &__counter {
+        max-width: 100px;
+        line-height: 12.81px;
+        font-weight: 400;
+    }
+
+    &__faded-text {
+        color: $colorGray;
+    }
+}

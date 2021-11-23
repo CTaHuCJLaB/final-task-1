@@ -13,49 +13,56 @@
             :slides="slides"
             :active-slide-index="activeSlideIndex"
         )
-        .fade-swipe-slider__consistent-navbar
-            base-button.button--left(
-                ref="leftArrow"
-                @click.native="onLeftArrowClick"
-            )
-            .fade-swipe-slider__slide-info
-                p.fade-swipe-slider__slide-title
-                    | {{slides[activeSlideIndex].title}}
-                p.fade-swipe-slider__slide-counter
-                    | {{activeSlideIndex + 1}}
-                    span.fade-swipe-slider__faded-text
-                        |  / {{slides.length}}
-            base-button.button--right(
-                @click.native="onRightArrowClick"
-            )
+        consistent-slider-navbar(
+            @leftarrowclick="onLeftArrowClick"
+            @rightarrowclick="onRightArrowClick"
+        )
 </template>
 
 <script>
-import $ from 'jquery';
-import { mapGetters } from 'vuex';
+import {
+    ref, computed, reactive, provide,
+    useStore,
+} from '@nuxtjs/composition-api';
 import SliderPagination from './SliderPagination/SliderPagination';
 import SliderScreen from './SliderScreen/SliderScreen';
+import ConsistentSliderNavbar
+from './ConsistentSliderNavbar/ConsistentSliderNavbar';
 
 export default {
     components: {
         SliderPagination,
         SliderScreen,
+        ConsistentSliderNavbar,
     },
-    data() {
+    setup() {
+        const store = useStore();
+        const slidePreviews = computed(
+            () => store.getters.slidePreviews,
+        );
+        const slides = computed(
+            () => store.getters.slides,
+        );
+        const activeSlideIndex = ref(4);
+        const activeSlideTitle = computed(
+            () => slides.value[activeSlideIndex.value]
+                .title,
+        );
+        const slideCount = slides.value.length;
+        const outerSlideInfoState = reactive({
+            activeSlideIndex,
+            activeSlideTitle,
+            slideCount,
+        });
+        provide(
+            'outerSlideInfoState',
+            outerSlideInfoState,
+        );
         return {
-            previewCount: undefined,
-            activeSlideIndex: 4,
+            activeSlideIndex,
+            slidePreviews,
+            slides,
         };
-    },
-    computed: {
-        ...mapGetters([
-            'slidePreviews',
-            'slides',
-        ]),
-        isArrowsDisplayed() {
-            return $(this.$refs.leftArrow.$el)
-                .css('display') !== 'none';
-        },
     },
     methods: {
         onLeftArrowClick() {

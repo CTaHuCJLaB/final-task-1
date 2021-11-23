@@ -18,8 +18,7 @@ import { inject, toRefs } from '@nuxtjs/composition-api';
 import createTypeProp from '@/mixins/createTypeProp';
 
 export default {
-    mixins:
-    [createTypeProp('text')],
+    mixins: [createTypeProp('text')],
     inheritAttrs: false,
     setup() {
         const outerFieldState = inject(
