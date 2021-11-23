@@ -2,18 +2,16 @@
     display: grid;
     width: 920px;
     height: 530px;
+    overflow-y: hidden;
 
     @include mq($maxTabletWidth) {
         overflow-x: hidden;
     }
 
-    &__cashe {
-        display: none;
-    }
-
     &__film {
         position: relative;
         display: flex;
+        height: 530px;
     }
 
     &__slide {

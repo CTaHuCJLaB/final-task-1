@@ -25,15 +25,15 @@ export default {
         const isSearchBarOpen = ref(false);
         const outerSearchButtonState = reactive({
             description:
-        computed(
-            () => {
-                const action = isSearchBarOpen
-                    .value
-                    ? 'Выполнить поиск'
-                    : 'Открыть поле поиска';
-                return `${action} по сайту`;
-            },
-        ),
+                computed(
+                    () => {
+                        const action = isSearchBarOpen
+                            .value
+                            ? 'Выполнить поиск'
+                            : 'Открыть поле поиска';
+                        return `${action} по сайту`;
+                    },
+                ),
         });
         provide(
             'outerSearchButtonState',

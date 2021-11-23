@@ -1,22 +1,30 @@
 <template lang="pug">
     .fade-swipe-slider
-        slider-pagination(
-            :slidePreviews="slidePreviews"
-            :active-slide-index="activeSlideIndex"
-            @previewclick="onPreviewClick"
-        )
+        .fade-swipe-slider__random-navbar
+            slider-pagination(
+                :slidePreviews="slidePreviews"
+                :active-slide-index="activeSlideIndex"
+                @previewclick="onPreviewClick"
+            )
+            p.fade-swipe-slider__link
+                nuxt-link(:to="{ path: '/paintings' }")
+                    | все картины
         slider-screen(
             :slides="slides"
             :active-slide-index="activeSlideIndex"
         )
-        .fade-swipe-slider__navbar
+        .fade-swipe-slider__consistent-navbar
             base-button.button--left(
                 ref="leftArrow"
                 @click.native="onLeftArrowClick"
             )
             .fade-swipe-slider__slide-info
                 p.fade-swipe-slider__slide-title
+                    | {{slides[activeSlideIndex].title}}
                 p.fade-swipe-slider__slide-counter
+                    | {{activeSlideIndex + 1}}
+                    span.fade-swipe-slider__faded-text
+                        |  / {{slides.length}}
             base-button.button--right(
                 @click.native="onRightArrowClick"
             )
