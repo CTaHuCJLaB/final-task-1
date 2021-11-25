@@ -26,7 +26,7 @@ export default {
     props: {
         slides: createArrayPropConfig(),
         activeSlideIndex:
-            createNumberPropConfig(0),
+            createNumberPropConfig(),
     },
     computed: {
         renderedSlides() {

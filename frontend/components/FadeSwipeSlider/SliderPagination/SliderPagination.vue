@@ -4,31 +4,33 @@
             :style="filmStyle"
         )
             li.slider-pagination__preview(
-                @click="onPreviewClick(index)"
-                :class="getPreviewClasses(index)"
                 v-for="(preview, index) in slidePreviews"
                 :key="preview.title + index"
             )
-                base-image(
-                    :title="preview.title"
-                    :alt="preview.alt"
-                    :image-param-sets="createImageParamSets(preview)"
+                image-preview-button(
+                    :preview="preview"
+                    :is-preview-active="isPreviewActive(index)"
+                    @click.native="onPreviewClick(index)"
                 )
 </template>
 
 <script>
 import _ from 'lodash';
+import ImagePreviewButton
+from '../ImagePreviewButton/ImagePreviewButton';
 import {
     createArrayPropConfig, createNumberPropConfig,
 } from '@/modules/propConfigs';
-import { createImageParamSets } from '@/modules/imageDataPreparing';
 
 export default {
+    components: {
+        ImagePreviewButton,
+    },
     props: {
         slidePreviews:
             createArrayPropConfig(),
         activeSlideIndex:
-            createNumberPropConfig(0),
+            createNumberPropConfig(),
     },
     data() {
         return {
@@ -79,29 +81,12 @@ export default {
         },
     },
     methods: {
-        createImageParamSets(preview) {
-            return createImageParamSets(
-                preview,
-                {
-                    desktop: {
-                        x1Width: 120,
-                        canvasWidth: '120px',
-                    },
-                },
-            );
-        },
         onPreviewClick(newActiveSlideIndex) {
             this.$emit('previewclick', newActiveSlideIndex);
         },
         isPreviewActive(previewIndex) {
             return previewIndex === this.shownPreviewsStartIndex +
                 this.activePreviewRelativeIndex;
-        },
-        getPreviewClasses(previewIndex) {
-            return {
-                'slider-pagination__preview--active':
-                    this.isPreviewActive(previewIndex),
-            };
         },
     },
 };

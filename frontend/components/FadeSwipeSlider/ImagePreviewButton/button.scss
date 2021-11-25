@@ -1,0 +1,20 @@
+.button {
+    &--preview {
+        width: 120px;
+        height: 90px;
+
+        ::v-deep .image__core {
+            filter: brightness(0.55);
+        }
+    }
+
+    &--active {
+        ::v-deep .button__core {
+            cursor: default;
+        }
+
+        ::v-deep .image__core {
+            filter: brightness(1);
+        }
+    }
+}

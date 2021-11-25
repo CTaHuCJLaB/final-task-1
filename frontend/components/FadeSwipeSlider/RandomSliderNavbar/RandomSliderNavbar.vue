@@ -5,6 +5,7 @@
             :active-slide-index="activeSlideIndex"
             @previewclick="onPreviewClick"
         )
-        a.fade-swipe-slider__link(href="http://localhost:3000/paintings")
-        | все картины
+        a.fade-swipe-slider__link(
+            href="http://localhost:3000/paintings"
+        ) все картины
 </template>

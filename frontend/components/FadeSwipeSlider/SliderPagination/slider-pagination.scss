@@ -15,24 +15,6 @@
         height: 90px;
     }
 
-    &__preview {
-        width: 120px;
-        height: 90px;
-        cursor: pointer;
-
-        ::v-deep .image__core {
-            filter: brightness(0.55);
-        }
-
-        &--active {
-            ::v-deep .image__core {
-                filter: brightness(1);
-            }
-
-            cursor: default;
-        }
-    }
-
     ::v-deep .image__core {
         height: 90px;
     }

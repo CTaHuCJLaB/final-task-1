@@ -22,7 +22,7 @@ export default {
         SlideInfo,
     },
     props: {
-        activeSlideIndex: createNumberPropConfig(0),
+        activeSlideIndex: createNumberPropConfig(),
         slideCount: createNumberPropConfig(5),
     },
     computed: {
