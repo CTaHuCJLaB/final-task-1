@@ -14,6 +14,8 @@
             :active-slide-index="activeSlideIndex"
         )
         consistent-slider-navbar(
+            :active-slide-index="activeSlideIndex"
+            :slide-count="slideCount"
             @leftarrowclick="onLeftArrowClick"
             @rightarrowclick="onRightArrowClick"
         )
@@ -59,9 +61,10 @@ export default {
             outerSlideInfoState,
         );
         return {
-            activeSlideIndex,
             slidePreviews,
             slides,
+            activeSlideIndex,
+            slideCount,
         };
     },
     methods: {
@@ -71,7 +74,7 @@ export default {
             }
         },
         onRightArrowClick() {
-            if (this.activeSlideIndex < this.slides.length - 1) {
+            if (this.activeSlideIndex < this.slideCount - 1) {
                 this.activeSlideIndex++;
             }
         },

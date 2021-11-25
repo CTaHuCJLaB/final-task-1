@@ -134,6 +134,10 @@ a {
     transition: color 0.5s $easeInOutCirc, border 0.5s $easeInOutCirc, background 0.5s $easeInOutCirc, opacity 0.5s $easeInOutCirc;
 }
 
+button {
+    cursor: pointer;
+}
+
 button,
 input,
 optgroup,
@@ -147,4 +151,8 @@ textarea {
     box-shadow: none;
     appearance: none;
     margin: 0;
+
+    &:disabled {
+        cursor: not-allowed;
+    }
 }
