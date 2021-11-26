@@ -11,7 +11,7 @@
       "type": "string",
       "required": true
     },
-    "imageTitlePrefix": {
+    "previewImageTitlePrefix": {
       "type": "string"
     },
     "previews": {
