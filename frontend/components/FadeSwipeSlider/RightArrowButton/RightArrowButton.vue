@@ -9,6 +9,11 @@ export default {
     components: {
         CrossedOutButton,
     },
+    provide: {
+        outerControlState: {
+            description: 'Перейти к следующему слайду',
+        },
+    },
 };
 </script>
 

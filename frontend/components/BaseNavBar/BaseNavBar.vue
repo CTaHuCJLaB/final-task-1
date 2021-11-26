@@ -17,8 +17,7 @@ import { trimEachWord } from '@/modules/stringProcessing';
 export default {
     provide: {
         outerMenuToggleState: {
-            menuName:
-        'навигационное меню',
+            menuName: 'навигационное меню',
         },
     },
     setup() {

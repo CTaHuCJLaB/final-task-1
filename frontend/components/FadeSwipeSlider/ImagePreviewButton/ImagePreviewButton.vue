@@ -26,7 +26,7 @@ export default {
     },
     setup(props) {
         const { title: previewTitle } = props.preview;
-        const description = `Показать слайд ${previewTitle}`;
+        const description = `Перейти к слайду ${previewTitle}`;
 
         const outerControlState = reactive({
             description,
