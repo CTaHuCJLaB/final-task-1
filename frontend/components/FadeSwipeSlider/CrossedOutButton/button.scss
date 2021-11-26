@@ -1,0 +1,29 @@
+.button--crossed-out {
+    width: 40px;
+    min-height: 12px;
+    margin-top: 14px;
+
+    ::v-deep .button__core {
+        position: relative;
+        min-height: 12px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: calc(50% - 2px / 2);
+            width: 100%;
+            height: 2px;
+            background-color: $colorLightGray;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: calc(50% - 8px / 2);
+            width: 8px;
+            height: 8px;
+            border-top: 1.5px solid $colorLightGray;
+            border-left: 1.5px solid $colorLightGray;
+        }
+    }
+}

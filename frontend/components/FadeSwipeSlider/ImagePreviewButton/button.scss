@@ -4,7 +4,11 @@
         height: 90px;
 
         ::v-deep .image__core {
+            height: 90px;
+            font-size: 10px;
+            line-height: 7px;
             filter: brightness(0.55);
+            color: $colorBlack;
         }
     }
 

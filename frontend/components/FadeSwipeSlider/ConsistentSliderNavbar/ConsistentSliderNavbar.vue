@@ -1,12 +1,12 @@
 <template lang="pug">
     .consistent-slider-navbar
-        base-button.button--left(
+        left-arrow-button(
             :disabled="isLeftArrowDisabled"
             ref="leftArrow"
             @click.native="$emit('leftarrowclick')"
         )
         slide-info
-        base-button.button--right(
+        right-arrow-button(
             :disabled="isRightArrowDisabled"
             @click.native="$emit('rightarrowclick')"
         )
@@ -15,11 +15,15 @@
 <script>
 import $ from 'jquery';
 import SlideInfo from '../SlideInfo/SlideInfo';
+import LeftArrowButton from '../LeftArrowButton/LeftArrowButton';
+import RightArrowButton from '../RightArrowButton/RightArrowButton';
 import { createNumberPropConfig } from '@/modules/propConfigs';
 
 export default {
     components: {
         SlideInfo,
+        LeftArrowButton,
+        RightArrowButton,
     },
     props: {
         activeSlideIndex: createNumberPropConfig(),

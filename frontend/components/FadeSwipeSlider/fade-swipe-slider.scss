@@ -18,11 +18,12 @@
 
     .slider-screen {
         margin-top: 20px;
-    }
-
-    &__screen {
         @include mq($maxTabletWidth) {
             display: none;
         }
+    }
+
+    ::v-deep .image__core {
+        background-color: $colorLightOlive;
     }
 }

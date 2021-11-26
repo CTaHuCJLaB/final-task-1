@@ -10,7 +10,7 @@
                     base-image(
                         :title="slide.title"
                         :alt="slide.alt"
-                        :image-param-sets="createImageParamSets(slide)"
+                        :image-param-sets="createImageParamSets({})"
                     )
 </template>
 

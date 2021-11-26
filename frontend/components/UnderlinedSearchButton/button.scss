@@ -1,6 +1,3 @@
 .button--underlined {
-    @include lined(
-    -6px, 0,
-    calc(100% + 12px),
-  );
+    @include lined(-6px, 0, calc(100% + 12px));
 }

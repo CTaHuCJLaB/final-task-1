@@ -1,11 +1,10 @@
-import { createStringPropConfig }
-  from '@/modules/propConfigs';
+import { createStringPropConfig } from '@/modules/propConfigs';
 
-export default (defaultValue) => ({
-  props: {
-    type:
-      createStringPropConfig(
-        defaultValue,
-      ),
-  },
+export default defaultValue => ({
+    props: {
+        type:
+        createStringPropConfig(
+            defaultValue,
+        ),
+    },
 });

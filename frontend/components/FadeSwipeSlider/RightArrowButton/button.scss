@@ -1,0 +1,6 @@
+.button--arrow-right {
+    ::v-deep .button__core::after {
+        transform: rotate(135deg);
+        right: 1px;
+    }
+}

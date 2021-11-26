@@ -29,6 +29,9 @@
 
     ::v-deep .image__core {
         width: 920px;
+        height: 100%;
+        color: $colorBlack;
+        object-fit: cover;
 
         @include mq($maxTabletWidth) {
             height: calc(156 / 320 * 100vw);
