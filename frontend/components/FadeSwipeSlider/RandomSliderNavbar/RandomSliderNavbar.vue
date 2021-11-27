@@ -3,7 +3,7 @@
         slider-pagination
         internal-link(
             path="/paintings"
-            title="картины"
+            title="все картины"
         )
 </template>
 
