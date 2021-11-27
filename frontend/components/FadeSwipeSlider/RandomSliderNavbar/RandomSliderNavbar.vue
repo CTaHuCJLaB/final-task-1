@@ -1,9 +1,10 @@
 <template lang="pug">
     .random-slider-navbar
         slider-pagination
-        p.random-slider-navbar__link
-            nuxt-link(:to="{ path: '/paintings' }")
-                | все картины
+        internal-link(
+            path="/paintings"
+            title="картины"
+        )
 </template>
 
 <script>

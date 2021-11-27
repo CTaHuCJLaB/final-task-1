@@ -14,15 +14,19 @@
         padding-top: 0;
         text-align: center;
     }
+}
 
-    .list__item {
-        min-height: 16px;
+.list__item {
+    min-height: 16px;
 
-        @include mq($maxTabletWidth) {
-            min-height: 36px;
-            padding: 10px 20px;
-            margin-bottom: 0;
-            margin-left: 0;
-        }
+    @include mq($maxTabletWidth) {
+        min-height: 36px;
+        padding: 10px 20px;
+        margin-bottom: 0;
+        margin-left: 0;
     }
+}
+
+::v-deep .internal-link__core {
+    max-width: 72px;
 }

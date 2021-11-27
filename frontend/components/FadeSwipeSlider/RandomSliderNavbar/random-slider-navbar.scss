@@ -5,8 +5,9 @@
     column-gap: 58px;
     row-gap: 40px;
 
-    &__link {
-        width: 83px;
-        color: $colorLightGray;
-    }
+}
+
+::v-deep .internal-link__core {
+    width: 54px;
+    color: $colorLightGray;
 }

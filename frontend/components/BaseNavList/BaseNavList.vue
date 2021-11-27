@@ -1,12 +1,13 @@
 <template lang="pug">
   ul.list.list--nav
     li.list__item(
-      v-for="(navTitle, index) in navTitles"
+        v-for="(navTitle, index) in navTitles"
     )
-        nuxt-link(
-            :to="{ path: '/', hash: `#block_${index}`}"
+        internal-link(
+            path="/paintings"
+            :hash="`block_${index}`"
+            :title="`${navTitle}`"
         )
-            | {{navTitle}}
 </template>
 
 <script>
