@@ -7,19 +7,16 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { createImageTitle } from '@/modules/imageDataPreparing';
 
 export default {
     computed: {
         ...mapGetters([
-            'imageTitlePrefix',
+            'paintingTitlePrefix',
             'holidayImageTitle',
         ]),
         figcaption() {
-            return createImageTitle(
-                this.imageTitlePrefix,
-                this.holidayImageTitle,
-            );
+            return this.paintingTitlePrefix +
+                ` "${this.holidayImageTitle}"`;
         },
     },
 };

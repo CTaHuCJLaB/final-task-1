@@ -1,14 +1,8 @@
 <template lang="pug">
     .fade-swipe-slider
-        .fade-swipe-slider__random-navbar
-            slider-pagination(
-                :slidePreviews="slidePreviews"
-                :active-slide-index="activeSlideIndex"
-                @previewclick="onPreviewClick"
-            )
-            p.fade-swipe-slider__link
-                nuxt-link(:to="{ path: '/paintings' }")
-                    | все картины
+        random-slider-navbar(
+            @previewclick="onPreviewClick"
+        )
         slider-screen(
             :slides="slides"
             :active-slide-index="activeSlideIndex"
@@ -26,26 +20,49 @@ import {
     ref, computed, reactive, provide,
     useStore,
 } from '@nuxtjs/composition-api';
-import SliderPagination from './SliderPagination/SliderPagination';
 import SliderScreen from './SliderScreen/SliderScreen';
 import ConsistentSliderNavbar
 from './ConsistentSliderNavbar/ConsistentSliderNavbar';
+import RandomSliderNavbar
+from './RandomSliderNavbar/RandomSliderNavbar';
 
 export default {
     components: {
-        SliderPagination,
         SliderScreen,
         ConsistentSliderNavbar,
+        RandomSliderNavbar,
     },
     setup() {
         const store = useStore();
-        const slidePreviews = computed(
-            () => store.getters.slidePreviews,
+        const { previewTitlePrefix } = store.getters;
+        const outerPreviewButtonState = {
+            previewTitlePrefix,
+        };
+        provide(
+            'outerPreviewButtonState',
+            outerPreviewButtonState,
+        );
+        const { paintingTitlePrefix } = store.getters;
+        const outerSliderComposablesState = {
+            paintingTitlePrefix,
+        };
+        provide(
+            'outerSliderComposablesState',
+            outerSliderComposablesState,
         );
         const slides = computed(
             () => store.getters.slides,
         );
         const activeSlideIndex = ref(4);
+        const { slidePreviews } = store.getters;
+        const outerSliderPaginationState = reactive({
+            slidePreviews,
+            activeSlideIndex,
+        });
+        provide(
+            'outerSliderPaginationState',
+            outerSliderPaginationState,
+        );
         const activeSlideTitle = computed(
             () => slides.value[activeSlideIndex.value]
                 .title,
@@ -60,6 +77,7 @@ export default {
             'outerSlideInfoState',
             outerSlideInfoState,
         );
+
         return {
             slidePreviews,
             slides,

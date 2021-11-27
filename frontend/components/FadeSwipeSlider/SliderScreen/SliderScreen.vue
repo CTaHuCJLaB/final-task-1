@@ -8,7 +8,7 @@
                     :key="slide.title + activeSlideIndex"
                 )
                     base-image(
-                        :title="slide.title"
+                        :title="paintingTitlePrefix + ` \"${slide.title}\"`"
                         :alt="slide.alt"
                         :image-param-sets="createImageParamSets(slide)"
                     )
@@ -17,6 +17,7 @@
 <script>
 import $ from 'jquery';
 import _ from 'lodash';
+import { inject } from '@nuxtjs/composition-api';
 import {
     createArrayPropConfig, createNumberPropConfig,
 } from '@/modules/propConfigs';
@@ -26,7 +27,16 @@ export default {
     props: {
         slides: createArrayPropConfig(),
         activeSlideIndex:
-            createNumberPropConfig(),
+            createNumberPropConfig(undefined),
+    },
+    setup() {
+        const outerSliderComposablesState = inject(
+            'outerSliderComposablesState',
+            { paintingTitlePrefix: '' },
+        );
+        const { paintingTitlePrefix } = outerSliderComposablesState;
+
+        return { paintingTitlePrefix };
     },
     computed: {
         renderedSlides() {

@@ -8,36 +8,27 @@ export const state = () => ({
 });
 
 export const getters = {
-    navTitles: ({ defaultLayoutData }) => (
+    navTitles: ({ defaultLayoutData }) =>
         _(defaultLayoutData.navTitles)
             .map(navTitle => navTitle.title)
-            .value()
-    ),
-    imageTitlePrefix: ({ homePageData }) => (
-        homePageData.imageTitlePrefix.value
-    ),
-    holidayImageTitle: ({ homePageData }) => (
-        homePageData.header.image.title
-    ),
-    indexHeader: ({ homePageData }) => (
-        homePageData.header
-    ),
-    horizontalH1: (state, { indexHeader }) => (
-        indexHeader.horizontalH1
-    ),
-    verticalH1: (state, { indexHeader }) => (
-        indexHeader.verticalH1
-    ),
-    indexIntroParagraph: (state, { indexHeader }) => (
-        indexHeader.paragraph
-    ),
-    biographyBlock: ({ homePageData }) => (
-        homePageData.biographyBlock
-    ),
-    biographyH2: (state, { biographyBlock }) => (
-        biographyBlock.h2
-    ),
-    lifeEvents: (state, { biographyBlock }) => (
+            .value(),
+    paintingTitlePrefix: ({ homePageData }) =>
+        homePageData.paintingTitlePrefix,
+    holidayImageTitle: ({ homePageData }) =>
+        homePageData.header.image.title,
+    indexHeader: ({ homePageData }) =>
+        homePageData.header,
+    horizontalH1: (state, { indexHeader }) =>
+        indexHeader.horizontalH1,
+    verticalH1: (state, { indexHeader }) =>
+        indexHeader.verticalH1,
+    indexIntroParagraph: (state, { indexHeader }) =>
+        indexHeader.paragraph,
+    biographyBlock: ({ homePageData }) =>
+        homePageData.biographyBlock,
+    biographyH2: (state, { biographyBlock }) =>
+        biographyBlock.h2,
+    lifeEvents: (state, { biographyBlock }) =>
         _(biographyBlock.lifeEvents)
             .map(
                 ({ year, description }) => ({
@@ -46,28 +37,23 @@ export const getters = {
                 }),
             )
             .sortBy(({ year }) => year || 0)
-            .value()
-    ),
-    readMoreToggleData: ({ homePageData }) => (
-        homePageData.readMoreToggle
-    ),
-    shareServices: ({ defaultLayoutData }) => (
+            .value(),
+    readMoreToggleData: ({ homePageData }) =>
+        homePageData.readMoreToggle,
+    shareServices: ({ defaultLayoutData }) =>
         _(defaultLayoutData.shareServices)
             .map(({ service }) => service)
-            .value()
-    ),
-    biographyShareBlock: (state, { biographyBlock }) => (
-        biographyBlock.shareBlock
-    ),
-    paintingsBlock: ({ homePageData }) => (
-        homePageData.paintingsBlock
-    ),
-    slidePreviews: (state, { paintingsBlock }) => (
-        paintingsBlock.previews
-    ),
-    slides: (state, { paintingsBlock }) => (
-        paintingsBlock.slides
-    ),
+            .value(),
+    biographyShareBlock: (state, { biographyBlock }) =>
+        biographyBlock.shareBlock,
+    paintingsBlock: ({ homePageData }) =>
+        homePageData.paintingsBlock,
+    previewTitlePrefix: (state, { paintingsBlock }) =>
+        paintingsBlock.previewTitlePrefix,
+    slidePreviews: (state, { paintingsBlock }) =>
+        paintingsBlock.previews,
+    slides: (state, { paintingsBlock }) =>
+        paintingsBlock.slides,
 };
 
 export const mutations = {

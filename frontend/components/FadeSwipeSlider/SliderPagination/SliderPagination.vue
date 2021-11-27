@@ -16,21 +16,24 @@
 
 <script>
 import _ from 'lodash';
+import { inject, toRefs } from '@nuxtjs/composition-api';
 import ImagePreviewButton
 from '../ImagePreviewButton/ImagePreviewButton';
-import {
-    createArrayPropConfig, createNumberPropConfig,
-} from '@/modules/propConfigs';
 
 export default {
     components: {
         ImagePreviewButton,
     },
-    props: {
-        slidePreviews:
-            createArrayPropConfig(),
-        activeSlideIndex:
-            createNumberPropConfig(),
+    setup() {
+        const outerSliderPaginationState = inject(
+            'outerSliderPaginationState',
+            {
+                slidePreviews: [],
+                activeSlideIndex: undefined,
+            },
+        );
+
+        return toRefs(outerSliderPaginationState);
     },
     data() {
         return {
@@ -82,7 +85,8 @@ export default {
     },
     methods: {
         onPreviewClick(newActiveSlideIndex) {
-            this.$emit('previewclick', newActiveSlideIndex);
+            this.$parent
+                .$emit('previewclick', newActiveSlideIndex);
         },
         isPreviewActive(previewIndex) {
             return previewIndex === this.shownPreviewsStartIndex +

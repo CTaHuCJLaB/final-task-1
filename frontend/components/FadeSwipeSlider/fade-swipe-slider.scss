@@ -3,19 +3,6 @@
     row-gap: 20px;
     width: 920px;
 
-    &__random-navbar    {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        column-gap: 58px;
-        row-gap: 40px;
-    }
-
-    &__link {
-        width: 83px;
-        color: $colorLightGray;
-    }
-
     .slider-screen {
         margin-top: 20px;
         @include mq($maxTabletWidth) {

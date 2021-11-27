@@ -1,10 +1,6 @@
 import _ from 'lodash';
 import devices from './devices';
 
-export const createImageTitle = (
-    imageTitlePrefix, imageTitle,
-) => `${imageTitlePrefix} "${imageTitle}"`;
-
 const setRelativeUrls = (map, image, device, index) => {
     map[index] = {
         relativeUrls: {

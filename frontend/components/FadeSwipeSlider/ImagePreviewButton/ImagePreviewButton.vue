@@ -4,7 +4,7 @@
     )
         template(#icon)
             base-image(
-                :title="preview.title"
+                :title="previewFullTitle"
                 :alt="preview.alt"
                 :image-param-sets="\
                     createImageParamSets(preview)\
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { reactive, provide } from '@nuxtjs/composition-api';
+import { inject, reactive, provide } from '@nuxtjs/composition-api';
 import {
     createObjectPropConfig, falsePropConfig,
 } from '@/modules/propConfigs';
@@ -25,9 +25,22 @@ export default {
         isPreviewActive: falsePropConfig,
     },
     setup(props) {
+        const outerPreviewButtonState = inject(
+            'outerPreviewButtonState',
+            { previewTitlePrefix: '' },
+        );
+        const { previewTitlePrefix } = outerPreviewButtonState;
+        const outerSliderComposablesState = inject(
+            'outerSliderComposablesState',
+            { paintingTitlePrefix: '' },
+        );
+        const { paintingTitlePrefix } = outerSliderComposablesState;
         const { title: previewTitle } = props.preview;
-        const description = `Перейти к слайду ${previewTitle}`;
-
+        const previewFullTitle = previewTitlePrefix +
+            ` "${previewTitle}"`;
+        const description = 'Перейти к слайду ' +
+            `'${paintingTitlePrefix} ` +
+            `"${previewTitle}"'`;
         const outerControlState = reactive({
             description,
         });
@@ -35,6 +48,8 @@ export default {
             'outerControlState',
             outerControlState,
         );
+
+        return { previewFullTitle };
     },
     methods: {
         createImageParamSets(preview) {

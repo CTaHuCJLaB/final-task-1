@@ -24,7 +24,12 @@ export default {
             pushAssets: (req, res, publicPath, preloadFiles) => {
                 return preloadFiles
                     // .filter(f => f.asType === 'script' && f.file === 'runtime.js')
-                    .map(f => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`);
+                    .map(
+                        f => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}` +
+                            f.asType === 'font'
+                            ? ' crossorigin;'
+                            : '',
+                    );
             },
         },
     },

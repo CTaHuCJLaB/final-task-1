@@ -32,10 +32,8 @@
       "repeatable": false,
       "component": "page-blocks.creativity-block"
     },
-    "imageTitlePrefix": {
-      "type": "component",
-      "repeatable": false,
-      "component": "image.image-title-prefix"
+    "paintingTitlePrefix": {
+      "type": "string"
     },
     "readMoreToggle": {
       "type": "component",

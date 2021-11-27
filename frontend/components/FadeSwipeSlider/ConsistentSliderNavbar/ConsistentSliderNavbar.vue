@@ -26,8 +26,8 @@ export default {
         RightArrowButton,
     },
     props: {
-        activeSlideIndex: createNumberPropConfig(),
-        slideCount: createNumberPropConfig(5),
+        activeSlideIndex: createNumberPropConfig(undefined),
+        slideCount: createNumberPropConfig(),
     },
     computed: {
         isArrowsDisplayed() {

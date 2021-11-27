@@ -1,0 +1,12 @@
+.random-slider-navbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 58px;
+    row-gap: 40px;
+
+    &__link {
+        width: 83px;
+        color: $colorLightGray;
+    }
+}
