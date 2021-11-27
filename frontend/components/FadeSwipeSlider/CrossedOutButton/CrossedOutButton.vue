@@ -1,5 +1,7 @@
 <template lang="pug">
-    base-button.button--crossed-out
+    base-button.button--crossed-out(
+        v-bind="$attrs"
+    )
 </template>
 
 <style lang="scss" scoped>

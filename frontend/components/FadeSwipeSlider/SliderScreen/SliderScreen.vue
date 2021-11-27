@@ -34,9 +34,8 @@ export default {
             'outerSliderComposablesState',
             { paintingTitlePrefix: '' },
         );
-        const { paintingTitlePrefix } = outerSliderComposablesState;
 
-        return { paintingTitlePrefix };
+        return outerSliderComposablesState;
     },
     computed: {
         renderedSlides() {

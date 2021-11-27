@@ -13,7 +13,8 @@
 </template>
 
 <script>
-import { inject, reactive, provide } from '@nuxtjs/composition-api';
+import useOuterControlState from './composables/useOuterControlState';
+import usePreviewFullTitle from './composables/usePreviewFullTitle';
 import {
     createObjectPropConfig, falsePropConfig,
 } from '@/modules/propConfigs';
@@ -25,29 +26,10 @@ export default {
         isPreviewActive: falsePropConfig,
     },
     setup(props) {
-        const outerPreviewButtonState = inject(
-            'outerPreviewButtonState',
-            { previewTitlePrefix: '' },
-        );
-        const { previewTitlePrefix } = outerPreviewButtonState;
-        const outerSliderComposablesState = inject(
-            'outerSliderComposablesState',
-            { paintingTitlePrefix: '' },
-        );
-        const { paintingTitlePrefix } = outerSliderComposablesState;
         const { title: previewTitle } = props.preview;
-        const previewFullTitle = previewTitlePrefix +
-            ` "${previewTitle}"`;
-        const description = 'Перейти к слайду ' +
-            `'${paintingTitlePrefix} ` +
-            `"${previewTitle}"'`;
-        const outerControlState = reactive({
-            description,
-        });
-        provide(
-            'outerControlState',
-            outerControlState,
-        );
+        useOuterControlState(previewTitle);
+        const previewFullTitle =
+            usePreviewFullTitle(previewTitle);
 
         return { previewFullTitle };
     },

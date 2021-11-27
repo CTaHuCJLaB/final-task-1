@@ -1,5 +1,7 @@
 <template lang="pug">
-    crossed-out-button.button--arrow-right
+    crossed-out-button.button--arrow-right(
+        v-bind="$attrs"
+    )
 </template>
 
 <script>

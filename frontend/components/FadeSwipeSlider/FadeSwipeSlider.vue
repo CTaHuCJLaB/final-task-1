@@ -16,15 +16,20 @@
 </template>
 
 <script>
-import {
-    ref, computed, reactive, provide,
-    useStore,
-} from '@nuxtjs/composition-api';
+import { ref, useStore } from '@nuxtjs/composition-api';
 import SliderScreen from './SliderScreen/SliderScreen';
 import ConsistentSliderNavbar
 from './ConsistentSliderNavbar/ConsistentSliderNavbar';
 import RandomSliderNavbar
 from './RandomSliderNavbar/RandomSliderNavbar';
+import useOuterPreviewButtonState
+from './composables/useOuterPreviewButtonState';
+import useOuterSliderComposablesState
+from './composables/useOuterSliderComposablesState';
+import useOuterSliderPaginationState
+from './composables/useOuterSliderPaginationState';
+import useOuterSlideInfoState
+from './composables/useOuterSlideInfoState';
 
 export default {
     components: {
@@ -34,50 +39,18 @@ export default {
     },
     setup() {
         const store = useStore();
-        const { previewTitlePrefix } = store.getters;
-        const outerPreviewButtonState = {
-            previewTitlePrefix,
-        };
-        provide(
-            'outerPreviewButtonState',
-            outerPreviewButtonState,
-        );
-        const { paintingTitlePrefix } = store.getters;
-        const outerSliderComposablesState = {
-            paintingTitlePrefix,
-        };
-        provide(
-            'outerSliderComposablesState',
-            outerSliderComposablesState,
-        );
-        const slides = computed(
-            () => store.getters.slides,
-        );
+        useOuterPreviewButtonState(store);
+        useOuterSliderComposablesState(store);
+        const slides = store.getters.slides;
         const activeSlideIndex = ref(4);
         const { slidePreviews } = store.getters;
-        const outerSliderPaginationState = reactive({
-            slidePreviews,
-            activeSlideIndex,
-        });
-        provide(
-            'outerSliderPaginationState',
-            outerSliderPaginationState,
+        useOuterSliderPaginationState(
+            slidePreviews, activeSlideIndex,
         );
-        const activeSlideTitle = computed(
-            () => slides.value[activeSlideIndex.value]
-                .title,
+        const slideCount = slides.length;
+        useOuterSlideInfoState(
+            slides, activeSlideIndex, slideCount,
         );
-        const slideCount = slides.value.length;
-        const outerSlideInfoState = reactive({
-            activeSlideIndex,
-            activeSlideTitle,
-            slideCount,
-        });
-        provide(
-            'outerSlideInfoState',
-            outerSlideInfoState,
-        );
-
         return {
             slidePreviews,
             slides,

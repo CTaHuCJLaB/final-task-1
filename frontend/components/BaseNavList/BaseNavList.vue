@@ -4,7 +4,7 @@
         v-for="(navTitle, index) in navTitles"
     )
         internal-link(
-            path="/paintings"
+            path="/"
             :hash="`block_${index}`"
             :title="`${navTitle}`"
         )
