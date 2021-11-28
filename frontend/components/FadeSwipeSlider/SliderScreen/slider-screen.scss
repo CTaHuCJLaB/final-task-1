@@ -1,7 +1,9 @@
 .slider-screen {
     display: grid;
+    align-items: center;
     width: 920px;
     height: 530px;
+    text-align: center;
     overflow-y: hidden;
 
     @include mq($maxTabletWidth) {

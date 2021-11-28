@@ -3,14 +3,19 @@
     row-gap: 20px;
     width: 920px;
 
-    .slider-screen {
-        margin-top: 20px;
-        @include mq($maxTabletWidth) {
-            display: none;
-        }
+    @include mq($maxTabletWidth) {
+        width: 100%;
     }
 
     ::v-deep .image__core {
         background-color: $colorLightOlive;
+    }
+}
+
+.slider-screen {
+    margin-top: 20px;
+
+    @include mq($maxTabletWidth) {
+        display: none;
     }
 }

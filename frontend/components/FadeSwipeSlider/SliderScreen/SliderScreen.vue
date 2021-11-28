@@ -1,9 +1,12 @@
 <template lang="pug">
     .slider-screen
-        ul.slider-screen__film(:style="filmStyle")
-            fading
-                li.slider-screen__slide(
-                    :style="getSlideStyle(index)"
+        client-only(placeholder="Загрузка...")
+            component(
+                :is="isScreenOverflowing ? 'ul' : 'fading'"
+                :class="{ 'slider-screen__film': isScreenOverflowing }"
+            )
+                component.slider-screen__slide(
+                    :is="isScreenOverflowing ? 'li' : 'p'"
                     v-for="(slide, index) in renderedSlides"
                     :key="slide.title + activeSlideIndex"
                 )
@@ -50,13 +53,13 @@ export default {
             return this.slides[this.activeSlideIndex - 1];
         },
         isScreenOverflowing() {
-            return this.$el
-                ? $(this.$el)
-                    .css('overflow-x') === 'hidden'
-                : undefined;
-        },
-        filmStyle() {
-            return {};
+            let result = true;
+            if (this.$el) {
+                result = $(this.$el)
+                    .css('overflow-x') === 'hidden';
+            }
+
+            return result;
         },
     },
     methods: {
@@ -74,9 +77,6 @@ export default {
                     },
                 },
             );
-        },
-        getSlideStyle(slideIndex) {
-            return {};
         },
     },
 };
