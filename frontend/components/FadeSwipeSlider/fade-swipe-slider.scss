@@ -1,6 +1,10 @@
 .fade-swipe-slider {
     display: grid;
-    row-gap: 20px;
+    grid-template-columns: auto 1fr auto;
+    justify-items: center;
+    align-items: start;
+    row-gap: 10px;
+    column-gap: 200px;
     width: 920px;
 
     @include mq($maxTabletWidth) {
@@ -10,12 +14,61 @@
     ::v-deep .image__core {
         background-color: $colorLightOlive;
     }
+
+    &__slide {
+        display: grid;
+        justify-items: center;
+        row-gap: 9px;
+        max-width: 520px;
+        font-weight: 300;
+        text-align: center;
+
+        &-title {
+            grid-column: 2 / 3;
+            max-width: 520px;
+            text-align: center;
+        }
+
+        &-counter {
+            grid-column: 2 / 3;
+            max-width: 100px;
+            line-height: 12.81px;
+            font-weight: 400;
+            text-align: justify;
+        }
+    }
+
+    &__faded-text {
+        color: $colorGray;
+    }
+}
+
+.random-slider-navbar {
+    grid-column: 1 / 4;
 }
 
 .slider-screen {
-    margin-top: 20px;
+    grid-column: 1 / 4;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
 
-    @include mq($maxTabletWidth) {
-        display: none;
+.button--arrow {
+    &-left, &-right {
+        grid-row: 3 / 5;
+        margin-top: 14px;
+
+        @include mq($maxTabletWidth) {
+            display: none;
+        }
+    }
+
+    &-left {
+        grid-column: 1 / 2;
+    }
+
+    &-right {
+        grid-column: 3 / 4;
     }
 }
+

@@ -20,6 +20,7 @@
 <script>
 import $ from 'jquery';
 import _ from 'lodash';
+// import anime from 'animejs';
 import { inject } from '@nuxtjs/composition-api';
 import {
     createArrayPropConfig, createNumberPropConfig,

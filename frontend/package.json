@@ -17,6 +17,7 @@
     "@nuxtjs/composition-api": "0.30.0",
     "@nuxtjs/markdownit": "^2.0.0",
     "@nuxtjs/style-resources": "^1.0.0",
+    "animejs": "3.2.1",
     "core-js": "^3.9.1",
     "fibers": "^5.0.0",
     "jquery": "3.6.0",
