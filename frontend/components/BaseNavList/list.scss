@@ -21,7 +21,6 @@
 
     @include mq($maxTabletWidth) {
         min-height: 36px;
-        padding: 10px 20px;
         margin-bottom: 0;
         margin-left: 0;
     }
@@ -29,4 +28,9 @@
 
 ::v-deep .internal-link__core {
     max-width: 73px;
+
+    @include mq($maxTabletWidth) {
+        max-width: 100%;
+        padding: 10px 20px;
+    }
 }

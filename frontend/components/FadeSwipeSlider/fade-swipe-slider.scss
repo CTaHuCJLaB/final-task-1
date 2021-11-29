@@ -8,6 +8,8 @@
     width: 920px;
 
     @include mq($maxTabletWidth) {
+        grid-template-columns: 100%;
+        row-gap: 20px;
         width: 100%;
     }
 
@@ -27,6 +29,12 @@
             grid-column: 2 / 3;
             max-width: 520px;
             text-align: center;
+
+            @include mq($maxTabletWidth) {
+                max-width: calc(100vw - 2 * 20px);
+                grid-row: 1 / 2;
+                grid-column: 1 / 1;
+            }
         }
 
         &-counter {
@@ -35,6 +43,11 @@
             line-height: 12.81px;
             font-weight: 400;
             text-align: justify;
+
+            @include mq($maxTabletWidth) {
+                grid-row: 3 / 4;
+                grid-column: 1 / 1;
+            }
         }
     }
 
@@ -45,12 +58,24 @@
 
 .random-slider-navbar {
     grid-column: 1 / 4;
+
+    @include mq($maxTabletWidth) {
+        grid-row: 4 / 5;
+        grid-column: 1 / 2;
+        margin-top: 41px;
+    }
 }
 
 .slider-screen {
     grid-column: 1 / 4;
     margin-top: 30px;
     margin-bottom: 10px;
+
+    @include mq($maxTabletWidth) {
+        grid-column: 1 / 2;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 }
 
 .button--arrow {

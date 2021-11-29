@@ -7,13 +7,19 @@
     overflow-y: hidden;
 
     @include mq($maxTabletWidth) {
+        width: 100%;
+        height: calc(156 / 320 * 100vw);
         overflow-x: hidden;
     }
 
     &__film {
-        position: relative;
-        display: flex;
-        height: 530px;
+        @include mq($maxTabletWidth) {
+            position: relative;
+            display: flex;
+            column-gap: calc(20 / 320 * 100vw);
+            height: calc(156 / 320 * 100vw);
+            padding-left: calc(60 / 320 * 100vw);
+        }
     }
 
     &__slide {
