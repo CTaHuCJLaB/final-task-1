@@ -13,7 +13,7 @@ export default imageParamSets => (
             minBreakpoint => (
                 (minBreakpoint > 0)
                     ? `(min-width: ${minBreakpoint}px)`
-                    : undefined
+                    : null
             ),
         )
         .reverse()

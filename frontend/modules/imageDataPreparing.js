@@ -17,16 +17,21 @@ const setRelativeUrls = (map, image, device, index) => {
     );
 };
 
-export const createImageParamSets = (image, dimensions) =>
-    _(devices).filter(device => image[device])
-        .reduce(
-            (map, device, index) => {
-                setRelativeUrls(map, image, device, index);
-                map[index].x1Width = dimensions[device]
-                    .x1Width;
-                map[index].canvasWidth = dimensions[device]
-                    .canvasWidth;
+export const createImageParamSets = (image, dimensions) => {
+    const _devices = _(devices);
 
+    return _devices.filter(device => image[device])
+        .reduce(
+            (map, device) => {
+                const deviceIndex = _devices.indexOf(device);
+                setRelativeUrls(
+                    map, image, device, deviceIndex,
+                );
+                map[deviceIndex].x1Width =
+                    dimensions[device].x1Width;
+                map[deviceIndex].canvasWidth =
+                    dimensions[device].canvasWidth;
                 return map;
             }, {},
         );
+};

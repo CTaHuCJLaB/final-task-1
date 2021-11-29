@@ -1,5 +1,8 @@
 <template lang="pug">
-    .slider-screen
+    .slider-screen(
+        @pointerdown.left.prevent="onScreenPointerDown"
+        @pointermove.prevent="onScreenPointerMove"
+    )
         client-only(placeholder="Загрузка...")
             component(
                 :is="isScreenOverflowing ? 'ul' : 'fading'"
@@ -31,7 +34,7 @@ export default {
     props: {
         slides: createArrayPropConfig(),
         activeSlideIndex:
-            createNumberPropConfig(undefined),
+            createNumberPropConfig(null),
     },
     setup() {
         const outerSliderComposablesState = inject(
@@ -40,6 +43,11 @@ export default {
         );
 
         return outerSliderComposablesState;
+    },
+    data() {
+        return {
+            startCoord: null,
+        };
     },
     computed: {
         renderedSlides() {
@@ -78,6 +86,24 @@ export default {
                     },
                 },
             );
+        },
+        onScreenPointerDown($event) {
+            this.startCoord = $event.clientX;
+        },
+        onScreenPointerMove($event) {
+            if (!this.startCoord) {
+                return;
+            }
+
+            const endCoord = $event[this.clientCoordName];
+            const deltaX = endCoord - this.startCoord;
+            if (deltaX > 15) {
+                this.goPreviousSlides();
+                this.startCoord = null;
+            } else if (deltaX < -15) {
+                this.goNextSlides();
+                this.startCoord = null;
+            }
         },
     },
 };

@@ -39,7 +39,7 @@ export default props => {
                     .slice(1).value(),
                 zero1xWidth,
             )
-            : undefined,
+            : null,
     );
     const restNotWebpSrcSets = computed(
         () => _(

@@ -29,7 +29,7 @@ export default {
             'outerSliderPaginationState',
             {
                 slidePreviews: [],
-                activeSlideIndex: undefined,
+                activeSlideIndex: null,
             },
         );
 
