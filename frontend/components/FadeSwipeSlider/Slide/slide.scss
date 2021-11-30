@@ -1,0 +1,23 @@
+.slide {
+    position: absolute;
+    width: 920px;
+    height: 530px;
+    overflow-y: hidden;
+
+    @include mq($maxTabletWidth) {
+        position: static;
+        width: calc(200 / 320 * 100vw);
+        height: calc(156 / 320 * 100vw);
+    }
+}
+
+::v-deep .image__core {
+    width: 920px;
+    height: 100%;
+    color: $colorBlack;
+    object-fit: cover;
+
+    @include mq($maxTabletWidth) {
+        height: calc(156 / 320 * 100vw);
+    }
+}

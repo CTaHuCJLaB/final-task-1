@@ -31,6 +31,7 @@ export const createImageParamSets = (image, dimensions) => {
                     dimensions[device].x1Width;
                 map[deviceIndex].canvasWidth =
                     dimensions[device].canvasWidth;
+
                 return map;
             }, {},
         );

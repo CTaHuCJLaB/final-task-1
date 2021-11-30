@@ -83,6 +83,7 @@ export default {
     ],
 
     plugins: [
+        '~/plugins/anime.js',
         '@/plugins/noClickOutline.js',
     ],
 

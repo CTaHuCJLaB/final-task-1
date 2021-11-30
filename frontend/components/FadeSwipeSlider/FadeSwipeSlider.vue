@@ -5,7 +5,7 @@
         )
         slider-screen(
             :slides="slides"
-            :active-slide-index="activeSlideIndex"
+            :active-slide-index.sync="activeSlideIndex"
         )
         left-arrow-button(
             :disabled="isLeftArrowDisabled"

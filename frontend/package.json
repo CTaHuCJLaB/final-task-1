@@ -17,7 +17,6 @@
     "@nuxtjs/composition-api": "0.30.0",
     "@nuxtjs/markdownit": "^2.0.0",
     "@nuxtjs/style-resources": "^1.0.0",
-    "animejs": "3.2.1",
     "core-js": "^3.9.1",
     "fibers": "^5.0.0",
     "jquery": "3.6.0",
@@ -28,7 +27,8 @@
     "qs": "^6.10.1",
     "sass": "1.32.10",
     "sass-loader": "10.1.1",
-    "ufo": "^0.7.5"
+    "ufo": "^0.7.5",
+    "vue-animejs": "2.1.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^6.0.0",
