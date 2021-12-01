@@ -58,10 +58,11 @@ export default {
             isScreenOverflowing: null,
             isFilmTransparent: true, // вместо isFilmShown, так как v-show мешает анимации
             isSlideIntransitive: false,
-            isScreenRefreshed: true,
+            isLastSlideRendered: false,
             startCoord: null,
             slideWidth: 0,
             slideGap: 0,
+            isScreenRefreshed: true,
         };
     },
     computed: {
@@ -96,11 +97,14 @@ export default {
         });
         $(window).on('resize', () => {
             if (this.isScreenOverflowing) {
-                this.scrollFilm(
-                    this.computeNewPosition(), 0,
-                );
+                if (this.isLastSlideRendered) {
+                    this.scrollFilm(
+                        this.computeNewPosition(), 0,
+                    );
+                }
                 this.isSlideIntransitive = true;
             } else {
+                this.isLastSlideRendered = false;
                 this.isSlideIntransitive = false;
             }
         });
@@ -108,6 +112,7 @@ export default {
     methods: {
         onSlideMounted(slideIndex) {
             if (slideIndex === this.slideCount - 1) {
+                this.isLastSlideRendered = true;
                 if (this.isScreenOverflowing) {
                     this.scrollFilm(
                         this.computeNewPosition(), 0,
