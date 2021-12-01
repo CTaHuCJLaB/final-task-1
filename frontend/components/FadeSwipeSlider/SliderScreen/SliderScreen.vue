@@ -31,6 +31,7 @@
                     :class="{ 'is-intransitive': isSlideIntransitive }"
                     :isScreenOverflowing="isScreenOverflowing"
                     :slide="slide"
+                    @hook:beforeMount="onSlideBeforeMount(index)"
                     @hook:mounted="onSlideMounted(index)"
                 )
 </template>
@@ -58,9 +59,9 @@ export default {
             RESPONSE_DELTA_X: 15,
             isScreenOverflowing: null,
             isFilmTransparent: true, // вместо isFilmShown, так как v-show мешает анимации
-            haveSlidesBeenMounted: false,
-            isSlideIntransitive: false,
+            isRenderingTriggeredByScroll: false,
             isLastSlideRendered: false,
+            isSlideIntransitive: false,
             startCoord: null,
             slideWidth: 0,
             slideGap: 0,
@@ -92,37 +93,42 @@ export default {
     mounted() {
         $(window).on('load', () => {
             this.isFilmTransparent = false;
-        });
-        $(window).on('load resize', () => {
             this.isScreenOverflowing = $(this.$el)
                 .css('overflow-x') === 'hidden';
         });
         $(window).on('resize', () => {
+            this.isScreenOverflowing = $(this.$el)
+                .css('overflow-x') === 'hidden';
             if (this.isScreenOverflowing) {
                 if (this.isLastSlideRendered) {
                     this.scrollFilm(
                         this.computeNewPosition(), 0,
                     );
+                } else {
+                    this.isRenderingTriggeredByScroll = false;
                 }
                 this.isSlideIntransitive = true;
             } else {
-                this.isLastSlideRendered = false;
                 this.isSlideIntransitive = false;
             }
         });
     },
     methods: {
+        onSlideBeforeMount(slideIndex) {
+            if (slideIndex === 0) {
+                this.isLastSlideRendered = false;
+            }
+        },
         onSlideMounted(slideIndex) {
             if (slideIndex === this.slideCount - 1) {
-                this.isLastSlideRendered = true;
                 if (this.isScreenOverflowing) {
-                    if (!this.haveSlidesBeenMounted) {
+                    this.isLastSlideRendered = true;
+                    if (!this.isRenderingTriggeredByScroll) {
                         this.scrollFilm(
                             this.computeNewPosition(), 0,
                         );
                     }
                 }
-                this.haveSlidesBeenMounted = true;
             }
         },
         onScreenPointerMove(clientX) {
@@ -181,6 +187,7 @@ export default {
             return newPosition;
         },
         scrollFilm(newPosition, duration) {
+            this.isRenderingTriggeredByScroll = true;
             anime({
                 targets: this.$el,
                 scrollLeft: {
