@@ -38,6 +38,7 @@
 <script>
 import $ from 'jquery';
 import _ from 'lodash';
+import anime from 'animejs';
 import Slide from '../Slide/Slide';
 import {
     createArrayPropConfig, createNumberPropConfig,
@@ -57,6 +58,7 @@ export default {
             RESPONSE_DELTA_X: 15,
             isScreenOverflowing: null,
             isFilmTransparent: true, // вместо isFilmShown, так как v-show мешает анимации
+            haveSlidesBeenMounted: false,
             isSlideIntransitive: false,
             isLastSlideRendered: false,
             startCoord: null,
@@ -114,10 +116,13 @@ export default {
             if (slideIndex === this.slideCount - 1) {
                 this.isLastSlideRendered = true;
                 if (this.isScreenOverflowing) {
-                    this.scrollFilm(
-                        this.computeNewPosition(), 0,
-                    );
+                    if (!this.haveSlidesBeenMounted) {
+                        this.scrollFilm(
+                            this.computeNewPosition(), 0,
+                        );
+                    }
                 }
+                this.haveSlidesBeenMounted = true;
             }
         },
         onScreenPointerMove(clientX) {
@@ -175,8 +180,8 @@ export default {
 
             return newPosition;
         },
-        scrollFilm(newPosition, duration = 700) {
-            this.$anime({
+        scrollFilm(newPosition, duration) {
+            anime({
                 targets: this.$el,
                 scrollLeft: {
                     value: newPosition,

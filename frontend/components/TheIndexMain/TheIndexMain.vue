@@ -1,6 +1,6 @@
 <template lang="pug">
   main
-    the-biography-block
+    //- the-biography-block
     the-paintings-block
 </template>
 
