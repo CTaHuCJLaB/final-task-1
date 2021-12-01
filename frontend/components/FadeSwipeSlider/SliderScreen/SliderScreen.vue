@@ -79,7 +79,11 @@ export default {
     },
     watch: {
         activeSlideIndex() {
-            this.refreshScreen();
+            if (this.isScreenOverflowing) {
+                this.scrollFilm(
+                    this.computeNewPosition(),
+                );
+            }
         },
     },
     mounted() {
@@ -92,12 +96,9 @@ export default {
         });
         $(window).on('resize', () => {
             if (this.isScreenOverflowing) {
-                this.slideWidth = $(this.$refs.slides[0].$el).width();
-                const filmContentWidth = $(this.$refs.film).width();
-                const slidesWidth = this.slideWidth * this.slideCount;
-                this.slideGap = (filmContentWidth - slidesWidth) /
-                    (this.slideCount - 1);
-                this.refreshScreen(0);
+                this.scrollFilm(
+                    this.computeNewPosition(), 0,
+                );
                 this.isSlideIntransitive = true;
             } else {
                 this.isSlideIntransitive = false;
@@ -108,12 +109,9 @@ export default {
         onSlideMounted(slideIndex) {
             if (slideIndex === this.slideCount - 1) {
                 if (this.isScreenOverflowing) {
-                    this.slideWidth = $(this.$refs.slides[0].$el).width();
-                    const filmContentWidth = $(this.$refs.film).width();
-                    const slidesWidth = this.slideWidth * this.slideCount;
-                    this.slideGap = (filmContentWidth - slidesWidth) /
-                        (this.slideCount - 1);
-                    this.refreshScreen(0);
+                    this.scrollFilm(
+                        this.computeNewPosition(), 0,
+                    );
                 }
             }
         },
@@ -159,11 +157,18 @@ export default {
                 }
             }
         },
-        refreshScreen(duration) {
-            const { activeSlideIndex, slideWidth, slideGap } = this;
-            const newPosition = activeSlideIndex *
+        computeNewPosition() {
+            const slideWidth = $(this.$refs.slides[0].$el)
+                .width();
+            const filmContentWidth = $(this.$refs.film)
+                .width();
+            const slidesWidth = slideWidth * this.slideCount;
+            const slideGap = (filmContentWidth - slidesWidth) /
+                (this.slideCount - 1);
+            const newPosition = this.activeSlideIndex *
                 (slideWidth + slideGap);
-            this.scrollFilm(newPosition, duration);
+
+            return newPosition;
         },
         scrollFilm(newPosition, duration = 700) {
             this.$anime({
