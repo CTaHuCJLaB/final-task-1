@@ -28,7 +28,7 @@
                 slide(
                     v-for="(slide, index) in renderedSlides"
                     ref="slides"
-                    :key="slide.title + activeSlideIndex"
+                    :key="slide.title + index"
                     :class="{ 'is-intransitive': isSlideIntransitive }"
                     :isScreenOverflowing="isScreenOverflowing"
                     :slide="slide"
