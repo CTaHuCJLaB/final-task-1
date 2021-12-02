@@ -1,0 +1,50 @@
+.section--creativity {
+    min-height: 1543px;
+
+    @include mq($minMobileWidth) {
+        min-height: 2000px;
+    }
+
+    @include mq($maxMobileWidth + 1, $maxTabletWidth) {
+        min-height: 1773px;
+    }
+}
+
+.section {
+    &__content {
+        row-gap: 40px;
+    }
+
+    &__intro {
+        display: grid;
+        align-content: start;
+        align-items: start;
+        grid-template-columns: 257px 476px;
+        column-gap: 64px;
+
+        &-paragraph {
+            width: 476px;
+            font-size: 20px;
+            line-height: 30px;
+        }
+    }
+
+    .section__hr {
+        width: 100%;
+        background-color: $colorLight;
+    }
+
+    &__columns {
+        display: grid;
+        grid-template-columns: 439px 240px;
+        column-gap: 81px;
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+}
+
+.p {
+    width: 439px;
+    letter-spacing: 0.3px;
+    color: $colorDarkGray1;
+}

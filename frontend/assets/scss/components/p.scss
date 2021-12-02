@@ -11,10 +11,4 @@
     @include mq($minTabletWidth, $maxTabletWidth) {
         width: 727px;
     }
-
-    &--narrow {
-        width: 440px;
-        letter-spacing: 0.3px;
-        color: $colorDarkGray1;
-    }
 }

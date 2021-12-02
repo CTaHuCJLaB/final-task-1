@@ -1,0 +1,17 @@
+.first-image {
+    width: 240px;
+    height: 173px;
+
+    @extend %phrase-wrapper;
+
+}
+
+::v-deep .image__core {
+    width: 240px;
+    height: 173px;
+    color: $colorOrange;
+    background-color: $colorLightGreen;
+
+    @include mq($maxTabletWidth) {
+    }
+}

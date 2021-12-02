@@ -54,6 +54,30 @@ export const getters = {
         paintingsBlock.previews,
     slides: (state, { paintingsBlock }) =>
         paintingsBlock.slides,
+    creativityBlock: ({ homePageData }) =>
+        homePageData.creativityBlock,
+    creativityH2: (state, { creativityBlock }) =>
+        creativityBlock.h2,
+    introParagraph: (state, { creativityBlock }) =>
+        creativityBlock.introParagraph,
+    firstParagraph: (state, { creativityBlock }) =>
+        creativityBlock.firstParagraph,
+    secondParagraph: (state, { creativityBlock }) =>
+        creativityBlock.secondParagraph,
+    thirdParagraph: (state, { creativityBlock }) =>
+        creativityBlock.thirdParagraph,
+    firstImage: (state, { creativityBlock }) =>
+        creativityBlock.firstImage,
+    secondImage: (state, { creativityBlock }) =>
+        creativityBlock.secondImage,
+    creativityShareBlock: (state, { creativityBlock }) =>
+        creativityBlock.shareBlock,
+    creativityShareTitle: (state, { creativityShareBlock }) =>
+        creativityShareBlock.title,
+    creativityShareDescription: (state, { creativityShareBlock }) =>
+        creativityShareBlock.description,
+    creativityShareImage: (state, { creativityShareBlock }) =>
+        creativityShareBlock.image,
 };
 
 export const mutations = {

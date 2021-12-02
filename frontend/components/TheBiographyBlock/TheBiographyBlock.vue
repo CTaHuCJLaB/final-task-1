@@ -1,8 +1,7 @@
 <template lang="pug">
-    section(
+    section.section.section--light(
         id="block_0"
-        :class="'section section--light'\
-            + ' section--biography'"
+        :class="'section--biography'"
     )
         .section__content
             .section__grid

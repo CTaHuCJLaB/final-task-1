@@ -21,13 +21,13 @@
     },
     "firstImage": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "image.image",
       "required": true
     },
     "secondImage": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "image.image",
       "required": true
     },
