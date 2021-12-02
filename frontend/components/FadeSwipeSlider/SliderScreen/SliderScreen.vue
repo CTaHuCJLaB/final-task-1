@@ -137,18 +137,16 @@ export default {
             }
             const endCoord = clientX;
             const deltaX = endCoord - this.startCoord;
-            if (
-                this.activeSlideIndex > 0 &&
-                deltaX > this.RESPONSE_DELTA_X
-            ) {
-                this.decActiveSlideIndex();
-                this.startCoord = null;
-            } else if (
-                this.activeSlideIndex < this.slideCount - 1 &&
-                deltaX < -this.RESPONSE_DELTA_X
-            ) {
-                this.incActiveSlideIndex();
-                this.startCoord = null;
+            if (deltaX > this.RESPONSE_DELTA_X) {
+                if (this.activeSlideIndex > 0) {
+                    this.decActiveSlideIndex();
+                    this.startCoord = null;
+                }
+            } else if (deltaX < -this.RESPONSE_DELTA_X) {
+                if (this.activeSlideIndex < this.slideCount - 1) {
+                    this.incActiveSlideIndex();
+                    this.startCoord = null;
+                }
             }
         },
         decActiveSlideIndex() {
