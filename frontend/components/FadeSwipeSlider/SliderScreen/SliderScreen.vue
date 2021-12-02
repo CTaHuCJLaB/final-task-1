@@ -4,7 +4,7 @@
     //- вo Vue + Chrome в режиме эмуляции мобильного
     .slider-screen(
         @pointerdown.left.prevent="\
-            startCoord = $event.clientX\
+            startX = $event.clientX\
         "
         @pointermove.prevent="\
             onScreenPointerMove($event.clientX)\
@@ -14,6 +14,7 @@
                 $event.touches[0].clientX\
             )\
         "
+        @pointerup.left.prevent="startX = null"
     )
         client-only(placeholder="Загрузка...")
             component(
@@ -62,7 +63,7 @@ export default {
             isRenderingTriggeredByScroll: false,
             isLastSlideRendered: false,
             isSlideIntransitive: false,
-            startCoord: null,
+            startX: null,
             slideWidth: 0,
             slideGap: 0,
             isScreenRefreshed: true,
@@ -132,20 +133,20 @@ export default {
             }
         },
         onScreenPointerMove(clientX) {
-            if (!this.isScreenOverflowing || !this.startCoord) {
+            if (!this.isScreenOverflowing || !this.startX) {
                 return;
             }
-            const endCoord = clientX;
-            const deltaX = endCoord - this.startCoord;
+            const endX = clientX;
+            const deltaX = endX - this.startX;
             if (deltaX > this.RESPONSE_DELTA_X) {
                 if (this.activeSlideIndex > 0) {
                     this.decActiveSlideIndex();
-                    this.startCoord = null;
+                    this.startX = null;
                 }
             } else if (deltaX < -this.RESPONSE_DELTA_X) {
                 if (this.activeSlideIndex < this.slideCount - 1) {
                     this.incActiveSlideIndex();
-                    this.startCoord = null;
+                    this.startX = null;
                 }
             }
         },
