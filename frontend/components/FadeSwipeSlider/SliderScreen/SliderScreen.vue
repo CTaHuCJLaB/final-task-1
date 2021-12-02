@@ -93,12 +93,12 @@ export default {
     mounted() {
         $(window).on('load', () => {
             this.isFilmTransparent = false;
-            this.isScreenOverflowing = $(this.$el)
-                .css('overflow-x') === 'hidden';
+            this.isScreenOverflowing = this
+                .findOutScreenOverflowing();
         });
         $(window).on('resize', () => {
-            this.isScreenOverflowing = $(this.$el)
-                .css('overflow-x') === 'hidden';
+            this.isScreenOverflowing = this
+                .findOutScreenOverflowing();
             if (this.isScreenOverflowing) {
                 if (this.isLastSlideRendered) {
                     this.scrollFilm(
@@ -199,6 +199,10 @@ export default {
                     this.isScreenRefreshed = true;
                 },
             });
+        },
+        findOutScreenOverflowing() {
+            return $(this.$el)
+                .css('overflow-x') === 'hidden';
         },
     },
 };
