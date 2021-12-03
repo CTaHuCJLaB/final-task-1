@@ -22,10 +22,22 @@
         grid-template-columns: 257px 476px;
         column-gap: 64px;
 
+        @include mq($maxTabletWidth) {
+            grid-template-columns: 100%;
+            row-gap: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
         &-paragraph {
             width: 476px;
             font-size: 20px;
             line-height: 30px;
+            letter-spacing: 0.35px;
+
+            @include mq($maxTabletWidth) {
+                width: 100%;
+            }
         }
     }
 
@@ -40,11 +52,53 @@
         column-gap: 81px;
         padding-left: 80px;
         padding-right: 80px;
+
+        @include mq($maxTabletWidth) {
+            grid-template-columns: 100%;
+            row-gap: 40px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+
+    &__grid {
+        display: grid;
+        align-content: start;
+        align-items: start;
+        grid-template-columns: repeat(2, 440px);
+        column-gap: 40px;
+        row-gap: 62px;
+        width: 100%;
+        min-height: 538px;
+
+        @include mq($maxTabletWidth) {
+            grid-template-columns: 100%;
+            row-gap: 22px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
     }
 }
 
 .p {
     width: 439px;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.42px;
     color: $colorDarkGray1;
+
+    @include mq($maxTabletWidth) {
+        width: 100%;
+    }
+}
+
+.second-image {
+    @include mq($maxTabletWidth) {
+        margin-top: -20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+::v-deep .image__core {
+    color: $colorOrange;
+    background-color: $colorLightGreen;
 }

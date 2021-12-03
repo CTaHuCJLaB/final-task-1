@@ -1,0 +1,16 @@
+.second-image {
+    display: grid;
+    width: 920px;
+    height: 667px;
+
+    @extend %phrase-wrapper;
+
+    @include mq($maxTabletWidth) {
+        width: calc(100vw - 2 * 20px);
+        height: calc(204 / 280 * (100vw - 2 * 20px));
+    }
+}
+
+::v-deep .image__core {
+    height: 100%;
+}

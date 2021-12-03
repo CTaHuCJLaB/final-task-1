@@ -1,9 +1,14 @@
 .first-image {
+    display: grid;
     width: 240px;
     height: 173px;
 
     @extend %phrase-wrapper;
 
+    @include mq($maxTabletWidth) {
+        width: calc(100vw - 2 * 20px);
+        height: calc(173 / 280 * (100vw - 2 * 20px));
+    }
 }
 
 ::v-deep .image__core {
@@ -13,5 +18,7 @@
     background-color: $colorLightGreen;
 
     @include mq($maxTabletWidth) {
+        width: 100%;
+        height: 100%;
     }
 }

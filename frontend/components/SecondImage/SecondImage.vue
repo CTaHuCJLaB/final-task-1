@@ -1,5 +1,5 @@
 <template lang="pug">
-    p.first-image
+    p.second-image
         base-image(
             :title="image.title"
             :alt="image.alt"
@@ -25,8 +25,8 @@ export default {
                         canvasWidth: 'calc(100vw - 40px)',
                     },
                     desktop: {
-                        x1Width: 240,
-                        canvasWidth: '240px',
+                        x1Width: 920,
+                        canvasWidth: '920px',
                     },
                 },
             );
@@ -36,5 +36,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import 'first-image.scss';
+    @import 'second-image.scss';
 </style>
