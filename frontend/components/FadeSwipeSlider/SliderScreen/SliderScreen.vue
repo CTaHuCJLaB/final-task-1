@@ -60,7 +60,6 @@ export default {
             RESPONSE_DELTA_X: 15,
             isScreenOverflowing: null,
             isFilmTransparent: true, // вместо isFilmShown, так как v-show мешает анимации
-            isRenderingTriggeredByScroll: false,
             isLastSlideRendered: false,
             isSlideIntransitive: false,
             startX: null,
@@ -105,8 +104,6 @@ export default {
                     this.scrollFilm(
                         this.computeNewPosition(), 0,
                     );
-                } else {
-                    this.isRenderingTriggeredByScroll = false;
                 }
                 this.isSlideIntransitive = true;
             } else {
@@ -124,11 +121,9 @@ export default {
             if (slideIndex === this.slideCount - 1) {
                 if (this.isScreenOverflowing) {
                     this.isLastSlideRendered = true;
-                    if (!this.isRenderingTriggeredByScroll) {
-                        this.scrollFilm(
-                            this.computeNewPosition(), 0,
-                        );
-                    }
+                    this.scrollFilm(
+                        this.computeNewPosition(), 0,
+                    );
                 }
             }
         },
@@ -186,7 +181,6 @@ export default {
             return newPosition;
         },
         scrollFilm(newPosition, duration) {
-            this.isRenderingTriggeredByScroll = true;
             anime({
                 targets: this.$el,
                 scrollLeft: {
