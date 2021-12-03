@@ -50,8 +50,13 @@ export default {
         ...mapGetters([
             'biographyH2',
             'lifeEvents',
-            'biographyShareBlock',
         ]),
+        ...mapGetters({
+            shareTitle: 'biographyShareTitle',
+            shareDescription:
+                'biographyShareDescription',
+            shareImage: 'biographyShareImage',
+        }),
         processedLifeEvents() {
             let processedLifeEvents = this.lifeEvents;
             if (this.isEventListMinimized) {
@@ -60,18 +65,6 @@ export default {
             }
 
             return processedLifeEvents;
-        },
-        shareTitle() {
-            return this.biographyShareBlock
-                .title;
-        },
-        shareDescription() {
-            return this.biographyShareBlock
-                .description;
-        },
-        shareImage() {
-            return process.env.baseURL +
-                this.biographyShareBlock.image.url;
         },
     },
     methods: {

@@ -35,19 +35,19 @@ export default {
     computed: {
         ...mapGetters({
             h2: 'creativityH2',
-            introParagraph: 'introParagraph',
-            firstParagraph: 'firstParagraph',
-            secondParagraph: 'secondParagraph',
-            thirdParagraph: 'thirdParagraph',
-            firstImage: 'firstImage',
-            secondImage: 'secondImage',
             shareTitle: 'creativityShareTitle',
-            shareDescription: 'creativityShareDescription',
+            shareDescription:
+                'creativityShareDescription',
             shareImage: 'creativityShareImage',
         }),
-    },
-    mounted() {
-        console.log(this.firstImage);
+        ...mapGetters([
+            'introParagraph',
+            'firstParagraph',
+            'secondParagraph',
+            'thirdParagraph',
+            'firstImage',
+            'secondImage',
+        ]),
     },
 };
 </script>

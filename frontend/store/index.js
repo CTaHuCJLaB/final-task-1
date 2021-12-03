@@ -46,6 +46,12 @@ export const getters = {
             .value(),
     biographyShareBlock: (state, { biographyBlock }) =>
         biographyBlock.shareBlock,
+    biographyShareTitle: (state, { biographyShareBlock }) =>
+        biographyShareBlock.title,
+    biographyShareDescription: (state, { biographyShareBlock }) =>
+        biographyShareBlock.description,
+    biographyShareImage: (state, { biographyShareBlock }) =>
+        biographyShareBlock.image.url,
     paintingsBlock: ({ homePageData }) =>
         homePageData.paintingsBlock,
     previewTitlePrefix: (state, { paintingsBlock }) =>
@@ -77,7 +83,7 @@ export const getters = {
     creativityShareDescription: (state, { creativityShareBlock }) =>
         creativityShareBlock.description,
     creativityShareImage: (state, { creativityShareBlock }) =>
-        creativityShareBlock.image,
+        creativityShareBlock.image.url,
 };
 
 export const mutations = {
