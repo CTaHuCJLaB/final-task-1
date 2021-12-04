@@ -7,7 +7,9 @@
 
 }
 
-::v-deep .internal-link__core {
-    max-width: 83px;
-    color: $colorLightGray;
+::v-deep .button--all {
+    .button__core {
+        max-width: 83px;
+        color: $colorLightGray;
+    }
 }

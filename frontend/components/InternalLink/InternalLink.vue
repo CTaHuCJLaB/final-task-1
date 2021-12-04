@@ -1,6 +1,6 @@
 <template lang="pug">
-    p.internal-link
-        nuxt-link.internal-link__core(
+    p.button
+        nuxt-link.button__core(
             :to="{ path, hash }"
         ) {{ title }}
 </template>
@@ -18,5 +18,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'internal-link.scss';
+// @import 'internal-link.scss';
 </style>

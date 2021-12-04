@@ -130,8 +130,12 @@ img {
 
 a {
     text-decoration: none;
-    color: inherit;
     transition: color 0.5s $easeInOutCirc, border 0.5s $easeInOutCirc, background 0.5s $easeInOutCirc, opacity 0.5s $easeInOutCirc;
+}
+
+a,
+button {
+    color: inherit;
 }
 
 button,

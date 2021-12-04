@@ -1,7 +1,7 @@
 <template lang="pug">
     .random-slider-navbar
         slider-pagination
-        internal-link(
+        internal-link.button--all(
             path="/paintings"
             title="все картины"
         )

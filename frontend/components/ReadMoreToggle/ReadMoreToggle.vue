@@ -1,6 +1,5 @@
 <template lang="pug">
-    base-toggle(
-        :class="`button--read-more`"
+    base-toggle.button--read-more(
         :states="states"
         :action-object="actionObject"
     )

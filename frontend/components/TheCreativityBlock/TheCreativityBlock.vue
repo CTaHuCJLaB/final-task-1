@@ -25,7 +25,7 @@
                     :data-description="shareDescription"
                     :data-image="shareImage"
                 )
-                internal-link(
+                internal-link.button--read-more(
                     path="/creativity"
                     :title="readMoreLinkTitle"
                 )
