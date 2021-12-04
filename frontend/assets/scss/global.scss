@@ -31,16 +31,6 @@ html {
     background-color: $colorLightBlack;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-    &.is-mobile-overflow {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        -webkit-overflow-scrolling: auto;
-    }
 }
 
 body {
@@ -62,22 +52,6 @@ body {
     margin-right: auto;
     margin-bottom: 0;
     margin-left: auto;
-    overflow: hidden auto;
-
-    &.is-overflow {
-        overflow: hidden;
-        -webkit-overflow-scrolling: auto;
-    }
-
-    &.is-mobile-overflow {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        -webkit-overflow-scrolling: auto;
-    }
 
     $gridColor: #000;
     $gridCutterWidth: percentage(30 / 1110);
