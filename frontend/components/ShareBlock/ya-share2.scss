@@ -1,3 +1,11 @@
+.ya-share2 {
+    width: 302px;
+
+    @include mq($maxTabletWidth) {
+        width: 272px;
+    }
+}
+
 ::v-deep .ya-share2 {
     &__container {
         display: grid;
@@ -8,11 +16,6 @@
         display: grid;
         grid-template-columns: repeat(3, auto);
         gap: 10px;
-        width: 302px;
-
-        @include mq($maxTabletWidth) {
-            width: 272px;
-        }
     }
 
     &__badge {

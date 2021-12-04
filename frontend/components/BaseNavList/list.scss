@@ -26,7 +26,7 @@
     }
 }
 
-::v-deep .internal-link__core {
+::v-deep .button__core {
     max-width: 73px;
 
     @include mq($maxTabletWidth) {

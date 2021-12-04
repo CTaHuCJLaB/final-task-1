@@ -5,7 +5,7 @@
         min-height: 1166px;
     }
 
-    @include mq($maxMobileWidth + 1, $maxTabletWidth) {
+    @include mq($minMobileWidth + 1, $maxTabletWidth) {
         min-height: 724px;
     }
 
@@ -57,24 +57,24 @@
     @include mq($minTabletWidth, $maxTabletWidth) {
         width: 727px;
     }
-}
 
-.ya-share2 {
-    @include mq($maxTabletWidth) {
-        justify-self: start;
-        grid-row: 4 / 5;
-        margin-top: 10px;
+    .ya-share2 {
+        @include mq($maxTabletWidth) {
+            justify-self: start;
+            grid-row: 4 / 5;
+            margin-top: 10px;
+        }
     }
-}
 
-.button--read-more {
-    justify-self: end;
-    margin-top: 6px;
-    margin-right: 19px;
+    .button--read-more {
+        justify-self: end;
+        margin-top: 6px;
+        margin-right: 19px;
 
-    @include mq($maxTabletWidth) {
-        justify-self: start;
-        margin-top: 2px;
-        margin-right: 0;
+        @include mq($maxTabletWidth) {
+            justify-self: start;
+            margin-top: 2px;
+            margin-right: 0;
+        }
     }
 }

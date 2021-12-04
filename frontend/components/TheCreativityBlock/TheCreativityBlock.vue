@@ -17,7 +17,7 @@
             .section__grid
                 p.p
                     | {{secondParagraph}}
-                p.p
+                p.p.p--third
                     | {{thirdParagraph}}
                 share-block(
                     block-anchor="block_1"

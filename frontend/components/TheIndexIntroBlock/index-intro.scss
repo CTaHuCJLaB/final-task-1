@@ -26,9 +26,9 @@
         grid-template-areas:
             'vertical-h1 horizontal-h1'
             'vertical-h1 paragraph';
-        grid-template-columns: repeat(2, auto);
+        grid-template-columns: 100px 520px;
         gap: 20px;
-        width: 645px;
+        width: 640px;
         min-height: 315px;
 
         @include mq($maxTabletWidth) {
