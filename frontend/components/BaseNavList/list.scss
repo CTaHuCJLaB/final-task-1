@@ -1,17 +1,16 @@
 .list--nav {
     row-gap: 20px;
-    column-gap: 24px;
+    column-gap: 21px;
     width: 307px;
-    min-height: 29px;
-    padding-top: 5px;
+    min-height: 16px;
     line-height: 16.1px;
+    letter-spacing: 0.3px;
 
     @include mq($maxTabletWidth) {
         flex-direction: column;
         align-items: stretch;
         gap: 0;
         width: 100%;
-        padding-top: 0;
         text-align: center;
     }
 }
@@ -27,7 +26,7 @@
 }
 
 ::v-deep .button__core {
-    max-width: 73px;
+    max-width: 75px;
 
     @include mq($maxTabletWidth) {
         max-width: 100%;

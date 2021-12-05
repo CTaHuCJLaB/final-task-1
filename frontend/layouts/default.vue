@@ -1,7 +1,7 @@
 <template lang="pug">
     div
         nuxt
-        main-nav-list
+        the-footer
 </template>
 
 <script>

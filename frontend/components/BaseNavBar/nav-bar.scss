@@ -47,6 +47,14 @@
     }
 }
 
+::v-deep .sliding {
+    margin-top: 5px;
+
+    @include mq($maxTabletWidth) {
+        margin-top: 0;
+    }
+}
+
 .is-closed {
     .list--nav {
         @include hidden-on-mobile;

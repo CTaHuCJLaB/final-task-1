@@ -12,6 +12,14 @@ export const getters = {
         _(defaultLayoutData.navTitles)
             .map(navTitle => navTitle.title)
             .value(),
+    footerShareBlock: ({ defaultLayoutData }) =>
+        defaultLayoutData.shareBlock,
+    footerShareTitle: (state, { footerShareBlock }) =>
+        footerShareBlock.title,
+    footerShareDescription: (state, { footerShareBlock }) =>
+        footerShareBlock.description,
+    footerShareImage: (state, { footerShareBlock }) =>
+        footerShareBlock.image.url,
     paintingTitlePrefix: ({ homePageData }) =>
         homePageData.paintingTitlePrefix,
     holidayImageTitle: ({ homePageData }) =>
