@@ -1,15 +1,15 @@
 <template lang="pug">
-    crossed-out-button.button--arrow-right(
+    arrow-button.button--arrow-right(
         v-bind="$attrs"
     )
 </template>
 
 <script>
-import CrossedOutButton from '../CrossedOutButton/CrossedOutButton';
+import ArrowButton from '../ArrowButton/ArrowButton';
 
 export default {
     components: {
-        CrossedOutButton,
+        ArrowButton,
     },
     provide: {
         outerControlState: {
