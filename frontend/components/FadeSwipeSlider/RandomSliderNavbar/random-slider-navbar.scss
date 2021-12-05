@@ -5,20 +5,25 @@
     column-gap: 58px;
     row-gap: 40px;
     width: 920px;
+
+    @include mq($maxTabletWidth) {
+        width: auto;
+    }
 }
 
 ::v-deep .button--all {
     .button__core {
         position: relative;
-        max-width: 83px;
+        max-width: 100px;
+        padding-right: 17px;
         color: $colorLightGray;
         letter-spacing: 0.3px;
 
         &::after {
             content: '';
             position: absolute;
-            top: calc(50% - 4.5px / 2 + 1px);
-            right: -14.5px;
+            top: calc(50% - 4.5px / 2 + 1.5px);
+            right: 1px;
             width: 4.5px;
             height: 4.5px;
             border-top: 1.5px solid $colorLightGray;
