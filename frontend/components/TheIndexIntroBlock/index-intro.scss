@@ -3,9 +3,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-    min-height: calc(100vh - 34px - 29px - 3 * 45px - 60px - 40px);
-    padding-right: calc((Max(130vh, 100%) + Max(352px, 460 / 800 * 100vh) - 920px) / 2);
-    padding-left: 80px;
+    min-height: calc(
+        100vh - 35px - 29px - 3 * 45px - 60px - 39px
+    );
+    --image-width: Max(352px, 460 / 800 * 100vh);
+    --viewport-width: 100% + var(--image-width);
+    padding-right: calc(
+        (var(--viewport-width) - 920px) / 2
+    );
 
     @include mq($maxTabletWidth) {
         justify-content: start;
@@ -77,6 +82,10 @@
         line-height: 58.55px;
         white-space: nowrap;
         transform: rotate(-90deg) translate(-223px, -21px);
+
+        @media (max-width: calc(1440 / 800 * 100vh)) {
+            margin-left: 40px;
+        }
 
         @include mq($maxTabletWidth) {
             font-size: 20px;
