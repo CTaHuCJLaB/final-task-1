@@ -5,31 +5,31 @@ import getUrlSets from '../utils/getUrlSets';
 import { createSrcSet, createRestSrcSets } from '../utils/srcSets';
 
 export default
-(imageParamSets, dotsPerPixelArray) => {
+(image, dimensions, dotsPerPixelArray) => {
     let zero1xWidth;
     let zeroNotWebpUrlSet;
     let zeroWebpUrlSet;
-    if (imageParamSets[0]) {
-        zero1xWidth = imageParamSets[0].x1Width;
-        zeroNotWebpUrlSet = imageParamSets[0]
-            .relativeUrls.notWebp;
-        zeroWebpUrlSet = imageParamSets[0]
-            .relativeUrls.webp;
+    if (dimensions.mobile) {
+        zero1xWidth = dimensions.mobile.x1Width;
+        zeroNotWebpUrlSet = _(image.mobile.notWebp)
+            .map(({ url }) => url).value();
+        zeroWebpUrlSet = _(image.mobile.webp)
+            .map(({ url }) => url).value();
     }
-    const restImageParamSets = _(imageParamSets)
-        .filter((imageParamSets, key) => key > 0)
+    const restDimensions = _(dimensions)
+        .pickBy((dimension, key) => key !== 'mobile')
         .value();
     const restNotWebpUrlSets = getUrlSets(
-        restImageParamSets, 'notWebp',
+        image, restDimensions, 'notWebp',
     );
     const restWebpUrlSets = getUrlSets(
-        restImageParamSets, 'webp',
+        image, restDimensions, 'webp',
     );
     const rest1xWidths = get1xWidths(
-        restImageParamSets,
+        restDimensions,
     );
     const zeroNotWebpSrcSet = computed(
-        () => imageParamSets[0]
+        () => dimensions.mobile
             ? createSrcSet(
                 _(dotsPerPixelArray)
                     .slice(1).value(),
@@ -51,7 +51,7 @@ export default
             .value(),
     );
     const zeroWebpSrcSet = computed(
-        () => imageParamSets[0]
+        () => dimensions.mobile
             ? [
                 createSrcSet(
                     dotsPerPixelArray,

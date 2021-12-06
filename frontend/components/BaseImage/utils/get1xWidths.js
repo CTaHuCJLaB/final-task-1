@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-export default imageParamSets =>
-    _(imageParamSets).map(
+export default dimensions =>
+    _(dimensions).map(
         ({ x1Width }) => x1Width,
     ).value();

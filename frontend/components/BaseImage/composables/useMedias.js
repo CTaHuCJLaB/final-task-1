@@ -1,20 +1,18 @@
 import _ from 'lodash';
 import minBreakpoints from '@/modules/minBreakpoints';
+import devices from '@/modules/devices';
 
-export default imageParamSets => (
+export default dimensions => (
     _(minBreakpoints)
         .filter(
-            (media, index) => (
-                _(imageParamSets)
-                    .has(index)
-            ),
+            (media, index) =>
+                _(dimensions).has(devices[index]),
         )
         .map(
-            minBreakpoint => (
+            minBreakpoint =>
                 (minBreakpoint > 0)
                     ? `(min-width: ${minBreakpoint}px)`
-                    : null
-            ),
+                    : null,
         )
         .reverse()
         .value()

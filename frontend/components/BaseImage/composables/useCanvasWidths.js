@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import { computed } from '@nuxtjs/composition-api';
 
-export default imageParamSets => {
+export default dimensions => {
     const canvasWidths = computed(
-        () => _(imageParamSets.value)
+        () => _(dimensions)
             .map(({ canvasWidth }) => canvasWidth)
             .reverse()
             .value(),

@@ -41,7 +41,6 @@ import { toRefs } from '@nuxtjs/composition-api';
 import useMedias from './composables/useMedias';
 import useSrcSets from './composables/useSrcSets';
 import useCanvasWidths from './composables/useCanvasWidths';
-import { createImageParamSets } from './utils/imageDataPreparing';
 import {
     createObjectPropConfig, createArrayPropConfig,
 } from '@/modules/propConfigs';
@@ -58,25 +57,22 @@ export default {
     },
     setup(props) {
         const { image, dimensions } = toRefs(props);
-        const imageParamSets = createImageParamSets(
-            image.value, dimensions.value,
-        );
-        const medias = useMedias(imageParamSets);
-        const src = imageParamSets[0]
+        const medias = useMedias(dimensions.value);
+        const src = dimensions.value.mobile
             ? process.env.baseURL +
-                imageParamSets[0]
-                    .relativeUrls.notWebp[0]
+                image.value.mobile
+                    .notWebp[0].url
             : '';
         const {
             zeroNotWebpSrcSet, restNotWebpSrcSets,
             webpSrcSets,
         } = useSrcSets(
-            imageParamSets,
+            image.value, dimensions.value,
             props.dotsPerPixelArray,
         );
         const {
             canvasWidths, lastCanvasWidth,
-        } = useCanvasWidths(imageParamSets);
+        } = useCanvasWidths(dimensions.value);
         return {
             medias,
             src,
