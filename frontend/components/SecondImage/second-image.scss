@@ -5,7 +5,12 @@
 
     @extend %phrase-wrapper;
 
-    @include mq($maxTabletWidth) {
+    @include mq($minMobileWidth) {
+        width: $minMobileWidth - 2 * 20px;
+        height: 204 / 280 * ($minMobileWidth - 2 * 20px);
+    }
+
+    @include mq($minMobileWidth + 1, $maxTabletWidth) {
         width: calc(100vw - 2 * 20px);
         height: calc(204 / 280 * (100vw - 2 * 20px));
     }
