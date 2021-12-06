@@ -41,19 +41,13 @@ import { toRefs } from '@nuxtjs/composition-api';
 import useMedias from './composables/useMedias';
 import useSrcSets from './composables/useSrcSets';
 import useCanvasWidths from './composables/useCanvasWidths';
-import {
-    createObjectPropConfig, createArrayPropConfig,
-} from '@/modules/propConfigs';
+import { createObjectPropConfig } from '@/modules/propConfigs';
 
 export default {
     inheritAttrs: false,
     props: {
         image: createObjectPropConfig(),
         dimensions: createObjectPropConfig(),
-        dotsPerPixelArray:
-            createArrayPropConfig(
-                () => [1, 1.5, 2, 3, 4],
-            ),
     },
     setup(props) {
         const { image, dimensions } = toRefs(props);
@@ -68,7 +62,6 @@ export default {
             webpSrcSets,
         } = useSrcSets(
             image.value, dimensions.value,
-            props.dotsPerPixelArray,
         );
         const {
             canvasWidths, lastCanvasWidth,

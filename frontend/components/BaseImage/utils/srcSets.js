@@ -2,43 +2,33 @@ import _ from 'lodash';
 import { createSrc } from './base';
 
 export const createSrcSet = (
-    dotsPerPixelArray,
-    relativeUrls, x1Width,
-) => _(dotsPerPixelArray).map(
-    (dotsPerPixel, index, array) => (
-        createSrc(
-            relativeUrls[index], x1Width,
-            dotsPerPixel, index, array.length,
-        )
-    ),
-).join(' ');
-
-const addSrcSet = (
-    srcSets, dotsPerPixelArray,
-    relativeUrls, x1Width,
+    srcs, x1Width,
 ) => {
-    const newSrcSet = createSrcSet(
-        dotsPerPixelArray,
-        relativeUrls, x1Width,
-    );
+    const sortedSrcs = _(srcs)
+        .sortBy(({ caption }) => caption)
+        .value();
+
+    return _(sortedSrcs).map(
+        ({ caption, url }, index, array) =>
+            createSrc(
+                url, x1Width, caption,
+                index, array.length,
+            ),
+    ).join(' ');
+};
+
+const addSrcSet = (srcSets, srcs, x1Width) => {
+    const newSrcSet = createSrcSet(srcs, x1Width);
     srcSets.push(newSrcSet);
 };
 
-export const createRestSrcSets = (
-    dotsPerPixelArray,
-    relativeUrlSets, x1Width,
-) => {
+export const createRestSrcSets = (srcsList, x1Widths) => {
     const srcSets = [];
-    _(relativeUrlSets)
-        .forEach(
-            (relativeUrlSet, index) => {
-                addSrcSet(
-                    srcSets,
-                    dotsPerPixelArray,
-                    relativeUrlSet,
-                    x1Width[index],
-                );
-            },
-        );
+    _(srcsList).forEach(
+        (srcs, index) => addSrcSet(
+            srcSets, srcs, x1Widths[index],
+        ),
+    );
+
     return srcSets;
 };
