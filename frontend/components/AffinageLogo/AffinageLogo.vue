@@ -8,30 +8,28 @@
                 class="image--affinage"
                 :title="image.title"
                 :alt="image.alt"
-                :image-param-sets="imageParamSets"
+                :image="image"
+                :dimensions="dimensions"
             )
 </template>
 
 <script>
-import { createImageParamSets } from '@/modules/imageDataPreparing';
-
 export default {
+    data() {
+        return {
+            dimensions: {
+                desktop: {
+                    x1Width: 60,
+                    canvasWidth: '60px',
+                },
+            },
+        };
+    },
     computed: {
         image() {
             return this.$store
                 .state.homePageData
                 .header.logo;
-        },
-        imageParamSets() {
-            return createImageParamSets(
-                this.image,
-                {
-                    desktop: {
-                        x1Width: 60,
-                        canvasWidth: '60px',
-                    },
-                },
-            );
         },
     },
 };

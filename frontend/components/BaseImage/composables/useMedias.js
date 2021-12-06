@@ -5,7 +5,7 @@ export default imageParamSets => (
     _(minBreakpoints)
         .filter(
             (media, index) => (
-                _(imageParamSets.value)
+                _(imageParamSets)
                     .has(index)
             ),
         )

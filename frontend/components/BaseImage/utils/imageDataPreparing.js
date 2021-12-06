@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import devices from './devices';
+import devices from '@/modules/devices';
 
 const setRelativeUrls = (map, image, device, index) => {
     map[index] = {

@@ -6,9 +6,8 @@
             base-image(
                 :title="previewFullTitle"
                 :alt="preview.alt"
-                :image-param-sets="\
-                    createImageParamSets(preview)\
-                "
+                :image="preview"
+                :dimensions="dimensions"
             )
 </template>
 
@@ -18,7 +17,6 @@ import usePreviewFullTitle from './composables/usePreviewFullTitle';
 import {
     createObjectPropConfig, falsePropConfig,
 } from '@/modules/propConfigs';
-import { createImageParamSets } from '@/modules/imageDataPreparing';
 
 export default {
     props: {
@@ -33,18 +31,15 @@ export default {
 
         return { previewFullTitle };
     },
-    methods: {
-        createImageParamSets(preview) {
-            return createImageParamSets(
-                preview,
-                {
-                    desktop: {
-                        x1Width: 120,
-                        canvasWidth: '120px',
-                    },
+    data() {
+        return {
+            dimensions: {
+                desktop: {
+                    x1Width: 120,
+                    canvasWidth: '120px',
                 },
-            );
-        },
+            },
+        };
     },
 };
 </script>
