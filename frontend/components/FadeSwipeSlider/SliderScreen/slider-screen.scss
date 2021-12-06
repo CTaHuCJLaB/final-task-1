@@ -7,17 +7,35 @@
     overflow-y: hidden;
 
     @include mq($maxTabletWidth) {
-        width: 100%;
-        height: calc(156 / 320 * 100vw);
         overflow-x: hidden;
         cursor: move;
         touch-action: none;
+    }
+
+    @include mq($minMobileWidth) {
+        width: 100%;
+        height: 156px / 320 * $minMobileWidth;
+    }
+
+    @include mq($minMobileWidth + 1, $maxTabletWidth) {
+        width: 100%;
+        height: calc(156 / 320 * 100vw);
     }
 
     &__film {
         @include mq($maxTabletWidth) {
             position: relative;
             display: flex;
+        }
+
+        @include mq($minMobileWidth) {
+            column-gap: 20px / 320 * $minMobileWidth;
+            height: 156px / 320 * $minMobileWidth;
+            padding-left: 60px / 320 * $minMobileWidth;
+            padding-right: 60px / 320 * $minMobileWidth;
+        }
+
+        @include mq($minMobileWidth + 1, $maxTabletWidth) {
             column-gap: calc(20 / 320 * 100vw);
             height: calc(156 / 320 * 100vw);
             padding-left: calc(60 / 320 * 100vw);
