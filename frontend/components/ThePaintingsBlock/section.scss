@@ -4,9 +4,20 @@
     padding-bottom: 40px;
 
     @include mq($maxTabletWidth) {
-        min-height: 389px;
         padding-top: 60px;
         padding-bottom: 20px;
+    }
+
+    @include mq($minMobileWidth) {
+        min-height: 382px;
+    }
+
+    @include mq($minMobileWidth + 1, $maxMobileWidth) {
+        min-height: 389px;
+    }
+
+    @include mq($minTabletWidth, $maxTabletWidth) {
+        min-height: 533px;
     }
 }
 
@@ -15,7 +26,15 @@
     padding-top: 0;
     padding-bottom: 0;
 
-    @include mq($maxTabletWidth) {
+    @include mq($minMobileWidth) {
+        min-height: 302px;
+    }
+
+    @include mq($minMobileWidth + 1, $maxMobileWidth) {
+        min-height: 309px;
+    }
+
+    @include mq($minTabletWidth, $maxTabletWidth) {
         min-height: 453px;
     }
 }
