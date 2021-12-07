@@ -1,6 +1,6 @@
 <template lang="pug">
     .bar
-        affinage-logo
+        logo
 </template>
 
 <style lang="scss" scoped>

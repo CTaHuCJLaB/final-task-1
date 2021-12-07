@@ -1,8 +1,8 @@
 <template lang="pug">
-  figure.figure.figure--holiday
+  figure.figure.figure--vast
     figcaption.visually-hidden
       | {{figcaption}}
-    holiday-image
+    vast-image
 </template>
 
 <script>

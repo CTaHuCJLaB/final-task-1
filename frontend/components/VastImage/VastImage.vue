@@ -1,6 +1,5 @@
 <template lang="pug">
-    base-image(
-        class="image--holiday"
+    base-image.image--vast(
         :alt="image.alt"
         :image="image"
         :dimensions="dimensions"

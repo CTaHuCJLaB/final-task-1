@@ -1,6 +1,6 @@
 <template lang="pug">
   header.page-header
-    holiday-figure
+    vast-figure
     page-header-main
         template(#intro)
             the-index-intro-block
