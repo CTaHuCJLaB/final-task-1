@@ -34,7 +34,6 @@ export default {
             'src', 'https://yastatic.net/share2/share.js',
         );
         document.head.appendChild(yaShareScript);
-        console.log(this.shareServices);
     },
 };
 </script>
