@@ -59,7 +59,7 @@ export default {
         return {
             RESPONSE_DELTA_X: 15,
             isScreenOverflowing: null,
-            isFilmTransparent: true, // вместо isFilmShown, так как v-show мешает анимации
+            isFilmTransparent: false, // вместо isFilmShown, так как v-show мешает анимации
             isLastSlideRendered: false,
             isSlideIntransitive: false,
             startX: null,
@@ -91,6 +91,11 @@ export default {
         },
     },
     mounted() {
+        $(window).on('DOMContentLoaded', () => {
+            // лента со слайдами скрывается только при реальной загрузке страницы,
+            // а не при переходе с другого лэйаута при no-lazy loading
+            this.isFilmTransparent = true;
+        });
         $(window).on('load', () => {
             this.isFilmTransparent = false;
             this.isScreenOverflowing = this
