@@ -26,6 +26,9 @@ export default {
         },
     },
     mounted() {
+        // скрипт подключается здесь, а не в nuxt.config.js для того,
+        // чтобы при переходе с другого лэйаута в режиме no-lazy loading
+        // блок "Поделиться" также загружался
         const yaShareScript = document.createElement('script');
         yaShareScript.setAttribute(
             'src', 'https://yastatic.net/share2/share.js',
