@@ -1,18 +1,18 @@
-import { inject, reactive, provide }
+import { inject, provide }
 from '@nuxtjs/composition-api';
 
 export default previewTitle => {
     const outerSliderComposablesState = inject(
         'outerSliderComposablesState',
-        { paintingTitlePrefix: '' },
+        { slideTitlePrefix: '' },
     );
-    const { paintingTitlePrefix } = outerSliderComposablesState;
+    const { slideTitlePrefix } = outerSliderComposablesState;
     const description = 'Перейти к слайду ' +
-        `'${paintingTitlePrefix} ` +
+        `'${slideTitlePrefix} ` +
         `"${previewTitle}"'`;
-    const outerControlState = reactive({
+    const outerControlState = {
         description,
-    });
+    };
     provide(
         'outerControlState',
         outerControlState,

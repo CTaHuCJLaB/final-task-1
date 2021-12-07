@@ -1,4 +1,4 @@
-import { inject, toRef } from '@nuxtjs/composition-api';
+import { inject } from '@nuxtjs/composition-api';
 
 export default () => {
     const outerToggleState = inject(
@@ -6,8 +6,5 @@ export default () => {
         { isOff: true },
     );
 
-    return toRef(
-        outerToggleState,
-        'isOff',
-    );
+    return outerToggleState.isOff;
 };

@@ -8,7 +8,7 @@
 
 <script>
 import $ from 'jquery';
-import { inject, toRefs } from '@nuxtjs/composition-api';
+import { inject } from '@nuxtjs/composition-api';
 import { createStringPropConfig } from '@/modules/propConfigs';
 
 export default {
@@ -27,7 +27,7 @@ export default {
             'outerSlidingState',
             { isHidden: true },
         );
-        return toRefs(outerSlidingState);
+        return outerSlidingState;
     },
     data() {
         return {

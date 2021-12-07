@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { ref, reactive, provide } from '@nuxtjs/composition-api';
+import { ref, provide } from '@nuxtjs/composition-api';
 import { trimEachWord } from '@/modules/stringProcessing';
 
 export default {
@@ -22,9 +22,9 @@ export default {
     },
     setup() {
         const isNavBarClosed = ref(true);
-        const outerToggleState = reactive({
-            isOff: isNavBarClosed,
-        });
+        const outerToggleState = {
+            isOff: ref(isNavBarClosed),
+        };
         provide(
             'outerToggleState',
             outerToggleState,

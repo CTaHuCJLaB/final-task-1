@@ -15,15 +15,12 @@
 </template>
 
 <script>
-import {
-    reactive, computed,
-    ref, provide,
-} from '@nuxtjs/composition-api';
+import { computed, ref, provide } from '@nuxtjs/composition-api';
 
 export default {
     setup() {
         const isSearchBarOpen = ref(false);
-        const outerSearchButtonState = reactive({
+        const outerSearchButtonState = {
             description:
                 computed(
                     () => {
@@ -34,7 +31,7 @@ export default {
                         return `${action} по сайту`;
                     },
                 ),
-        });
+        };
         provide(
             'outerSearchButtonState',
             outerSearchButtonState,

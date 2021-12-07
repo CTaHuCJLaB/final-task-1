@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { inject, toRefs } from '@nuxtjs/composition-api';
+import { inject } from '@nuxtjs/composition-api';
 import createTypeProp from '@/mixins/createTypeProp';
 
 export default {
@@ -25,7 +25,7 @@ export default {
             'outerFieldState',
             { isFocused: false },
         );
-        return toRefs(outerFieldState);
+        return outerFieldState;
     },
 };
 </script>

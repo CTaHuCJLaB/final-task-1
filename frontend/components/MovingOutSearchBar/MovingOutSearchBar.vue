@@ -19,11 +19,9 @@
 </template>
 
 <script>
-import {
-    reactive, ref,
-    provide,
-} from '@nuxtjs/composition-api';
-import defineClassAnimationTrigger from '../../mixins/defineClassAnimationTrigger';
+import { ref, provide } from '@nuxtjs/composition-api';
+import defineClassAnimationTrigger
+from '../../mixins/defineClassAnimationTrigger';
 
 export default {
     mixins: [
@@ -31,10 +29,9 @@ export default {
     ],
     setup() {
         const isRollingOutDone = ref(false);
-        const outerFieldState = reactive({
-            isFocused:
-        ref(isRollingOutDone),
-        });
+        const outerFieldState = {
+            isFocused: ref(isRollingOutDone),
+        };
         provide(
             'outerFieldState',
             outerFieldState,

@@ -26,14 +26,14 @@
 <script>
 import _ from 'lodash';
 import { mapGetters } from 'vuex';
-import { ref, reactive, provide } from '@nuxtjs/composition-api';
+import { ref, provide } from '@nuxtjs/composition-api';
 
 export default {
     setup() {
         const isEventListMinimized = ref(true);
-        const outerToggleState = reactive({
-            isOff: isEventListMinimized,
-        });
+        const outerToggleState = {
+            isOff: ref(isEventListMinimized),
+        };
         provide(
             'outerToggleState',
             outerToggleState,

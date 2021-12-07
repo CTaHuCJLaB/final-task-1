@@ -1,6 +1,4 @@
-import {
-    toRef, computed, reactive, provide,
-} from '@nuxtjs/composition-api';
+import { toRef, computed, provide } from '@nuxtjs/composition-api';
 
 export default (props, isOff, onState, offState) => {
     const actionObject = toRef(
@@ -22,10 +20,10 @@ export default (props, isOff, onState, offState) => {
             return caption;
         },
     );
-    const outerControlState = reactive({
+    const outerControlState = {
         description,
         caption,
-    });
+    };
     provide(
         'outerControlState',
         outerControlState,

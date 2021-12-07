@@ -16,7 +16,7 @@
 
 <script>
 import _ from 'lodash';
-import { inject, toRefs } from '@nuxtjs/composition-api';
+import { inject } from '@nuxtjs/composition-api';
 import ImagePreviewButton
 from '../ImagePreviewButton/ImagePreviewButton';
 
@@ -33,7 +33,7 @@ export default {
             },
         );
 
-        return toRefs(outerSliderPaginationState);
+        return outerSliderPaginationState;
     },
     data() {
         return {

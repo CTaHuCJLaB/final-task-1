@@ -15,14 +15,14 @@
 </template>
 
 <script>
-import { ref, reactive, provide } from '@nuxtjs/composition-api';
+import { ref, provide } from '@nuxtjs/composition-api';
 
 export default {
     setup() {
         const isNavListHidden = ref(true);
-        const outerSlidingState = reactive({
+        const outerSlidingState = {
             isHidden: isNavListHidden,
-        });
+        };
         provide(
             'outerSlidingState',
             outerSlidingState,

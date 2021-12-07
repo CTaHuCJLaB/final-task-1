@@ -19,10 +19,7 @@
 
 <script>
 import _ from 'lodash';
-import {
-    reactive, inject, toRefs,
-    isReactive,
-} from '@nuxtjs/composition-api';
+import { inject } from '@nuxtjs/composition-api';
 import { falsePropConfig } from '@/modules/propConfigs';
 
 export default {
@@ -41,18 +38,12 @@ export default {
             'outerControlState',
             outerStateDefault,
         );
-        outerControlState = isReactive(
+        outerControlState = _.assign(
+            outerStateDefault,
             outerControlState,
-        )
-            ? toRefs(outerControlState)
-            : outerControlState;
-        outerControlState = reactive(
-            _.assign(
-                outerStateDefault,
-                outerControlState,
-            ),
         );
-        return toRefs(outerControlState);
+
+        return outerControlState;
     },
     watch: {
         isFocused(newValue, oldValue) {
