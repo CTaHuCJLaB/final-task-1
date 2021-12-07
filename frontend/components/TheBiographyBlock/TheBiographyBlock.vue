@@ -85,7 +85,7 @@ export default {
         async loadLifeEvents() {
             this.areEventsLoading = true;
             this.areEventsLoaded = await this.$store
-                .dispatch('lifeEventsLoading');
+                .dispatch('biographyBlock/lifeEventsLoading');
             this.areEventsLoading = false;
         },
     },

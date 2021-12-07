@@ -29,10 +29,6 @@ export const mutations = {
     homePageDataSetting(state, homePageData) {
         state.homePageData = homePageData;
     },
-    lifeEventsSetting({ homePageData }, lifeEvents) {
-        homePageData.biographyBlock
-            .lifeEvents = lifeEvents;
-    },
 };
 
 export const actions = {
@@ -44,14 +40,5 @@ export const actions = {
     async homePageDataLoading({ commit }) {
         const homePageData = await loadData(this, 'home-page');
         commit('homePageDataSetting', homePageData);
-    },
-    async lifeEventsLoading({ commit }) {
-        const lifeEvents = await loadData(this, 'life-events');
-
-        if (lifeEvents) {
-            commit('lifeEventsSetting', lifeEvents);
-        }
-
-        return !!lifeEvents;
     },
 };
