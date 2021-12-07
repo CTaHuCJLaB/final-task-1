@@ -3,6 +3,16 @@ const API_URL = process.env.STRAPI_URL || 'http://localhost:1337';
 
 export default {
     ssr: true,
+    module: {
+        rules: [
+            {
+                test: /\.(ts|tsx)$/,
+                loader: 'ts-loader',
+                // include: [path.resolve(__dirname, 'yourAppPath')],
+                exclude: [/node_modules/, /bower_components/],
+            },
+        ],
+    },
 
     target: 'server',
 

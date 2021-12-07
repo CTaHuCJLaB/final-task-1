@@ -16,8 +16,9 @@
                     :data-image="shareImage"
                 )
                 read-more-toggle(
-                    :action-object="actionObject"
+                    :class="{ 'is-waiting' : areEventsLoading }"
                     @click.once.native="onFirstToggleClick"
+                    :action-object="actionObject"
                     @click.native="onToggleClick"
                 )
 </template>
@@ -44,6 +45,8 @@ export default {
     data() {
         return {
             actionObject: 'хронологию',
+            areEventsLoaded: false,
+            areEventsLoading: false,
         };
     },
     computed: {
@@ -70,12 +73,23 @@ export default {
     methods: {
         async onFirstToggleClick($event) {
             $event.stopImmediatePropagation();
-            await this.$store
-                .dispatch('lifeEventsLoading');
-            this.isEventListMinimized = false;
+            await this.loadLifeEvents();
+            if (this.areEventsLoaded) {
+                this.isEventListMinimized = false;
+            }
         },
-        onToggleClick() {
-            this.isEventListMinimized = !this.isEventListMinimized;
+        async onToggleClick() {
+            if (!this.areEventsLoaded) {
+                await this.loadLifeEvents();
+            } else {
+                this.isEventListMinimized = !this.isEventListMinimized;
+            }
+        },
+        async loadLifeEvents() {
+            this.areEventsLoading = true;
+            this.areEventsLoaded = await this.$store
+                .dispatch('lifeEventsLoading');
+            this.areEventsLoading = false;
         },
     },
 };

@@ -78,3 +78,9 @@
         }
     }
 }
+
+.is-waiting {
+    ::v-deep .button__core{
+        cursor: wait;
+    }
+}

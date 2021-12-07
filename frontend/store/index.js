@@ -107,25 +107,37 @@ export const mutations = {
     },
 };
 
+const loadData = async ({ $axios }, relativeUrl) =>
+    await $axios
+        .$get(
+            `${$axios.defaults.baseURL}/${relativeUrl}`,
+        )
+        .catch(error => {
+            if (process.browser) {
+                window.alert(
+                    'Не удается получить данные с сервера' +
+                    ` из - за ошибки ${error}`,
+                );
+            }
+        });
+
 export const actions = {
     async defaultLayoutDataLoading({ commit }) {
-        const defaultLayoutData = await this.$axios
-            .$get(
-                `${this.$axios.defaults.baseURL}/default-layout`,
-            )
-            .catch(() => { });
+        const defaultLayoutData =
+            await loadData(this, 'default-layout');
         commit('defaultLayoutDataSetting', defaultLayoutData);
     },
     async homePageDataLoading({ commit }) {
-        const homePageData = await this.$axios
-            .$get(`${this.$axios.defaults.baseURL}/home-page`)
-            .catch(() => { });
+        const homePageData = await loadData(this, 'home-page');
         commit('homePageDataSetting', homePageData);
     },
     async lifeEventsLoading({ commit }) {
-        const lifeEvents = await this.$axios
-            .$get(`${this.$axios.defaults.baseURL}/life-events`)
-            .catch(() => { });
-        commit('lifeEventsSetting', lifeEvents);
+        const lifeEvents = await loadData(this, 'life-events');
+
+        if (lifeEvents) {
+            commit('lifeEventsSetting', lifeEvents);
+        }
+
+        return !!lifeEvents;
     },
 };
