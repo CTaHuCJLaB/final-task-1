@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
     data() {
         return {
@@ -25,11 +27,9 @@ export default {
         };
     },
     computed: {
-        image() {
-            return this.$store
-                .state.homePageData
-                .header.image;
-        },
+        ...mapGetters('indexHeader', [
+            'image',
+        ]),
     },
 };
 </script>

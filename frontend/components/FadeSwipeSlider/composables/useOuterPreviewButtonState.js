@@ -1,7 +1,6 @@
 import { provide } from '@nuxtjs/composition-api';
 
-export default store => {
-    const { previewTitlePrefix } = store.getters;
+export default previewTitlePrefix => {
     const outerPreviewButtonState = {
         previewTitlePrefix,
     };

@@ -50,16 +50,13 @@ export default {
         };
     },
     computed: {
-        ...mapGetters([
+        ...mapGetters('biographyBlock', [
             'biographyH2',
             'lifeEvents',
+            'shareTitle',
+            'shareDescription',
+            'shareImage',
         ]),
-        ...mapGetters({
-            shareTitle: 'biographyShareTitle',
-            shareDescription:
-                'biographyShareDescription',
-            shareImage: 'biographyShareImage',
-        }),
         processedLifeEvents() {
             let processedLifeEvents = this.lifeEvents;
             if (this.isEventListMinimized) {

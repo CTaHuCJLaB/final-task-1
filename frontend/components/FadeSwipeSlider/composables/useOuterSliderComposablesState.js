@@ -1,9 +1,8 @@
 import { provide } from '@nuxtjs/composition-api';
 
-export default store => {
-    const { paintingTitlePrefix } = store.getters;
+export default slideTitlePrefix => {
     const outerSliderComposablesState = {
-        paintingTitlePrefix,
+        slideTitlePrefix,
     };
     provide(
         'outerSliderComposablesState',

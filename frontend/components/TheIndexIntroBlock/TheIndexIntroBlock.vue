@@ -13,7 +13,7 @@ import { mapGetters } from 'vuex';
 
 export default {
     computed: {
-        ...mapGetters([
+        ...mapGetters('indexHeader', [
             'horizontalH1',
             'verticalH1',
             'indexIntroParagraph',

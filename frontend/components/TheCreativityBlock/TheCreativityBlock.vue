@@ -36,20 +36,12 @@ import { mapGetters } from 'vuex';
 
 export default {
     computed: {
-        ...mapGetters({
-            h2: 'creativityH2',
-            shareTitle: 'creativityShareTitle',
-            shareDescription:
-                'creativityShareDescription',
-            shareImage: 'creativityShareImage',
-        }),
-        ...mapGetters([
-            'introParagraph',
-            'firstParagraph',
-            'secondParagraph',
-            'thirdParagraph',
-            'firstImage',
-            'secondImage',
+        ...mapGetters('creativityBlock', [
+            'h2', 'introParagraph',
+            'firstParagraph', 'secondParagraph',
+            'thirdParagraph', 'firstImage',
+            'secondImage', 'shareTitle',
+            'shareDescription', 'shareImage',
         ]),
         readMoreLinkTitle() {
             return this.$store.getters

@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import { createStringPropConfig } from '@/modules/propConfigs';
 
 export default {
@@ -17,10 +18,9 @@ export default {
         blockAnchor: createStringPropConfig(),
     },
     computed: {
-        shareServices() {
-            return this.$store
-                .getters.shareServices;
-        },
+        ...mapGetters([
+            'shareServices',
+        ]),
         appURL() {
             return process.env.appURL;
         },
@@ -34,6 +34,7 @@ export default {
             'src', 'https://yastatic.net/share2/share.js',
         );
         document.head.appendChild(yaShareScript);
+        console.log(this.shareServices);
     },
 };
 </script>

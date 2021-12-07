@@ -26,7 +26,7 @@
 
 <script>
 import $ from 'jquery';
-import { useStore, ref, computed } from '@nuxtjs/composition-api';
+import { ref, computed } from '@nuxtjs/composition-api';
 import SliderScreen from './SliderScreen/SliderScreen';
 import LeftArrowButton from './LeftArrowButton/LeftArrowButton';
 import RightArrowButton from './RightArrowButton/RightArrowButton';
@@ -38,6 +38,8 @@ import useOuterSliderComposablesState
 from './composables/useOuterSliderComposablesState';
 import useOuterSliderPaginationState
 from './composables/useOuterSliderPaginationState';
+import { createStringPropConfig, createArrayPropConfig }
+from '@/modules/propConfigs';
 
 export default {
     components: {
@@ -46,13 +48,20 @@ export default {
         RightArrowButton,
         RandomSliderNavbar,
     },
-    setup() {
-        const store = useStore();
-        useOuterPreviewButtonState(store);
-        useOuterSliderComposablesState(store);
-        const slides = store.getters.slides;
+    props: {
+        slidePreviews: createArrayPropConfig(),
+        slides: createArrayPropConfig(),
+        previewTitlePrefix: createStringPropConfig(),
+        slideTitlePrefix: createStringPropConfig(),
+    },
+    setup(props) {
+        const {
+            slidePreviews, slides,
+            previewTitlePrefix, slideTitlePrefix,
+        } = props;
+        useOuterPreviewButtonState(previewTitlePrefix);
+        useOuterSliderComposablesState(slideTitlePrefix);
         const activeSlideIndex = ref(4);
-        const { slidePreviews } = store.getters;
         useOuterSliderPaginationState(
             slidePreviews, activeSlideIndex,
         );
@@ -62,8 +71,6 @@ export default {
                 .title,
         );
         return {
-            slidePreviews,
-            slides,
             activeSlideIndex,
             slideCount,
             activeSlideTitle,

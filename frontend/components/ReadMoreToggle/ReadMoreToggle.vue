@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import { createStringPropConfig } from '@/modules/propConfigs';
 
 export default {
@@ -15,10 +16,9 @@ export default {
         actionObject: createStringPropConfig(),
     },
     computed: {
-        readMoreToggleData() {
-            return this.$store
-                .getters.readMoreToggleData;
-        },
+        ...mapGetters([
+            'readMoreToggleData',
+        ]),
         states() {
             return {
                 on: {

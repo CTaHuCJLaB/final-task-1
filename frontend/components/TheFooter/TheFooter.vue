@@ -14,12 +14,11 @@ import { mapGetters } from 'vuex';
 
 export default {
     computed: {
-        ...mapGetters({
-            shareTitle: 'footerShareTitle',
-            shareDescription:
-                'footerShareDescription',
-            shareImage: 'footerShareImage',
-        }),
+        ...mapGetters('footer', [
+            'shareTitle',
+            'shareDescription',
+            'shareImage',
+        ]),
     },
 };
 </script>

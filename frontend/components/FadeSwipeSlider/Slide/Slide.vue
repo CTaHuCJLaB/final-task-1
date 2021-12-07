@@ -3,7 +3,7 @@
         :is="isScreenOverflowing ? 'li' : 'p'"
     )
         base-image(
-            :title="paintingTitlePrefix + ` \"${slide.title}\"`"
+            :title="slideTitlePrefix + ` \"${slide.title}\"`"
             :alt="slide.alt"
             :image="slide"
             :dimensions="dimensions"
@@ -25,7 +25,7 @@ export default {
     setup() {
         const outerSliderComposablesState = inject(
             'outerSliderComposablesState',
-            { paintingTitlePrefix: '' },
+            { slideTitlePrefix: '' },
         );
 
         return outerSliderComposablesState;

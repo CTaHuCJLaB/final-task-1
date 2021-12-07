@@ -12,7 +12,9 @@ export default {
     computed: {
         ...mapGetters([
             'paintingTitlePrefix',
-            'holidayImageTitle',
+        ]),
+        ...mapGetters('indexHeader', [
+            'imageTitle',
         ]),
         figcaption() {
             return this.paintingTitlePrefix +

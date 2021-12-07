@@ -6,14 +6,16 @@
         )
             base-image(
                 class="image--affinage"
-                :title="image.title"
-                :alt="image.alt"
-                :image="image"
+                :title="logo.title"
+                :alt="logo.alt"
+                :image="logo"
                 :dimensions="dimensions"
             )
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
     data() {
         return {
@@ -26,11 +28,9 @@ export default {
         };
     },
     computed: {
-        image() {
-            return this.$store
-                .state.homePageData
-                .header.logo;
-        },
+        ...mapGetters('indexHeader', [
+            'logo',
+        ]),
     },
 };
 </script>

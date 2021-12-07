@@ -3,8 +3,30 @@
         id="block_2"
     )
         .section__content
-            fade-swipe-slider
+            fade-swipe-slider(
+                :slidePreviews="slidePreviews"
+                :slides="slides"
+                :preview-titlePrefix="previewTitlePrefix"
+                :slide-title-prefix="paintingTitlePrefix"
+            )
 </template>
+
+<script>
+import { mapGetters } from 'vuex';
+
+export default {
+    computed: {
+        ...mapGetters([
+            'paintingTitlePrefix',
+        ]),
+        ...mapGetters('paintingsBlock', [
+            'previewTitlePrefix',
+            'slidePreviews',
+            'slides',
+        ]),
+    },
+};
+</script>
 
 <style lang="scss" scoped>
 @import 'section.scss';
