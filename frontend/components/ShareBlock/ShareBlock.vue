@@ -1,5 +1,6 @@
 <template lang="pug">
     .ya-share2(
+        id="share"
         ref="share"
         data-bare
         data-curtain
@@ -23,6 +24,13 @@ export default {
         appURL() {
             return process.env.appURL;
         },
+    },
+    mounted() {
+        const yaShareScript = document.createElement('script');
+        yaShareScript.setAttribute(
+            'src', 'https://yastatic.net/share2/share.js',
+        );
+        document.head.appendChild(yaShareScript);
     },
 };
 </script>
