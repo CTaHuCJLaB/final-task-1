@@ -14,9 +14,7 @@ export default (image, dimensions) => {
             (dimension, key) => key !== 'mobile',
         )
         .value();
-    const rest1xWidths = get1xWidths(
-        restDimensions,
-    );
+    const rest1xWidths = get1xWidths(restDimensions);
     const zeroNotWebpSrcSet = computed(
         () => dimensions.mobile
             ? createSrcSet(
