@@ -6,8 +6,8 @@
         .section__content
             .section__grid
                 h2.h2 {{biographyH2}}
-                life-event-list(
-                    :life-events="processedLifeEvents"
+                definition-list(
+                    :items="processedLifeEvents"
                 )
                 share-block(
                     block-anchor="block_0"

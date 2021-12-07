@@ -1,8 +1,8 @@
 <template lang="pug">
-    dl.list.list--life-events
+    dl.list.list--definition
         .list__item(
             v-for="({ year, description }, index)\
-                in lifeEvents\
+                in items\
             "
         )
             dt.list__year {{year}}
@@ -14,7 +14,7 @@ import { createArrayPropConfig } from '@/modules/propConfigs';
 
 export default {
     props: {
-        lifeEvents: createArrayPropConfig(),
+        items: createArrayPropConfig(),
     },
 };
 </script>
