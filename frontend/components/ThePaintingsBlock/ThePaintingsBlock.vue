@@ -6,7 +6,7 @@
             fade-swipe-slider(
                 :slidePreviews="slidePreviews"
                 :slides="slides"
-                :preview-titlePrefix="previewTitlePrefix"
+                :preview-title-prefix="previewTitlePrefix"
                 :slide-title-prefix="paintingTitlePrefix"
             )
 </template>
