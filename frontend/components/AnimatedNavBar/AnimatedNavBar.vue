@@ -1,17 +1,17 @@
 <template lang="pug">
-  base-nav-bar
-    template(#searchBar)
-        moving-out-search-bar
-    template(#menuToggle)
-        width-smoothed-menu-toggle(
-            @click.native="onToggleClick"
-        )
-    template(#navList)
-        sliding-main-nav-list(
-            @slidingcomplete="\
-                unhandledClickCount--\
-            "
-        )
+    base-nav-bar
+        template(#searchBar)
+            moving-out-search-bar
+        template(#menuToggle)
+            width-smoothed-menu-toggle(
+                @click.native="onToggleClick"
+            )
+        template(#navList)
+            sliding-main-nav-list(
+                @slidingcomplete="\
+                    unhandledClickCount--\
+                "
+            )
 </template>
 
 <script>

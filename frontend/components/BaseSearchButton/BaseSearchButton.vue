@@ -1,7 +1,5 @@
 <template lang="pug">
-    base-button(
-        class="button--search"
-    )
+    base-button.button--search
         template(#icon)
             base-search-icon
 </template>

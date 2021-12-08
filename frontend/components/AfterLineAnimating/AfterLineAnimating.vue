@@ -1,9 +1,8 @@
 <template lang="pug">
     //- компонент, анимирующий вложенный компонент
     //- линией - псевдоэлементом "after"
-    component(
+    component.after-line-animating(
         :is="rootElement"
-        class="after-line-animating"
     )
         slot
 </template>

@@ -1,7 +1,5 @@
 <template lang="pug">
-    base-search-button(
-        class="button--underlined"
-    )
+    base-search-button.button--underlined
 </template>
 
 <style lang="scss" scoped>

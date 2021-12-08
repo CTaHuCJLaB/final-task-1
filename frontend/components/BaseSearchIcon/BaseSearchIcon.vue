@@ -1,6 +1,5 @@
 <template lang="pug">
-    base-svg(
-        class="svg--search-icon"
+    base-svg.svg--search-icon(
         view-box="0 0 18 18"
     )
         path(:d="pathDefinition")

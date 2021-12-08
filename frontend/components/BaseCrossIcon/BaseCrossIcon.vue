@@ -1,6 +1,5 @@
 <template lang="pug">
-    base-svg(
-        class="svg--cross-icon"
+    base-svg.svg--cross-icon(
         view-box="0 4 24 16"
     )
         path(:d="pathDefinition")

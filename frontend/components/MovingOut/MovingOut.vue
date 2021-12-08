@@ -1,8 +1,7 @@
 <template lang="pug">
     //- moving out - выкатывающий
-    component(
+    component.moving-out(
         :is="rootElement"
-        class="moving-out"
     )
         slot
 </template>

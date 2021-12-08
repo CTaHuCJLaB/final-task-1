@@ -1,5 +1,7 @@
 <template lang="pug">
-    nav(:class="classes")
+    nav.nav-bar(
+        :class="{ 'is-closed': isNavBarClosed }"
+    )
         .nav-bar__panel
             slot(name="searchBar")
                 base-search-bar
@@ -31,15 +33,6 @@ export default {
         return {
             isNavBarClosed,
         };
-    },
-    computed: {
-        classes() {
-            const stateModifier = this
-                .isNavBarClosed
-                ? 'is-closed'
-                : '';
-            return `nav-bar ${stateModifier}`;
-        },
     },
     methods: {
         onToggleClick() {

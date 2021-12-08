@@ -1,7 +1,7 @@
 <template lang="pug">
-    component(
+    component.sliding(
         :is="rootElement"
-        :class="`sliding ${hidingClass}`"
+        :class="hidingClass"
     )
         slot
 </template>

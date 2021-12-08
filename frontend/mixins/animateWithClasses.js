@@ -10,7 +10,7 @@ export default
     ],
     props: {
         rootElement:
-        createStringPropConfig('div'),
+            createStringPropConfig('div'),
     },
     data() {
         return {
