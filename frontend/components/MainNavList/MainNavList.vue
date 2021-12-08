@@ -1,5 +1,5 @@
 <template lang="pug">
-  base-nav-list(:navTitles="navTitles")
+    base-nav-list(:navTitles="navTitles")
 </template>
 
 <script>

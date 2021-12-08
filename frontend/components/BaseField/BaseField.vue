@@ -1,16 +1,16 @@
 <template lang="pug">
-  p.field
-    label.field__label
-      base-control(
-        :is-focused="isFocused"
-      )
-      .field__screed
-        slot(name="icon")
-        input.field__core(
-          ref="core"
-          v-bind="$attrs"
-          :type="type"
-        )
+    p.field
+        label.field__label
+            base-control(
+                :is-focused="isFocused"
+            )
+            .field__screed
+                slot(name="icon")
+                input.field__core(
+                    ref="core"
+                    v-bind="$attrs"
+                    :type="type"
+                )
 </template>
 
 <script>

@@ -1,13 +1,13 @@
 <template lang="pug">
-  ul.list.list--nav
-    li.list__item(
-        v-for="(navTitle, index) in navTitles"
-    )
-        internal-link(
-            path="/"
-            :hash="`block_${index}`"
-            :title="`${navTitle}`"
+    ul.list.list--nav
+        li.list__item(
+            v-for="(navTitle, index) in navTitles"
         )
+            internal-link(
+                path="/"
+                :hash="`block_${index}`"
+                :title="`${navTitle}`"
+            )
 </template>
 
 <script>

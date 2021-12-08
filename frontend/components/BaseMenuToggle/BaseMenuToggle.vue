@@ -1,8 +1,8 @@
 <template lang="pug">
-  base-toggle(
-    :states="states"
-    :action-object="menuName"
-  )
+    base-toggle(
+        :states="states"
+        :action-object="menuName"
+    )
 </template>
 
 <script>

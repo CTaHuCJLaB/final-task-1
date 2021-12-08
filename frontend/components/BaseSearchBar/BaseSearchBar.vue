@@ -1,17 +1,17 @@
 <template lang="pug">
-  .search-bar
-    .slot-wrapper(
-      v-if="isSearchBarOpen"
-    )
-      slot(name="field")
-        base-search-field
-    .slot-wrapper(
-      @click.once="\
-        isSearchBarOpen = true\
-      "
-    )
-      slot(name="button")
-        base-search-button
+    .search-bar
+        .slot-wrapper(
+            v-if="isSearchBarOpen"
+        )
+            slot(name="field")
+                base-search-field
+        .slot-wrapper(
+            @click.once="\
+                isSearchBarOpen = true\
+            "
+        )
+            slot(name="button")
+                base-search-button
 </template>
 
 <script>

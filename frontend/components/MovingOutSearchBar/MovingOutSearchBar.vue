@@ -1,21 +1,21 @@
 <template lang="pug">
-  moving-out(
-    @transitionend.once.native="\
-      isRollingOutDone = true\
-    "
-  )
-    half-animated-search-bar(
-      :class="{\
-        'is-move-out-ready':\
-          isButtonClicked\
-      }"
-      @first-button-click="\
-        isButtonClicked = true\
-      "
-      @transitionend.once.native="\
-        isAnimationStarted = true\
-      "
+    moving-out(
+        @transitionend.once.native="\
+            isRollingOutDone = true\
+        "
     )
+        half-animated-search-bar(
+            :class="{\
+                'is-move-out-ready':\
+                    isButtonClicked\
+            }"
+            @first-button-click="\
+                isButtonClicked = true\
+            "
+            @transitionend.once.native="\
+                isAnimationStarted = true\
+            "
+        )
 </template>
 
 <script>

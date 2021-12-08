@@ -1,10 +1,10 @@
 <template lang="pug">
-  //- moving out - выкатывающий
-  component(
-    :is="rootElement"
-    class="moving-out"
-  )
-    slot
+    //- moving out - выкатывающий
+    component(
+        :is="rootElement"
+        class="moving-out"
+    )
+        slot
 </template>
 
 <script>

@@ -1,13 +1,13 @@
 <template lang="pug">
-  nav(:class="classes")
-    .nav-bar__panel
-      slot(name="searchBar")
-        base-search-bar
-      .slot-wrapper(@click="onToggleClick")
-        slot(name="menuToggle")
-          base-menu-toggle
-    slot(name="navList")
-        main-nav-list
+    nav(:class="classes")
+        .nav-bar__panel
+            slot(name="searchBar")
+                base-search-bar
+            .slot-wrapper(@click="onToggleClick")
+                slot(name="menuToggle")
+                    base-menu-toggle
+        slot(name="navList")
+            main-nav-list
 </template>
 
 <script>

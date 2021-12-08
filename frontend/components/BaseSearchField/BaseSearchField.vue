@@ -1,10 +1,10 @@
 <template lang="pug">
-  base-field(
-    class="field--search"
-    type="search"
-    name="search"
-    v-bind="[$attrs]"
-  )
+    base-field(
+        class="field--search"
+        type="search"
+        name="search"
+        v-bind="[$attrs]"
+    )
 </template>
 
 <script>

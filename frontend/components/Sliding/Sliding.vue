@@ -1,9 +1,9 @@
 <template lang="pug">
-  component(
-    :is="rootElement"
-    :class="`sliding ${hidingClass}`"
-  )
-    slot
+    component(
+        :is="rootElement"
+        :class="`sliding ${hidingClass}`"
+    )
+        slot
 </template>
 
 <script>

@@ -1,9 +1,9 @@
 <template lang="pug">
-  base-button(
-    class="button--search"
-  )
-    template(#icon)
-      base-search-icon
+    base-button(
+        class="button--search"
+    )
+        template(#icon)
+            base-search-icon
 </template>
 
 <script>

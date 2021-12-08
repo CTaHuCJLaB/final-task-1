@@ -1,8 +1,8 @@
 <template lang="pug">
-  figure.figure.figure--vast
-    figcaption.visually-hidden
-      | {{figcaption}}
-    vast-image
+    figure.figure.figure--vast
+        figcaption.visually-hidden
+            | {{figcaption}}
+        vast-image
 </template>
 
 <script>

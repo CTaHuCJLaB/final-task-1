@@ -1,11 +1,11 @@
 <template lang="pug">
-  //- компонент, анимирующий вложенный компонент
-  //- линией - псевдоэлементом "after"
-  component(
-    :is="rootElement"
-    class="after-line-animating"
-  )
-    slot
+    //- компонент, анимирующий вложенный компонент
+    //- линией - псевдоэлементом "after"
+    component(
+        :is="rootElement"
+        class="after-line-animating"
+    )
+        slot
 </template>
 
 <script>
