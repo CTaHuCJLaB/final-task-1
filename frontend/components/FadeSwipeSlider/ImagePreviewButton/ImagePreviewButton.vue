@@ -1,6 +1,6 @@
 <template lang="pug">
     base-button.button--preview(
-        :class="{'button--active': isPreviewActive}"
+        :class="{'is-active': isPreviewActive}"
     )
         template(#icon)
             base-image(
