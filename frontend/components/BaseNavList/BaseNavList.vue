@@ -2,6 +2,7 @@
     ul.list.list--nav
         li.list__item(
             v-for="(navTitle, index) in navTitles"
+            :key="index"
         )
             internal-link(
                 path="/"

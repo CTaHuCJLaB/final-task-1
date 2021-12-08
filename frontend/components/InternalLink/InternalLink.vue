@@ -18,5 +18,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import 'internal-link.scss';
+    @import 'internal-link.scss';
 </style>
