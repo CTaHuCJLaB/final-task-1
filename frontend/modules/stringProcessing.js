@@ -2,19 +2,17 @@ import _ from 'lodash';
 
 export const replaceSpaces = (
     string, replacement,
-) => (
+) =>
     _.replace(
         string,
         /\s+/g,
         replacement,
-    )
-);
+    );
 
-export const trimEachWord = string => (
+export const trimEachWord = string =>
     replaceSpaces(
         _.trim(string), ' ',
-    )
-);
+    );
 
 export const mapWords = (
     string, mapIteratee,
@@ -29,27 +27,22 @@ export const mapWords = (
     } else {
         result = '';
     }
+
     return result;
 };
 
 export const prependToEachWord = (
     string, prependedPrefix,
-) => (
+) =>
     mapWords(
         string,
-        word => (
-            `${prependedPrefix}${word}`
-        ),
-    )
-);
+        word => `${prependedPrefix}${word}`,
+    );
 
 export const appendToEachWord = (
     string, appendedPrefix,
-) => (
+) =>
     mapWords(
         string,
-        word => (
-            `${word}${appendedPrefix}`
-        ),
-    )
-);
+        word => `${word}${appendedPrefix}`,
+    );

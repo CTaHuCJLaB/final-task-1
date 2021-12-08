@@ -3,10 +3,8 @@ import $ from 'jquery';
 import { appendToEachWord } from '../modules/stringProcessing';
 import { createStringPropConfig } from '@/modules/propConfigs';
 
-export default (
-    animationName,
-    animatingProperties,
-) => ({
+export default
+(animationName, animatingProperties) => ({
     inject: [
         'outerClassAnimatingState',
     ],

@@ -15,36 +15,32 @@ export const falsePropConfig = createPropCommonConfig(
 
 export const createNumberPropConfig = (
     defaultValue = 0,
-) => (
+) =>
     createPropCommonConfig(
         Number,
         defaultValue,
-    )
-);
+    );
 
 export const createStringPropConfig = (
     defaultValue = '',
-) => (
+) =>
     createPropCommonConfig(
         String,
         defaultValue,
-    )
-);
+    );
 
 export const createArrayPropConfig = (
     defaultValue = () => [],
-) => (
+) =>
     createPropCommonConfig(
         Array,
         defaultValue,
-    )
-);
+    );
 
 export const createObjectPropConfig = (
     defaultValue = () => ({}),
-) => (
+) =>
     createPropCommonConfig(
         Object,
         defaultValue,
-    )
-);
+    );
