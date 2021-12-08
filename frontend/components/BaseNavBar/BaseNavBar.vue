@@ -12,7 +12,6 @@
 
 <script>
 import { ref, provide } from '@nuxtjs/composition-api';
-import { trimEachWord } from '@/modules/stringProcessing';
 
 export default {
     provide: {
@@ -39,9 +38,7 @@ export default {
                 .isNavBarClosed
                 ? 'is-closed'
                 : '';
-            return trimEachWord(`
-        nav-bar ${stateModifier}
-      `);
+            return `nav-bar ${stateModifier}`;
         },
     },
     methods: {
