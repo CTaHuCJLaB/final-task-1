@@ -94,8 +94,9 @@ export default {
         this.isScreenOverflowing = this
             .findOutScreenOverflowing();
         $(window).on('DOMContentLoaded', () => {
-            // лента со слайдами скрывается только при реальной загрузке страницы,
-            // а не при переходе с другого лэйаута при no-lazy loading
+            // данный код размещен здесь, а не в data для того, чтобы лента со слайдами
+            // скрывалась только при реальной загрузке страницы, а не при переходе
+            // с другого лэйаута при no-lazy loading
             this.isFilmTransparent = true;
         });
         $(window).on('load', () => {
