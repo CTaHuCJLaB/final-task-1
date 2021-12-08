@@ -18,7 +18,7 @@ export default {
         ]),
         figcaption() {
             return this.paintingTitlePrefix +
-                ` "${this.holidayImageTitle}"`;
+                ` "${this.imageTitle}"`;
         },
     },
 };
