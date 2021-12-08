@@ -127,7 +127,6 @@ export default {
         terser: {
             parallel: !isProduction, // настройка для хостинга, иначе сборка падает
         },
-        // publicPath: '',
     },
 
     router: {
