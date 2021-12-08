@@ -1,21 +1,24 @@
 <template lang="pug">
     .slider-pagination
         ul.slider-pagination__film(
+            ref="film"
             :style="filmStyle"
         )
             li.slider-pagination__preview(
                 v-for="(preview, index) in slidePreviews"
+                ref="previews"
                 :key="preview.title + index"
             )
                 image-preview-button(
                     :preview="preview"
                     :is-preview-active="isPreviewActive(index)"
+                    @hook:mounted="onPreviewMounted(index)"
                     @click.native="onPreviewClick(index)"
                 )
 </template>
 
 <script>
-import _ from 'lodash';
+import $ from 'jquery';
 import { inject } from '@nuxtjs/composition-api';
 import ImagePreviewButton
 from '../ImagePreviewButton/ImagePreviewButton';
@@ -37,30 +40,20 @@ export default {
     },
     data() {
         return {
-            SHOWN_PREVIEW_COUNT: 5,
-            PREVIEW_WIDTH: 120,
-            COLUMN_GAP: 40,
+            previewWidth: null,
+            previewsWidth: null,
+            filmContentWidth: null,
+            previewGap: null,
+            shownPreviewCount: null,
+            previewGaps: null,
             shownPreviewsStartIndex: 0,
             activePreviewRelativeIndex: 4,
+            filmStyle: null,
         };
     },
     computed: {
-        shownPreviews() {
-            return _(this.slidePreviews)
-                .slice(
-                    this.shownPreviewsStartIndex,
-                    this.shownPreviewsStartIndex + this.SHOWN_PREVIEW_COUNT,
-                ).value();
-        },
-        filmTranslateX() {
-            return -(this.PREVIEW_WIDTH + this.COLUMN_GAP) *
-                this.shownPreviewsStartIndex;
-        },
-        filmStyle() {
-            return {
-                transform:
-                    `translateX(${this.filmTranslateX}px)`,
-            };
+        previewCount() {
+            return this.slidePreviews.length;
         },
     },
     watch: {
@@ -68,25 +61,57 @@ export default {
             if (newValue < oldValue) {
                 if (this.activePreviewRelativeIndex > 0) {
                     this.activePreviewRelativeIndex -= oldValue - newValue;
+                    this.computeFilmStyle();
                 } else if (this.shownPreviewsStartIndex > 0) {
                     this.shownPreviewsStartIndex--;
+                    this.computeFilmStyle();
                 }
             }
             if (newValue > oldValue) {
                 if (this.activePreviewRelativeIndex <
-                    this.SHOWN_PREVIEW_COUNT - 1) {
+                    this.shownPreviewCount - 1) {
                     this.activePreviewRelativeIndex += newValue - oldValue;
+                    this.computeFilmStyle();
                 } else if (this.shownPreviewsStartIndex <
-                    this.slidePreviews.length - this.SHOWN_PREVIEW_COUNT) {
+                    this.previewCount - this.shownPreviewCount) {
                     this.shownPreviewsStartIndex++;
+                    this.computeFilmStyle();
                 }
             }
         },
     },
     methods: {
+        onPreviewMounted(previewIndex) {
+            if (previewIndex === this.slidePreviews.length - 1) {
+                this.computeStaticParams();
+                this.computeFilmStyle();
+            }
+        },
         onPreviewClick(newActiveSlideIndex) {
             this.$parent
                 .$emit('previewclick', newActiveSlideIndex);
+        },
+        computeStaticParams() {
+            this.previewWidth = $(this.$refs.previews[0]).width();
+            this.previewsWidth = this.previewWidth * this.previewCount;
+            this.filmContentWidth = $(this.$refs.film).width();
+            this.previewGap = parseFloat(
+                $(this.$refs.film).css('column-gap'),
+            );
+            const paginationWidth = $(this.$el).width();
+            this.shownPreviewCount =
+                (paginationWidth + this.previewGap) /
+                    (this.previewWidth + this.previewGap);
+            this.previewGaps = this.previewGap *
+                (this.shownPreviewCount - 1);
+        },
+        computeFilmStyle() {
+            const filmTranslateX = this.shownPreviewsStartIndex *
+                -(this.previewWidth + this.previewGap);
+
+            this.filmStyle = {
+                transform: `translateX(${filmTranslateX}px)`,
+            };
         },
         isPreviewActive(previewIndex) {
             return previewIndex === this.shownPreviewsStartIndex +
