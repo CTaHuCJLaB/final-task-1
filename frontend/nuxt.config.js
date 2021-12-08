@@ -136,10 +136,13 @@ export default {
         prefetchLinks: false,
         scrollBehavior(to) {
             if (to.hash) {
-                return window.scrollTo({
-                    top: document.querySelector(to.hash).offsetTop,
-                    behavior: 'smooth',
-                });
+                const targetElement = document.querySelector(to.hash);
+                if (targetElement) {
+                    return window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth',
+                    });
+                }
             }
             return window.scrollTo(
                 { top: 0, behavior: 'smooth' },
