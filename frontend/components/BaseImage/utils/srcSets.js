@@ -1,9 +1,7 @@
 import _ from 'lodash';
 import { createSrc } from './base';
 
-export const createSrcSet = (
-    srcs, x1Width,
-) => {
+export const createSrcSet = (srcs, x1Width) => {
     const sortedSrcs = _(srcs)
         .sortBy(({ caption }) => caption)
         .value();

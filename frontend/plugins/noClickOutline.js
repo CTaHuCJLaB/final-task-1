@@ -6,33 +6,33 @@ export default () => {
 
         const $document = $(document);
 
-        $document.on('keydown', evt => {
-            if (evt.key === 'Tab') {
+        $document.on('keydown', ({ key }) => {
+            if (key === 'Tab') {
                 isFocusWithTab = true;
             }
         });
 
-        $document.on('mousedown', evt => {
+        $document.on('mousedown', ({ target }) => {
             const $activeElement = $(':focus');
-            if ($activeElement.has(evt.target)) {
+            if ($activeElement.has(target)) {
                 $activeElement.css('outline', 'none');
             }
             isFocusWithTab = false;
         });
 
-        $document.on('focusin', evt => {
+        $document.on('focusin', ({ target }) => {
             if (isFocusWithTab) {
-                $(evt.target).css(
+                $(target).css(
                     'outline',
                     '2px solid #a5a5a5',
                 );
             } else {
-                $(evt.target).css('outline', 'none');
+                $(target).css('outline', 'none');
             }
         });
 
-        $document.on('blur', '*', evt => {
-            $(evt.target).css('outline', 'none');
+        $document.on('blur', '*', ({ target }) => {
+            $(target).css('outline', 'none');
         });
     }
 };
