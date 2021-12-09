@@ -66,11 +66,6 @@ export default {
         link: [
             { rel: 'shortcut icon', type: 'image/png', href: '/img/favicon.png' },
         ],
-        script: [
-            {
-                src: 'https://yastatic.net/share2/share.js',
-            },
-        ],
     },
 
     loading: {
