@@ -1,11 +1,11 @@
 <template lang="pug">
     .ya-share2(
+        :data-services="shareServices"
+        :data-url="`${appURL}/#${blockAnchor}`"
         id="share"
         ref="share"
         data-bare
         data-curtain
-        :data-services="shareServices"
-        :data-url="`${appURL}/#${blockAnchor}`"
     )
 </template>
 

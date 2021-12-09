@@ -1,29 +1,25 @@
 <template lang="pug">
     picture.image
         source(
-            type="image/webp"
+            v-for="(srcSet, index) in webpSrcSets"
             :media="medias[index]"
             :srcset="srcSet"
             :sizes="canvasWidths[index]"
-            v-for="(srcSet, index)\
-                in webpSrcSets\
-            "
+            type="image/webp"
         )
         source(
+            v-for="(srcSet, index) in restNotWebpSrcSets"
             :media="medias[index]"
             :srcset="srcSet"
             :sizes="canvasWidths[index]"
-            v-for="(srcSet, index)\
-                in restNotWebpSrcSets\
-            "
         )
         img.image__core(
+            ref="core"
+            v-bind="$attrs"
             :class="{\
                 'h-erase-background-color':\
                 imageLoaded\
             }"
-            ref="core"
-            v-bind="$attrs"
             :src="src"
             :srcset="zeroNotWebpSrcSet"
             :sizes="lastCanvasWidth"

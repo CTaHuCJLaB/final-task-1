@@ -1,7 +1,7 @@
 <template lang="pug">
     section.section.section--light(
+        class="section--biography"
         id="block_0"
-        :class="'section--biography'"
     )
         .section__content
             .section__grid
@@ -10,15 +10,15 @@
                     :items="processedLifeEvents"
                 )
                 share-block(
-                    block-anchor="block_0"
                     :data-title="shareTitle"
                     :data-description="shareDescription"
                     :data-image="shareImage"
+                    block-anchor="block_0"
                 )
                 read-more-toggle(
                     :class="{ 'is-waiting' : areEventsLoading }"
-                    @click.once.native="onFirstToggleClick"
                     :action-object="actionObject"
+                    @click.once.native="onFirstToggleClick"
                     @click.native="onToggleClick"
                 )
 </template>

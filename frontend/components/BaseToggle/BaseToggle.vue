@@ -2,7 +2,7 @@
     base-button.button--toggle(
         :class="classes"
         @focus.once.native="\
-        isToggleAnimated = true\
+            isToggleAnimated = true\
         "
     )
         template(#icon)

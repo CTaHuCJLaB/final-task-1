@@ -1,7 +1,7 @@
 <template lang="pug">
     section.section.section--light(
+        class="section--creativity"
         id="block_1"
-        :class="'section--creativity'"
     )
         .section__content
             .section__intro
@@ -20,14 +20,14 @@
                 p.p.p--third
                     | {{thirdParagraph}}
                 share-block(
-                    block-anchor="block_1"
                     :data-title="shareTitle"
                     :data-description="shareDescription"
                     :data-image="shareImage"
+                    block-anchor="block_1"
                 )
                 internal-link.button--read-more(
-                    path="/creativity"
                     :title="readMoreLinkTitle"
+                    path="/creativity"
                 )
 </template>
 

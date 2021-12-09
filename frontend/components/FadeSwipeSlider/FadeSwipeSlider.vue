@@ -8,8 +8,8 @@
             :active-slide-index.sync="activeSlideIndex"
         )
         left-arrow-button(
-            :disabled="isLeftArrowDisabled"
             ref="leftArrow"
+            :disabled="isLeftArrowDisabled"
             @click.native="onLeftArrowClick"
         )
         p.fade-swipe-slider__slide-title
@@ -21,7 +21,7 @@
         right-arrow-button(
             :disabled="isRightArrowDisabled"
             @click.native="onRightArrowClick"
-            )
+        )
 </template>
 
 <script>

@@ -1,8 +1,8 @@
 <template lang="pug">
     base-field.field--search(
+        v-bind="[$attrs]"
         type="search"
         name="search"
-        v-bind="[$attrs]"
     )
 </template>
 

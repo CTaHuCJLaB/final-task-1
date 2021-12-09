@@ -1,8 +1,8 @@
 <template lang="pug">
     p.button
         button.button__core(
-            type="button"
             v-bind="$attrs"
+            type="button"
         )
             slot(name="icon")
             base-control
