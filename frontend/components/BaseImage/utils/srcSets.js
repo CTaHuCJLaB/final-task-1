@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { createSrc } from './base';
+import createSrc from './createSrc';
 
 export const createSrcSet = (srcs, x1Width) => {
     const sortedSrcs = _(srcs)

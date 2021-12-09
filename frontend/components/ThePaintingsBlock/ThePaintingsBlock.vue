@@ -3,6 +3,7 @@
         id="block_2"
     )
         .section__content
+            h2.h2 {{h2}}
             fade-swipe-slider(
                 :slidePreviews="slidePreviews"
                 :slides="slides"
@@ -20,6 +21,7 @@ export default {
             'paintingTitlePrefix',
         ]),
         ...mapGetters('paintingsBlock', [
+            'h2',
             'previewTitlePrefix',
             'slidePreviews',
             'slides',

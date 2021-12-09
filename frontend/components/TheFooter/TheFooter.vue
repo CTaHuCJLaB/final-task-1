@@ -6,6 +6,7 @@
                 :data-title="shareTitle"
                 :data-description="shareDescription"
                 :data-image="shareImage"
+                id="share"
             )
 </template>
 

@@ -24,6 +24,7 @@
                     :data-description="shareDescription"
                     :data-image="shareImage"
                     block-anchor="block_1"
+                    id="share_1"
                 )
                 internal-link.button--read-more(
                     :title="readMoreLinkTitle"

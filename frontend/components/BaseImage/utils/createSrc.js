@@ -1,7 +1,6 @@
-export const createSrc = (
-    relativeUrl, image1xWidth,
-    dotsPerPixel, srcIndex,
-    srcCount,
+export default (
+    relativeUrl, image1xWidth, dotsPerPixel,
+    srcIndex, srcCount,
 ) => dotsPerPixel
     ? `${process.env.baseURL + relativeUrl}` +
         ` ${image1xWidth * dotsPerPixel}w` +

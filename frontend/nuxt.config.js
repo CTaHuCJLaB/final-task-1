@@ -69,7 +69,6 @@ export default {
         script: [
             {
                 src: 'https://yastatic.net/share2/share.js',
-                acync: '',
             },
         ],
     },

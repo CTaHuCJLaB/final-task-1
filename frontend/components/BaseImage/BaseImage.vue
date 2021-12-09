@@ -22,7 +22,7 @@
             }"
             :src="src"
             :srcset="zeroNotWebpSrcSet"
-            :sizes="lastCanvasWidth"
+            :sizes="src !== '#' ? lastCanvasWidth : false"
             @load="\
                 imageLoaded=\
                     $refs.core\
@@ -52,7 +52,7 @@ export default {
             ? process.env.baseURL +
                 image.value.mobile
                     .notWebp[0].url
-            : '';
+            : '#';
         const {
             zeroNotWebpSrcSet, restNotWebpSrcSets,
             webpSrcSets,

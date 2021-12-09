@@ -14,6 +14,7 @@
                     :data-description="shareDescription"
                     :data-image="shareImage"
                     block-anchor="block_0"
+                    id="share_0"
                 )
                 read-more-toggle(
                     :class="{ 'is-waiting' : areEventsLoading }"
