@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { ref } from '@nuxtjs/composition-api';
 import get1xWidths from '../utils/get1xWidths';
 import { createSrcSet, createRestSrcSets } from '../utils/srcSets';
 import getRestSrcs from '../utils/getRestSrcs';
@@ -14,37 +15,44 @@ export default (image, dimensions) => {
         )
         .value();
     const rest1xWidths = get1xWidths(restDimensions);
-    const zeroNotWebpSrcSet = dimensions.mobile
-        ? createSrcSet(
-            _(image.mobile.notWebp)
-                .slice(1).value(),
-            zero1xWidth,
-        )
-        : null;
-    const restNotWebpSrcSets = _(
-        createRestSrcSets(
-            getRestSrcs(image, 'notWebp'),
-            rest1xWidths,
-        ),
-    ).reverse().value();
-    const zeroWebpSrcSet = dimensions.mobile
-        ? [
-            createSrcSet(
-                image.mobile.webp,
+    const zeroNotWebpSrcSet = ref(
+        dimensions.mobile
+            ? createSrcSet(
+                _(image.mobile.notWebp)
+                    .slice(1).value(),
                 zero1xWidth,
-            ),
-        ]
-        : [];
-    const webpSrcSets = _(zeroWebpSrcSet.value)
-        .concat(
+            )
+            : null,
+    );
+    const restNotWebpSrcSets = ref(
+        _(
             createRestSrcSets(
-                getRestSrcs(image, 'webp'),
+                getRestSrcs(image, 'notWebp'),
                 rest1xWidths,
             ),
-        )
-        .reverse()
-        .value();
-
+        ).reverse().value(),
+    );
+    const zeroWebpSrcSet = ref(
+        dimensions.mobile
+            ? [
+                createSrcSet(
+                    image.mobile.webp,
+                    zero1xWidth,
+                ),
+            ]
+            : [],
+    );
+    const webpSrcSets = ref(
+        _(zeroWebpSrcSet.value)
+            .concat(
+                createRestSrcSets(
+                    getRestSrcs(image, 'webp'),
+                    rest1xWidths,
+                ),
+            )
+            .reverse()
+            .value(),
+    );
     return {
         webpSrcSets,
         restNotWebpSrcSets,
