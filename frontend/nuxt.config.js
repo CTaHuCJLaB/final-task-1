@@ -147,4 +147,9 @@ export default {
             );
         },
     },
+    generate: {
+        exclude: [
+            '/biography', '/paintings', '/creativity',
+        ],
+    },
 };
