@@ -1,4 +1,17 @@
-%visually-hidden {
+.visually-hidden,
+.visually-hidden:active,
+.visually-hidden:checked,
+.visually-hidden:not(:checked),
+.visually-hidden:not(:focus):not(:active),
+.input[type='checkbox'].visually-hidden,
+.input[type='radio'].visually-hidden,
+.is-visually-hidden,
+.is-visually-hidden:active,
+.is-visually-hidden:checked,
+.is-visually-hidden:not(:checked),
+.is-visually-hidden:not(:focus):not(:active),
+.input[type='checkbox'].is-visually-hidden,
+.input[type='radio'].is-visually-hidden {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -10,21 +23,3 @@
     clip: rect(0 0 0 0);
     clip-path: inset(100%);
 }
-
-@mixin visually-hidden-table($base-class) {
-    .#{$base-class}, .#{$base-class}:active,
-    .#{$base-class}:checked,
-    .#{$base-class}:not(:checked),
-    .#{$base-class}:not(:focus):not(:active),
-    .input[type='checkbox'].#{$base-class},
-    .input[type='radio'].#{$base-class} {
-        @extend %visually-hidden;
-    }
-}
-
-@include visually-hidden-table(
-    visually-hidden
-);
-@include visually-hidden-table(
-    is-visually-hidden
-);

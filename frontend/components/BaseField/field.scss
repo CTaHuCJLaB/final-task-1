@@ -5,10 +5,12 @@
     @extend %phrase-wrapper;
 
     &__label {
-        @include tamping-grid();
+        display: grid;
+        grid-template: 100% / 100%;
     }
 
     &__screed {
-        @include tamping-grid();
+        display: grid;
+        grid-template: 100% / 100%;
     }
 }
