@@ -1,5 +1,6 @@
 .button {
-    @extend %phrase-wrapper;
+    display: grid;
+    grid-template: 100% / 100%;
 
     &__core {
         display: grid;

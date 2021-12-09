@@ -3,7 +3,8 @@
     width: 920px;
     height: 667px;
 
-    @extend %phrase-wrapper;
+    display: grid;
+    grid-template: 100% / 100%;
 
     @include mq($minMobileWidth) {
         width: $minMobileWidth - 2 * 20px;
