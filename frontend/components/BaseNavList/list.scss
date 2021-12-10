@@ -30,6 +30,6 @@
 
     @include mq($maxTabletWidth) {
         max-width: 100%;
-        padding: 10px 20px;
+        padding: 10px calc(100 / 320 * 100vw);
     }
 }
