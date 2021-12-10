@@ -13,9 +13,13 @@
 }
 
 ::v-deep .index-intro {
-    margin-top: 45px;
+    margin-top: 40px;
 
     @include mq($maxTabletWidth) {
         margin-top: 0;
     }
+}
+
+.bar {
+    margin-top: 6px;
 }

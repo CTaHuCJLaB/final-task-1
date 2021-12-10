@@ -32,9 +32,10 @@
             'vertical-h1 horizontal-h1'
             'vertical-h1 paragraph';
         grid-template-columns: 100px 520px;
-        gap: 20px;
+        row-gap: 29px;
+        column-gap: 20px;
         width: 640px;
-        min-height: 315px;
+        min-height: 305px;
 
         @include mq($maxTabletWidth) {
             display: flex;
