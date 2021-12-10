@@ -1,9 +1,6 @@
 <template lang="pug">
     base-button.button--toggle(
         :class="classes"
-        @focus.once.native="\
-            isToggleAnimated = true\
-        "
     )
         template(#icon)
             component(:is="shownIcon")
@@ -53,11 +50,6 @@ export default {
         return {
             isOff,
             mergedStates,
-        };
-    },
-    data() {
-        return {
-            isToggleAnimated: false,
         };
     },
     computed: {
