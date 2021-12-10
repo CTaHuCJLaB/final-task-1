@@ -3,7 +3,7 @@
         id="block_2"
     )
         .section__content
-            h2.h2 {{h2}}
+            h2.visually-hidden {{h2}}
             fade-swipe-slider(
                 :slidePreviews="slidePreviews"
                 :slides="slides"
