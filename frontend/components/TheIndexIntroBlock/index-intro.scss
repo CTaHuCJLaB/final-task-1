@@ -92,6 +92,7 @@
             font-size: 20px;
             line-height: 18.3px;
             transform: none;
+            white-space: normal;
         }
 
         @include mq($maxMobileWidth) {
