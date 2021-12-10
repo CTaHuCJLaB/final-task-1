@@ -36,14 +36,14 @@
             margin-bottom: 0;
             margin-left: 0;
         }
+    }
+}
 
-        ::v-deep .button--toggle {
-            display: none;
+.slot-wrapper--menu-toggle {
+    display: none;
 
-            @include mq($maxTabletWidth) {
-                display: grid;
-            }
-        }
+    @include mq($maxTabletWidth) {
+        display: grid;
     }
 }
 

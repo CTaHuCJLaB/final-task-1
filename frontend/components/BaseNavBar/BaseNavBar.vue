@@ -5,7 +5,9 @@
         .nav-bar__panel
             slot(name="searchBar")
                 base-search-bar
-            .slot-wrapper(@click="onToggleClick")
+            .slot-wrapper.slot-wrapper--menu-toggle(
+                @click="onToggleClick"
+            )
                 slot(name="menuToggle")
                     base-menu-toggle
         slot(name="navList")
