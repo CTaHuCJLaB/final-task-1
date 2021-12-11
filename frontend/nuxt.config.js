@@ -134,6 +134,8 @@ export default {
                         top: targetElement.offsetTop,
                         behavior: 'smooth',
                     });
+                } else {
+                    return;
                 }
             }
             return window.scrollTo(
