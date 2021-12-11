@@ -42,7 +42,8 @@
     min-height: 538px;
 
     @include mq($maxTabletWidth) {
-        grid-template-columns: 100%;
+        display: flex;
+        flex-direction: column;
         row-gap: 22px;
     }
 
@@ -60,8 +61,7 @@
 
     .ya-share2 {
         @include mq($maxTabletWidth) {
-            justify-self: start;
-            grid-row: 4 / 5;
+            order: 4;
             margin-top: 10px;
         }
     }

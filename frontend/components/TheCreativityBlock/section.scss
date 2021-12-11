@@ -91,18 +91,11 @@
         min-height: 260px;
 
         @include mq($maxTabletWidth) {
-            grid-template-columns: 100%;
+            display: flex;
+            flex-direction: column;
             row-gap: 22px;
             padding-left: 20px;
             padding-right: 20px;
-
-            .ya-share2 {
-                grid-row: 4 / 5;
-
-                @include mq($maxTabletWidth) {
-                    margin-top: 10px;
-                }
-            }
         }
 
         @include mq($minMobileWidth) {
@@ -115,6 +108,13 @@
 
         @include mq($minTabletWidth, $maxTabletWidth) {
             min-height: 304px;
+        }
+
+        .ya-share2 {
+            @include mq($maxTabletWidth) {
+                order: 4;
+                margin-top: 10px;
+            }
         }
 
         .button--read-more {
