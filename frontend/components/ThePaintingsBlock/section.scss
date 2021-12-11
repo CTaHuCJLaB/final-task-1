@@ -22,6 +22,8 @@
 }
 
 .section__content {
+    display: grid;
+    row-gap: 40px;
     min-height: 722px;
     padding-top: 0;
     padding-bottom: 0;
