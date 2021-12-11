@@ -80,6 +80,14 @@ export default {
             }
         },
     },
+    mounted() {
+        // для того, чтобы лента с превью смещалась после перехода с другого лэйаута
+        // на мобильной ширине и последующего ресайза на десктопную ширину
+        $(window).on('resize', () => {
+            this.computeStaticParams();
+            this.computeFilmStyle();
+        });
+    },
     methods: {
         onPreviewMounted(previewIndex) {
             if (previewIndex === this.slidePreviews.length - 1) {
