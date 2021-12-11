@@ -5,10 +5,6 @@
     min-height: 90px;
     overflow-x: hidden;
 
-    @include mq($maxTabletWidth) {
-        display: none;
-    }
-
     &__film {
         display: flex;
         column-gap: 40px;
