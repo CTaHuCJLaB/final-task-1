@@ -45,8 +45,8 @@ export default {
             previewGap: null,
             shownPreviewCount: null,
             previewGaps: null,
-            shownPreviewsStartIndex: 0,
-            activePreviewRelativeIndex: 4,
+            shownPreviewsStartIndex: null,
+            activePreviewRelativeIndex: null,
             filmStyle: null,
         };
     },
@@ -83,8 +83,14 @@ export default {
         onPreviewMounted(previewIndex) {
             if (previewIndex === this.slidePreviews.length - 1) {
                 this.computeParams();
-                this.shownPreviewsStartIndex =
-                    this.activeSlideIndex - (this.shownPreviewCount - 1);
+                if (this.activeSlideIndex >= this.shownPreviewCount) {
+                    this.shownPreviewsStartIndex =
+                        this.activeSlideIndex - (this.shownPreviewCount - 1);
+                    this.activePreviewRelativeIndex = this.shownPreviewCount - 1;
+                } else {
+                    this.shownPreviewsStartIndex = 0;
+                    this.activePreviewRelativeIndex = this.activeSlideIndex;
+                }
                 this.computeFilmStyle();
             }
         },

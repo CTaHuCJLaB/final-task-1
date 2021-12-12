@@ -61,7 +61,7 @@ export default {
         } = props;
         useOuterPreviewButtonState(previewTitlePrefix);
         useOuterSliderComposablesState(slideTitlePrefix);
-        const activeSlideIndex = ref(7);
+        const activeSlideIndex = ref(2);
         useOuterSliderPaginationState(
             slidePreviews, activeSlideIndex,
         );
