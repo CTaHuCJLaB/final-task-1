@@ -6,13 +6,13 @@ export default injections => ({
         _(injections)
             .forEach((value, key) => {
                 const injection = inject(key, value);
+                _.unset(
+                    injection,
+                    'newInjectionName',
+                );
                 provide(
                     value.newInjectionName,
                     injection,
-                );
-                _.unset(
-                    value,
-                    'newInjectionName',
                 );
             });
     },

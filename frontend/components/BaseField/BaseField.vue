@@ -25,6 +25,7 @@ export default {
             'outerFieldState',
             { isFocused: false },
         );
+
         return outerFieldState;
     },
 };
