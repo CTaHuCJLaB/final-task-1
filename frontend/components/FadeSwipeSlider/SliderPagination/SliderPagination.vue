@@ -82,7 +82,7 @@ export default {
     methods: {
         onPreviewMounted(previewIndex) {
             if (previewIndex === this.slidePreviews.length - 1) {
-                this.computeParams();
+                this.computeStaticParams();
                 if (this.activeSlideIndex >= this.shownPreviewCount) {
                     this.shownPreviewsStartIndex =
                         this.activeSlideIndex - (this.shownPreviewCount - 1);
@@ -98,7 +98,7 @@ export default {
             this.$parent
                 .$emit('previewclick', newActiveSlideIndex);
         },
-        computeParams() {
+        computeStaticParams() {
             this.previewWidth = $(this.$refs.filmItems[0])
                 .children().width();
             this.previewsWidth = this.previewWidth * this.previewCount;
