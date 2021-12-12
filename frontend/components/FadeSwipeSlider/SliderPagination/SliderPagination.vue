@@ -6,7 +6,7 @@
         )
             li.slider-pagination__preview(
                 v-for="(preview, index) in slidePreviews"
-                ref="previews"
+                ref="filmItems"
                 :key="preview.title + index"
             )
                 image-preview-button(
@@ -42,7 +42,6 @@ export default {
         return {
             previewWidth: null,
             previewsWidth: null,
-            filmContentWidth: null,
             previewGap: null,
             shownPreviewCount: null,
             previewGaps: null,
@@ -83,14 +82,9 @@ export default {
     methods: {
         onPreviewMounted(previewIndex) {
             if (previewIndex === this.slidePreviews.length - 1) {
-                // для того, чтобы лента с превью смещалась после перехода с другого лэйаута
-                // на мобильной ширине и последующего ресайза на десктопную ширину
-                $(window).on('resize', () => {
-                    this.computeStaticParams();
-                    this.computeFilmStyle();
-                });
-
-                this.computeStaticParams();
+                this.computeParams();
+                this.shownPreviewsStartIndex =
+                    this.activeSlideIndex - (this.shownPreviewCount - 1);
                 this.computeFilmStyle();
             }
         },
@@ -98,10 +92,10 @@ export default {
             this.$parent
                 .$emit('previewclick', newActiveSlideIndex);
         },
-        computeStaticParams() {
-            this.previewWidth = $(this.$refs.previews[0]).width();
+        computeParams() {
+            this.previewWidth = $(this.$refs.filmItems[0])
+                .children().width();
             this.previewsWidth = this.previewWidth * this.previewCount;
-            this.filmContentWidth = $(this.$refs.film).width();
             this.previewGap = parseFloat(
                 $(this.$refs.film).css('column-gap'),
             );
