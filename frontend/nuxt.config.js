@@ -126,20 +126,6 @@ export default {
         linkActiveClass: 'is-active',
         linkExactActiveClass: 'is-active-exact',
         prefetchLinks: false,
-        scrollBehavior(to) {
-            if (to.hash) {
-                const targetElement = document.querySelector(to.hash);
-                if (targetElement) {
-                    return window.scrollTo({
-                        top: targetElement.offsetTop,
-                        behavior: 'smooth',
-                    });
-                }
-            }
-            return window.scrollTo(
-                { top: 0, behavior: 'smooth' },
-            );
-        },
     },
     generate: {
         exclude: [
