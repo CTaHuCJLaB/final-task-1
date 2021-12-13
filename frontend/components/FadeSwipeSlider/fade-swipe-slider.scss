@@ -58,6 +58,12 @@
     &__faded-text {
         color: $colorGray;
     }
+
+    ::v-deep .slider-pagination {
+        @include mq($maxTabletWidth) {
+            display: none;
+        }
+    }
 }
 
 .random-slider-navbar {
@@ -67,12 +73,6 @@
         grid-row: 4 / 5;
         grid-column: 1 / 2;
         margin-top: 41px;
-    }
-}
-
-::v-deep .slider-pagination {
-    @include mq($maxTabletWidth) {
-        display: none;
     }
 }
 
