@@ -6,9 +6,8 @@
     min-height: calc(
         100vh - 35px - 29px - 3 * 45px - 60px - 39px
     );
-    --image-width: Max(352px, 460 / 800 * 100vh);
     padding-right: calc(
-        (100% + var(--image-width) - 920px) / 2
+        (100% + Max(352px, 460 / 800 * 100vh) - 920px) / 2
     );
 
     @include mq($maxTabletWidth) {
