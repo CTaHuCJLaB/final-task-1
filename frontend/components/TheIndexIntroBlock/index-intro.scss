@@ -7,9 +7,8 @@
         100vh - 35px - 29px - 3 * 45px - 60px - 39px
     );
     --image-width: Max(352px, 460 / 800 * 100vh);
-    --viewport-width: 100% + var(--image-width);
     padding-right: calc(
-        (var(--viewport-width) - 920px) / 2
+        (100% + var(--image-width) - 920px) / 2
     );
 
     @include mq($maxTabletWidth) {
