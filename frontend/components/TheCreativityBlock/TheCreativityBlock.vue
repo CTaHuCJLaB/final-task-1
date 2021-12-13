@@ -15,7 +15,7 @@
                 first-image(:image="firstImage")
             second-image(:image="secondImage")
             .section__grid
-                p.p
+                p.p.p--second
                     | {{secondParagraph}}
                 p.p.p--third
                     | {{thirdParagraph}}

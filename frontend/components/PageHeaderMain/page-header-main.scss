@@ -3,7 +3,7 @@
     flex-direction: column;
     row-gap: 45px;
     padding-top: 35px;
-    padding-bottom: 39px;
+    padding-bottom: 38px;
 
     @include mq($maxTabletWidth) {
         row-gap: 0;
