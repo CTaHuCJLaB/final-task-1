@@ -2,7 +2,8 @@
     base-svg.svg--search-icon(
         view-box="0 0 18 18"
     )
-        path(:d="pathDefinition")
+        path(:d="pathDefinition1")
+        path(:d="pathDefinition2")
 </template>
 
 <script>
@@ -11,10 +12,11 @@ import { trimEachWord } from '@/modules/stringProcessing';
 export default {
     data() {
         return {
-            pathDefinition: trimEachWord(`
-                M7.875 12.825a5.025 5.025
-                0 100-10.05 5.025 5.025
-                0 000 10.05zm3.6-1.35L16.2 16.2
+            pathDefinition1: trimEachWord(`
+                M7.8751 10.7021C10.6503 10.7021 12.9001 8.98415 12.9001 6.86492C12.9001 4.74569 10.6503 3.02771 7.8751 3.02771C5.09987 3.02771 2.8501 4.74569 2.8501 6.86492C2.8501 8.98415 5.09987 10.7021 7.8751 10.7021Z
+            `),
+            pathDefinition2: trimEachWord(`
+                M11.4751 9.6713L16.2001 13.2794
             `),
         };
     },

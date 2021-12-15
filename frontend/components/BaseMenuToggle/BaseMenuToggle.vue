@@ -13,14 +13,14 @@ const states = {
         action: 'Закрыть',
         icon: {
             component: 'BaseCrossIcon',
-            size: '16x16',
+            size: '13x13',
         },
     },
     off: {
         action: 'Открыть',
         icon: {
             component: 'BaseBurgerIcon',
-            size: '24x16',
+            size: '24x13',
         },
     },
 };
